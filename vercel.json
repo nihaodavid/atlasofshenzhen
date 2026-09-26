@@ -1,12 +1,3 @@
-// Vercel deployment configuration.
-//
-// The site is fully static, so there is no build output server to run —
-// `outputDirectory` points at Astro's dist/. Vercel auto-detects Astro, but
-// we pin the settings explicitly so the build is reproducible.
-//
-// The `redirects` array mirrors public/_redirects so that legacy Squarespace
-// URLs keep working when the domain is switched over.
-
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
