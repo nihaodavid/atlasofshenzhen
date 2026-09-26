@@ -39,3 +39,6 @@ venv/
 
 # temporary crawl artefacts (regenerate with scripts/crawl.py)
 .crawl-cache/
+
+.vercel
+.env*

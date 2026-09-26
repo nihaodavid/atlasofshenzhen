@@ -114,29 +114,43 @@ vercel domains inspect atlasofshenzhen.online   # prints required DNS records
 
 ### 4.1 Locate your current nameservers
 
-The domain was purchased with Cloudflare DNS. Decide one of:
+**This domain uses Porkbun nameservers** (verified via the Vercel domain
+config API), *not* Cloudflare:
 
-**Option A — keep Cloudflare managing DNS (recommended)**
+```
+maceio.ns.porkbun.com     curitiba.ns.porkbun.com
+salvador.ns.porkbun.com   fortaleza.ns.porkbun.com
+```
 
-In the Cloudflare dashboard for `atlasofshenzhen.online` → **DNS → Records**,
-add:
+Two options — pick one.
 
-| Type | Name | Value | Proxy |
+**Option A — add DNS records at Porkbun (recommended, fastest)**
+
+In Porkbun → **Domain Management → atlasofshenzhen.online → DNS Records**,
+delete the existing `A` records for `@` (currently `207.207.210.107` and
+`207.207.210.229`) and add:
+
+| Type | Host | Answer | TTL |
 |---|---|---|---|
-| `A` | `@` | `76.76.21.21` | DNS only (grey cloud) |
-| `CNAME` | `www` | `cname.vercel-dns.com` | DNS only (grey cloud) |
+| `A` | *(blank / @)* | `216.198.79.1` | 600 |
+| `A` | *(blank / @)* | `64.29.17.1` | 600 |
+| `CNAME` | `www` | `0dc97e5e951fca09.vercel-dns-017.com` | 600 |
 
-> Start with the proxy **off** (grey cloud). Cloudflare's proxy can interfere
-> with Vercel's automatic TLS issuance. Once the certificate is issued and the
-> site loads correctly, you may switch to proxied (orange cloud) if you want
-> Cloudflare's caching — but re-test HTTPS afterwards.
+> Those are Vercel's **rank-1 recommended** values for this domain. The older
+> `76.76.21.21` / `cname.vercel-dns.com` pair (rank 2) also works. Do not mix
+> ranks — pick one set.
 
-**Option B — move DNS to Vercel entirely**
+**Option B — delegate DNS to Vercel entirely**
 
-In Vercel → Domains → the domain → **Nameservers**, copy the two
-`ns1.vercel-dns.com` / `ns2.vercel-dns.com` values, then set them as the
-custom nameservers in your registrar. DNS propagation then takes up to 48 h
-(usually well under an hour).
+Change the domain's nameservers at Porkbun to `ns1.vercel-dns.com` and
+`ns2.vercel-dns.com`. Propagation takes up to 48 h (usually well under an
+hour), and Vercel then manages all records.
+
+**Option C — move to Cloudflare (if you want Cloudflare in front)**
+
+Add the site at Cloudflare, then create the same records as Option A with the
+proxy set to **DNS only (grey cloud)** first. Turn the orange cloud on only
+after Vercel has issued the TLS certificate.
 
 ### 4.2 Wait for verification
 
