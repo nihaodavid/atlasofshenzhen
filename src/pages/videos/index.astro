@@ -1,0 +1,251 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Hero from "../../components/Hero.astro";
+import { getPage } from "../../lib/content";
+
+const page = getPage("videos");
+const cards = page.cards ?? [];
+
+// Build the category filter list from the cards themselves, keeping the
+// original ordering from the source site's category nav.
+const seen = new Set<string>();
+const categories: string[] = [];
+for (const card of cards) {
+  for (const c of card.categories ?? []) {
+    const key = c.toUpperCase();
+    if (!seen.has(key)) {
+      seen.add(key);
+      categories.push(key);
+    }
+  }
+}
+categories.sort();
+
+const description =
+  page.meta.description && page.meta.description !== "Explore Shenzhen"
+    ? page.meta.description
+    : "Short films about Shenzhen: its history, nature, markets, food and makers, told in English by local storytellers.";
+---
+
+<BaseLayout title="Videos" description={description} current="/videos/">
+  <Hero
+    heading="Videos"
+    subcopy="Short films about Shenzhen — its history, nature, markets, food and makers, told in English by local storytellers."
+    compact
+  />
+
+  <section class="section">
+    <div class="shell">
+      {
+        categories.length > 1 && (
+          <div class="video-filters">
+            <button class="chip is-active" data-filter="all" type="button">
+              All
+              <span class="chip__count">{cards.length}</span>
+            </button>
+            {categories.map((c) => (
+              <button class="chip" data-filter={c} type="button">
+                {c}
+                <span class="chip__count">
+                  {cards.filter((x) =>
+                    (x.categories ?? []).some(
+                      (y) => y.toUpperCase() === c
+                    )
+                  ).length}
+                </span>
+              </button>
+            ))}
+          </div>
+        )
+      }
+
+      <ul class="video-grid" role="list">
+        {
+          cards.map((card) => (
+            <li
+              class="video-card"
+              data-categories={(card.categories ?? [])
+                .map((c) => c.toUpperCase())
+                .join(",")}
+            >
+              <a
+                class="video-card__link"
+                href={`/videos/v/${card.href.replace("/videos/v/", "")}/`}
+                aria-label={`Watch: ${card.title}`}
+              >
+                <span class="video-card__media">
+                  {card.thumb && (
+                    <img
+                      src={card.thumb}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      width="640"
+                      height="360"
+                    />
+                  )}
+                  <span class="video-card__play" aria-hidden="true">
+                    <svg width="52" height="52" viewBox="0 0 52 52">
+                      <circle
+                        cx="26"
+                        cy="26"
+                        r="25"
+                        fill="rgba(0,0,0,0.45)"
+                        stroke="#fff"
+                        stroke-width="1.5"
+                      />
+                      <path d="M21 16.5 37 26 21 35.5Z" fill="#fff" />
+                    </svg>
+                  </span>
+                </span>
+
+                {(card.categories ?? []).length > 0 && (
+                  <span class="video-card__cats">
+                    {(card.categories ?? []).join(" · ")}
+                  </span>
+                )}
+                <span class="video-card__title">{card.title}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <p class="video-empty" hidden data-empty>
+        No videos in this category yet.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Client-side category filtering. The buttons are plain <button>s, so the
+  // filter degrades gracefully — with JS off, every video is still listed.
+  const buttons = document.querySelectorAll<HTMLButtonElement>("[data-filter]");
+  const items = document.querySelectorAll<HTMLElement>(".video-card");
+  const empty = document.querySelector<HTMLElement>("[data-empty]");
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const filter = btn.dataset.filter ?? "all";
+      buttons.forEach((b) => b.classList.toggle("is-active", b === btn));
+
+      let visible = 0;
+      items.forEach((item) => {
+        const cats = (item.dataset.categories ?? "").split(",");
+        const show = filter === "all" || cats.includes(filter);
+        item.toggleAttribute("hidden", !show);
+        if (show) visible++;
+      });
+      empty?.toggleAttribute("hidden", visible > 0);
+    });
+  });
+</script>
+
+<style>
+  .video-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.45rem 0.95rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    background: var(--white);
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s var(--ease);
+  }
+
+  .chip:hover {
+    border-color: var(--teal);
+    color: var(--teal-dark);
+  }
+
+  .chip.is-active {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: var(--white);
+  }
+
+  .chip__count {
+    font-size: 0.6875rem;
+    opacity: 0.65;
+  }
+
+  .video-grid {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: clamp(1.75rem, 4vw, 3rem);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  }
+
+  .video-card__media {
+    position: relative;
+    display: block;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+
+  .video-card__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.45s var(--ease);
+  }
+
+  .video-card:hover .video-card__media img {
+    transform: scale(1.05);
+  }
+
+  .video-card__play {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    transition: opacity 0.3s var(--ease);
+  }
+
+  .video-card:hover .video-card__play,
+  .video-card__link:focus-visible .video-card__play {
+    opacity: 1;
+  }
+
+  .video-card__cats {
+    display: block;
+    margin-top: 0.9rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .video-card__title {
+    display: block;
+    margin-top: 0.4rem;
+    font-size: 1.0625rem;
+    font-weight: 500;
+    line-height: 1.35;
+  }
+
+  .video-card__link:hover .video-card__title {
+    color: var(--teal-dark);
+  }
+
+  .video-empty {
+    color: var(--ink-muted);
+    padding-block: 2rem;
+  }
+</style>

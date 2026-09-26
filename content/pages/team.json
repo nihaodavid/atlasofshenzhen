@@ -1,0 +1,62 @@
+{
+  "slug": "team",
+  "navTitle": "Team",
+  "path": "team",
+  "kind": "fluid",
+  "source": "https://www.atlasofshenzhen.cn/team",
+  "meta": {
+    "title": "General 5 — atlasofshenzhen",
+    "description": ""
+  },
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Welcome"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Our Team"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Dr. Wei Wu"
+    },
+    {
+      "type": "paragraph",
+      "text": "Founder"
+    },
+    {
+      "type": "paragraph",
+      "text": "Wei Wu is an ambitious entrepreneur and researcher who started this project in 2023. Wei believes Shenzhen is growing as the next global city and he hopes to accelerate this process. He saw Shenzhen not only an innovative and vibrant city for digital start-ups, but a historical city with many hidden gems."
+    },
+    {
+      "type": "paragraph",
+      "text": "Wei encourages his students to capture stories between Shenzhen and themselves and tell these stories in English in short video. He was very much impressed by those stories and decided to build a website to showcase these fantasies. He is also incorporating his training and expertise as an economic geographer into the agenda of Atlas of Shenzhen."
+    },
+    {
+      "type": "paragraph",
+      "text": "Grapic Designer"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Tiantian"
+    },
+    {
+      "type": "paragraph",
+      "text": "Tiantian is a talented student who at Shenzhen University. She majored in Arts and interested in creative industries. Alongside her dream to be a middle school teacher, she spent time in this project as a trial to see her other potentials."
+    },
+    {
+      "type": "paragraph",
+      "text": "info@atlasofshenzhen.cn"
+    },
+    {
+      "type": "paragraph",
+      "text": "Yuehai District\nShenzhen, CN"
+    }
+  ],
+  "heroImage": null
+}

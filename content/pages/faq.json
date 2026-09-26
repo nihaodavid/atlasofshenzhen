@@ -1,0 +1,70 @@
+{
+  "slug": "faq",
+  "navTitle": "FAQ",
+  "path": "faq",
+  "kind": "fluid",
+  "source": "https://www.atlasofshenzhen.cn/faq",
+  "meta": {
+    "title": "FAQ | Explore More, Travel Better Today — atlasofshenzhen",
+    "description": "Discover in-depth FAQs about Atlas of Shenzhen"
+  },
+  "blocks": [
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Frequently Asked Questions"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "What services do you offer?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Since 2021, Dr Wei Wu and his team, alongside local historians, geographers, enterprenuers, has brought you stories, guides and recommendations from the most underestimated city- Shenzhen."
+    },
+    {
+      "type": "paragraph",
+      "text": "And while we continue to deliver the inspiring, wanderlust-inducing travel content that you’ve come to expect, we are also developing authentic and immersive small-group trips."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "How do I get started?"
+    },
+    {
+      "type": "paragraph",
+      "text": "We encourage you to explore the video sections first, as it is easy to follow. If you are interested, please go to our opinions section to read more."
+    },
+    {
+      "type": "paragraph",
+      "text": "If you are interested in becoming a contributor, please let us know."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "What makes us different?"
+    },
+    {
+      "type": "paragraph",
+      "text": "We read, write and connect."
+    },
+    {
+      "type": "paragraph",
+      "text": "We collect local literature from different sources before we start writing or filming videos. We believe critical reading is the start of an authentic piece of a guidebook."
+    },
+    {
+      "type": "paragraph",
+      "text": "Then we consult local experts on their opinions of our work. This process is unique as most guidebooks do not engage with local experts, given the cost of editing."
+    },
+    {
+      "type": "paragraph",
+      "text": "info@atlasofshenzhen.cn"
+    },
+    {
+      "type": "paragraph",
+      "text": "Yuehai District\nShenzhen, CN"
+    }
+  ],
+  "heroImage": null
+}

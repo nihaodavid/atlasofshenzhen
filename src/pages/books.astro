@@ -1,0 +1,15 @@
+---
+import CollectionLayout from "../layouts/CollectionLayout.astro";
+import { getPage } from "../lib/content";
+
+const page = getPage("books");
+---
+
+<CollectionLayout
+  slug="books"
+  title="Books"
+  description={page.meta.description || "Reading notes and reviews on Shenzhen, its libraries, publishers and reading culture."}
+  heroHeading="Books"
+  cards={page.cards ?? []}
+  blocks={page.blocks}
+/>

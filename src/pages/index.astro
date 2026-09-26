@@ -1,0 +1,126 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import { getPage } from "../lib/content";
+import { SITE } from "../site.config";
+
+const page = getPage("index");
+const description = page.meta.description ?? SITE.description;
+---
+
+<BaseLayout
+  title={SITE.name}
+  description={description}
+  current="/"
+  ogImage="/images/og-default.jpg"
+>
+  <Hero
+    heading="Hello Shenzhen"
+    subcopy={description}
+    ctaLabel="Let's get to know Shenzhen"
+    ctaHref="/aboutthis/"
+  />
+
+  <section class="section">
+    <div class="shell home-intro">
+      <div class="prose">
+        <h2>Discover Shenzhen's growth</h2>
+        <p>
+          The Atlas of Shenzhen is a comprehensive and innovative statement
+          concerning the geography, history and industrial prospects of the city
+          of Shenzhen, accompanied by state-of-the-art visualisations of local
+          data, trends, scattered information and stories.
+        </p>
+      </div>
+
+      <ul class="home-links" role="list">
+        <li>
+          <a class="home-link" href="/videos/">
+            <span class="home-link__label">Watch the videos</span>
+            <span class="home-link__hint"
+              >Short films on Shenzhen's history, nature, markets and makers</span
+            >
+          </a>
+        </li>
+        <li>
+          <a class="home-link" href="/aboutthis/">
+            <span class="home-link__label">Vision &amp; Mission</span>
+            <span class="home-link__hint"
+              >Why we are building an English atlas of this city</span
+            >
+          </a>
+        </li>
+        <li>
+          <a class="home-link" href="/manufacturers-1/">
+            <span class="home-link__label">Manufacturers</span>
+            <span class="home-link__hint"
+              >A directory of industrial clusters across the Greater Bay Area</span
+            >
+          </a>
+        </li>
+        <li>
+          <a class="home-link" href="/join-us/">
+            <span class="home-link__label">Join us</span>
+            <span class="home-link__hint"
+              >Contribute writing, photography or research</span
+            >
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .home-intro {
+    display: grid;
+    gap: clamp(2.5rem, 5vw, 4rem);
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  @media (max-width: 780px) {
+    .home-intro {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .home-links {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 1px;
+    background: var(--border);
+    border-block: 1px solid var(--border);
+  }
+
+  .home-link {
+    display: block;
+    padding: 1.4rem 0.25rem;
+    background: var(--white);
+    transition: background-color 0.2s var(--ease), padding-left 0.2s var(--ease);
+  }
+
+  .home-link:hover {
+    background: var(--teal-tint);
+    padding-left: 0.9rem;
+  }
+
+  .home-link__label {
+    display: block;
+    font-size: 1.0625rem;
+    font-weight: 500;
+  }
+
+  .home-link:hover .home-link__label {
+    color: var(--teal-dark);
+  }
+
+  .home-link__hint {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.875rem;
+    color: var(--ink-muted);
+    line-height: 1.5;
+  }
+</style>

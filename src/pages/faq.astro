@@ -1,0 +1,14 @@
+---
+import FluidPageLayout from "../layouts/FluidPageLayout.astro";
+import { getPage } from "../lib/content";
+
+const page = getPage("faq");
+---
+
+<FluidPageLayout
+  slug="faq"
+  title="FAQ"
+  description={page.meta.description || "Answers to common questions about the Atlas of Shenzhen, our research process, and how to contribute."}
+  heroHeading="Frequently Asked Questions"
+  blocks={page.blocks}
+/>

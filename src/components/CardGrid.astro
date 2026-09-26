@@ -1,0 +1,102 @@
+---
+/**
+ * CardGrid — collection listing used by videos, manufacturers, service,
+ * books, history and nature.
+ *
+ * Two variants:
+ *   "video"  -> 16:9 YouTube thumbnail, click-to-play, category chips
+ *   "post"   -> 4:3 image, title, date/author, excerpt
+ */
+interface Card {
+  title: string;
+  href: string;
+  categories?: string[];
+  description?: string;
+  youtubeId?: string | null;
+  thumb?: string | null;
+  image?: string | null;
+  alt?: string;
+  author?: string;
+  date?: string;
+  excerpt?: string;
+  detailSlug?: string;
+}
+
+interface Props {
+  cards: Card[];
+  variant?: "video" | "post";
+  /** Internal detail-page prefix, e.g. "/videos" -> /videos/<slug>/ */
+  detailBase?: string;
+}
+
+const { cards, variant = "post", detailBase } = Astro.props;
+
+function resolvedHref(card: Card): string | undefined {
+  if (detailBase && card.detailSlug) {
+    return `${detailBase}/${card.detailSlug}/`;
+  }
+  return undefined;
+}
+---
+
+<ul class="card-grid" role="list">
+  {
+    cards.map((card) => {
+      const href = resolvedHref(card);
+      const thumb = card.thumb ?? card.image ?? null;
+      return (
+        <li class="card">
+          {thumb && (
+            <div class="card__media">
+              {href ? (
+                <a href={href} tabindex="-1" aria-hidden="true">
+                  <img
+                    src={thumb}
+                    alt=""
+                    loading="lazy"
+                    decoding="async"
+                    width="640"
+                    height={variant === "video" ? 360 : 480}
+                  />
+                </a>
+              ) : (
+                <img
+                  src={thumb}
+                  alt={card.alt ?? card.title}
+                  loading="lazy"
+                  decoding="async"
+                  width="640"
+                  height={variant === "video" ? 360 : 480}
+                />
+              )}
+            </div>
+          )}
+
+          {card.categories && card.categories.length > 0 && (
+            <ul class="card__cats" role="list">
+              {card.categories.map((c) => (
+                <li>{c}</li>
+              ))}
+            </ul>
+          )}
+
+          <h3 class="card__title">
+            {href ? <a href={href}>{card.title}</a> : card.title}
+          </h3>
+
+          {(card.date || card.author) && (
+            <p class="card__meta">
+              {[card.date, card.author && `By ${card.author}`]
+                .filter(Boolean)
+                .join(" · ")}
+            </p>
+          )}
+
+          {(card.description || card.excerpt) && (
+            <p class="card__desc">{card.description || card.excerpt}</p>
+          )}
+        </li>
+      );
+    })
+  }
+</ul>

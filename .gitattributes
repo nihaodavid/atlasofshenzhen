@@ -1,0 +1,25 @@
+# Normalise line endings across platforms.
+# Git stores LF in the repository; Windows checkouts get CRLF.
+* text=auto eol=lf
+
+# Explicit types (defensive, in case auto-detection is wrong)
+*.astro  text eol=lf
+*.ts     text eol=lf
+*.css    text eol=lf
+*.json   text eol=lf
+*.md     text eol=lf
+*.py     text eol=lf
+*.mjs    text eol=lf
+*.svg    text eol=lf
+
+# Binary assets must never be converted
+*.jpg    binary
+*.jpeg   binary
+*.png    binary
+*.webp   binary
+*.ico    binary
+*.woff   binary
+*.woff2  binary
+
+# Keep lockfiles out of diffs — they are machine-generated
+package-lock.json  -diff linguist-generated

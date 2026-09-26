@@ -1,0 +1,15 @@
+---
+import CollectionLayout from "../layouts/CollectionLayout.astro";
+import { getPage } from "../lib/content";
+
+const page = getPage("service");
+---
+
+<CollectionLayout
+  slug="service"
+  title="Service"
+  description={page.meta.description || "Sector briefings on logistics, manufacturing, education and sustainable development."}
+  heroHeading="Service"
+  cards={page.cards ?? []}
+  blocks={page.blocks}
+/>

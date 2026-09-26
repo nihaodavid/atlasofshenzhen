@@ -1,0 +1,81 @@
+{
+  "slug": "books",
+  "navTitle": "Books",
+  "path": "books",
+  "kind": "blog",
+  "source": "https://www.atlasofshenzhen.cn/books",
+  "meta": {
+    "title": "Book — atlasofshenzhen",
+    "description": ""
+  },
+  "cards": [
+    {
+      "title": "Shenzhen, the City of Libraries",
+      "href": "/books/bookcapitalarticle1231",
+      "author": "Guest User",
+      "date": "5/28/19",
+      "excerpt": "It all begins with an idea.",
+      "image": "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/28b47ccf-7e1d-4484-8a13-552be11f801e/1.+Daily+Visitor+Peak+at+Shenzhen+Library+North+Branch+-+visual+selection.png?format=original",
+      "alt": "",
+      "detailSlug": "books--bookcapitalarticle1231"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "On September 10, 2024, the International Federation of Library Associations and Institutions (IFLA) announced the shortlist for the Public Library of the Year Award 2024, and the Shenzhen Library North Branch has successfully made it into the top four! The IFLA established in 1927 is the most professional international organization in the world of libraries."
+    },
+    {
+      "type": "paragraph",
+      "text": "This year marks the new phase of building Shenzhen into a \"City of Libraries,\" and the nomination of the Shenzhen Library North Branch undoubtedly adds to this ambitious objective. In the \"Special Feature\" column of the August 2024 issue (Volume 49) of \"Book Capital\" magazine, we review the process of development of Shenzhen libraries and share our vision of its plans."
+    },
+    {
+      "type": "paragraph",
+      "text": "The statistics provided solid evidence of the commitment of Shenzhen to building a city of libraries. The Shenzhen Library has published readers' preference reports every year since 2017 which contain data about books and readers in Shenzhen. Last year in 2023, the Shenzhen Publishing Group also published a book which reviewed the progress of Shenzhen in building a city of libraries. Now let us look into these numbers and try to summarise what is interesting in both references."
+    },
+    {
+      "type": "paragraph",
+      "text": "According to the book <Shenzhen Experience - Twenty Years of Innovative Development of the 'City of Libraries''>, from 2003 to 2022, the number of public library reader activity sessions in the city increased from 1,068 to 18,198, a 16-fold increase; the number of participants in reader activities increased from 107,900 to 19,317,100, a 178-fold increase."
+    },
+    {
+      "type": "paragraph",
+      "text": "On July 14, 2024, the daily visitor count at the North Branch of Shenzhen Library reached a peak of 23,200 people. As of July 25, just seven months after opening, the North Branch has accumulated over 2 million visitors, with citizens borrowing (including renewing) a total of 1.8222 million items."
+    },
+    {
+      "type": "paragraph",
+      "text": "Apart from the book borrowing, the Shenzhen Library is also committed to the digitalization of public services. For instance, the library has dispatched approximately 2.7 million items and hosted 389 public activities and special theme exhibitions both online and offline."
+    },
+    {
+      "type": "paragraph",
+      "text": "By the end of 2023, Shenzhen had a total of 1,125 service points (including 804 public libraries and 321 self-service libraries) joining the unified service system of the \"City of Libraries\", with a total collection of 60.1437 million volumes of documents, a cumulative number of 4.7854 million certified readers, and a citywide certification rate of 27.09%."
+    },
+    {
+      "type": "paragraph",
+      "text": "In 2023, the volume of document loans reached 22.9837 million times, and the volume of document returns was 15.9424 million times, with year-on-year increases of 56.75% and 52.75%, respectively, both setting new historical records. The volume of book returns from different locations was 3.1188 million times, and there were 392,600 readers who borrowed documents from two or more libraries, both reaching historical peaks, highlighting the effectiveness of unified services. The average number of loans per borrower was 34 times, with the reader who borrowed the most documents in a year reaching 2,857 times, setting a new record. Readers aged 18 to 44 accounted for over 60% of the loan volume, and the average number of loans per reader aged 0 to 12 was 41, ranking first among all age groups."
+    },
+    {
+      "type": "paragraph",
+      "text": "Shenzhen is also the first city in the nation to propose the concept of a \"City of Libraries.\" To implement this concept, Shenzhen has launched many policies to encourage people to read and to ensure the minimum spending of multiple budgets on the library establishment. For example, Shenzhen has become the first city in China to promote \"Reading Month\". In response to the uneven geographical distribution of public libraries, Shenzhen built 146 libraries, which cover 52% area of the city."
+    },
+    {
+      "type": "paragraph",
+      "text": "The reputation of the city of libraries is not built in one day. Since 1989, Shenzhen has ranked first among major cities in the country for 23 consecutive years in terms of per capita book purchasing volume. In 1996, Shenzhen was the first city in the country to build a large-scale bookstore. In 2000, Shenzhen was the first city to launch a \"Reading Month\". In 2003， Shenzhen proposed the idea of a \"City of Libraries\", which was a pioneer nationally. In 2006, Shenzhen built the first \"24-hour book bar\". In October 2013, UNESCO named Shenzhen a global model for the promotion of reading, recognizing the city’s persistent efforts to promote reading among the public. A series of actions proved that Shenzhen has been constantly building a city of libraries."
+    },
+    {
+      "type": "paragraph",
+      "text": "The magic of library technology also reveals who is the best readers. Jiang Yanfang is a construction worker but also a bookworm. The user record shows she visited 15 self-help libraries since 2014, which was her second year in Shenzhen. She built the city and was also the most frequent user of public library facilities."
+    },
+    {
+      "type": "paragraph",
+      "text": "The nomination by the IFLA is a reward for the investment of Shenzhen and an applause to its citizens who enjoy reading."
+    },
+    {
+      "type": "paragraph",
+      "text": "info@atlasofshenzhen.cn"
+    },
+    {
+      "type": "paragraph",
+      "text": "Yuehai District\nShenzhen, CN"
+    }
+  ]
+}

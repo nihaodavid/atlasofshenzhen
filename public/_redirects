@@ -1,0 +1,32 @@
+# Legacy URL redirects — Squarespace -> new site
+#
+# The new site preserves the original permalinks, so most URLs need no
+# redirect. These handle the Squarespace-internal paths that crawl tools may
+# still have indexed (folder index pages, tags, the empty cart route, etc.).
+#
+# Format: Netlify/Cloudflare `_redirects` syntax. Vercel users: see
+# vercel.json, which mirrors these rules.
+
+# Squarespace folder landing pages -> their first child
+/about-1            /aboutthis/            301
+/opinions           /future-works-1/       301
+
+# Squarespace blog list pagination
+/history/page/*     /history/              301
+/books/page/*       /books/                301
+/nature/page/*      /nature/               301
+/service/page/*     /service/              301
+/manufacturers-1/page/*  /manufacturers-1/ 301
+
+# Squarespace category/tag filters
+/videos/*/page/*    /videos/               301
+
+# Empty commerce route from the original theme
+/cart               /                      301
+
+# Squarespace CMS endpoints that should never be indexed
+/config             /                      410
+/api/*              /                      410
+
+# Everything else falls through to the 404 page
+/*  /404.html  404

@@ -1,0 +1,99 @@
+---
+/**
+ * PageHero — the full-bleed teal banner used across the site.
+ *
+ * Mirrors the original design: solid teal panel, white left-aligned
+ * heading, optional sub-copy, optional CTA, and the white line-art
+ * flower bleeding in from the right edge.
+ */
+interface Props {
+  heading: string;
+  subcopy?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  /** Keeps the hero short on inner pages where it is just a title bar. */
+  compact?: boolean;
+}
+
+const { heading, subcopy, ctaLabel, ctaHref, compact = false } = Astro.props;
+---
+
+<section class={`hero ${compact ? "hero--compact" : ""}`}>
+  <div class="hero__art" aria-hidden="true"></div>
+  <div class="shell hero__inner">
+    <h1 class="hero__heading">{heading}</h1>
+    {subcopy && <p class="hero__subcopy">{subcopy}</p>}
+    {
+      ctaLabel && ctaHref && (
+        <a class="btn btn--ghost hero__cta" href={ctaHref}>
+          {ctaLabel}
+        </a>
+      )
+    }
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    background: var(--teal);
+    color: var(--white);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    min-height: clamp(320px, 46vw, 460px);
+  }
+
+  .hero--compact {
+    min-height: clamp(200px, 24vw, 260px);
+  }
+
+  /* White line-art flower, anchored to the right edge as in the original.
+     Extracted from the original hero PNG with the teal background keyed out
+     (see scripts/build_assets.py). */
+  .hero__art {
+    position: absolute;
+    inset: 0 0 0 auto;
+    width: 62%;
+    background-image: url("/images/hero-flower.webp");
+    background-repeat: no-repeat;
+    background-position: right center;
+    background-size: contain;
+    opacity: 0.9;
+    pointer-events: none;
+  }
+
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+    padding-block: clamp(3rem, 7vw, 5rem);
+    max-width: 46rem;
+  }
+
+  .hero__heading {
+    color: var(--white);
+    font-weight: 500;
+    max-width: 22ch;
+  }
+
+  .hero__subcopy {
+    margin-top: 1rem;
+    max-width: 46ch;
+    font-size: 1.0625rem;
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .hero__cta {
+    margin-top: 2.25rem;
+  }
+
+  @media (max-width: 860px) {
+    .hero__art {
+      width: 85%;
+      opacity: 0.5;
+    }
+    .hero__inner {
+      max-width: none;
+    }
+  }
+</style>

@@ -1,0 +1,15 @@
+---
+import CollectionLayout from "../layouts/CollectionLayout.astro";
+import { getPage } from "../lib/content";
+
+const page = getPage("manufacturers-1");
+---
+
+<CollectionLayout
+  slug="manufacturers-1"
+  title="Manufacturers"
+  description={page.meta.description || "A directory of manufacturers and industrial clusters across Shenzhen and the Greater Bay Area."}
+  heroHeading="Manufacturers"
+  cards={page.cards ?? []}
+  blocks={page.blocks}
+/>

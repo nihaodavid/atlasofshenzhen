@@ -1,0 +1,73 @@
+{
+  "slug": "service",
+  "navTitle": "Service",
+  "path": "service",
+  "kind": "blog",
+  "source": "https://www.atlasofshenzhen.cn/service",
+  "meta": {
+    "title": "Service | Discover Solutions & Get Started — atlasofshenzhen",
+    "description": "Explore innovative solutions and services for logistics, manufacturing, and sustainable development in Shenzhen and beyond. Get started today."
+  },
+  "cards": [
+    {
+      "title": "Coffee",
+      "href": "/service/coffee",
+      "author": "C Nie",
+      "date": "7/20/25",
+      "excerpt": "",
+      "image": "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/1753006259325-LMKE9FKJVKSKVP48NBH4/3.jpg?format=original",
+      "alt": "",
+      "detailSlug": "service--coffee"
+    },
+    {
+      "title": "Higher Education (Hong Kong & Shenzhen & Guangzhou)",
+      "href": "/service/higher-education-hong-kong-amp-shenzhen-amp-guangzhou",
+      "author": "C Nie",
+      "date": "7/20/25",
+      "excerpt": "",
+      "image": null,
+      "alt": "Higher Education (Hong Kong & Shenzhen & Guangzhou)",
+      "detailSlug": "service--higher-education-hong-kong-amp-shenzhen-amp-guangzhou"
+    },
+    {
+      "title": "Recycling & Sustainable Packaging (Dongguan)",
+      "href": "/service/recycling-amp-sustainable-packaging-dongguan",
+      "author": "C Nie",
+      "date": "7/20/25",
+      "excerpt": "",
+      "image": null,
+      "alt": "Recycling & Sustainable Packaging (Dongguan)",
+      "detailSlug": "service--recycling-amp-sustainable-packaging-dongguan"
+    },
+    {
+      "title": "Offshore and Onshore Warehouses (Hong Kong & Macao)-Fintech & AI Ports",
+      "href": "/service/offshore-and-onshore-warehouses-hong-kong-amp-macao-fintech-amp-ai-ports",
+      "author": "C Nie",
+      "date": "7/20/25",
+      "excerpt": "",
+      "image": "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/1753006037265-SA690YOZ02G26SGM5P3K/2.jpg?format=original",
+      "alt": "",
+      "detailSlug": "service--offshore-and-onshore-warehouses-hong-kong-amp-macao-fintech-amp-ai-ports"
+    },
+    {
+      "title": "Data Centres (Shaoguan)",
+      "href": "/service/data-centres-shaoguan",
+      "author": "C Nie",
+      "date": "7/20/25",
+      "excerpt": "",
+      "image": "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/1753005873743-GK70YOT4SGH8DMDHY763/1.jpg?format=original",
+      "alt": "",
+      "detailSlug": "service--data-centres-shaoguan"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "info@atlasofshenzhen.cn"
+    },
+    {
+      "type": "paragraph",
+      "text": "Yuehai District\nShenzhen, CN"
+    }
+  ]
+}

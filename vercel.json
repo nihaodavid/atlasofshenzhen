@@ -1,0 +1,59 @@
+// Vercel deployment configuration.
+//
+// The site is fully static, so there is no build output server to run —
+// `outputDirectory` points at Astro's dist/. Vercel auto-detects Astro, but
+// we pin the settings explicitly so the build is reproducible.
+//
+// The `redirects` array mirrors public/_redirects so that legacy Squarespace
+// URLs keep working when the domain is switched over.
+
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install",
+  "framework": "astro",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "headers": [
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/_astro/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" }
+      ]
+    }
+  ],
+  "redirects": [
+    { "source": "/about-1", "destination": "/aboutthis/", "permanent": true },
+    { "source": "/opinions", "destination": "/future-works-1/", "permanent": true },
+    { "source": "/cart", "destination": "/", "permanent": true },
+    { "source": "/history/page/:path*", "destination": "/history/", "permanent": true },
+    { "source": "/books/page/:path*", "destination": "/books/", "permanent": true },
+    { "source": "/nature/page/:path*", "destination": "/nature/", "permanent": true },
+    { "source": "/service/page/:path*", "destination": "/service/", "permanent": true },
+    {
+      "source": "/manufacturers-1/page/:path*",
+      "destination": "/manufacturers-1/",
+      "permanent": true
+    }
+  ]
+}

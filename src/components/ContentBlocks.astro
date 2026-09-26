@@ -1,0 +1,57 @@
+---
+/**
+ * ContentBlocks — renders the semantic block array extracted from the
+ * original Squarespace pages (headings, paragraphs, list items).
+ */
+interface Block {
+  type: "heading" | "paragraph" | "listitem" | "quote";
+  level?: number;
+  text: string;
+}
+
+interface Props {
+  blocks: Block[];
+  class?: string;
+}
+
+const { blocks, class: className = "" } = Astro.props;
+
+/** Group consecutive list items so they render as a single <ul>. */
+type Node = Block | { type: "list"; items: string[] };
+
+const nodes: Node[] = [];
+for (const b of blocks) {
+  const last = nodes[nodes.length - 1];
+  if (b.type === "listitem" && last && last.type === "list") {
+    last.items.push(b.text);
+  } else if (b.type === "listitem") {
+    nodes.push({ type: "list", items: [b.text] });
+  } else {
+    nodes.push(b);
+  }
+}
+---
+
+<div class={`prose ${className}`}>
+  {
+    nodes.map((n) => {
+      if (n.type === "list") {
+        return (
+          <ul>
+            {n.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        );
+      }
+      if (n.type === "heading") {
+        const Tag = `h${Math.min(Math.max(n.level ?? 2, 2), 4)}` as const;
+        return <Tag>{n.text}</Tag>;
+      }
+      if (n.type === "quote") {
+        return <blockquote>{n.text}</blockquote>;
+      }
+      return <p>{n.text}</p>;
+    })
+  }
+</div>

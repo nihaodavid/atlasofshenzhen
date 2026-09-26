@@ -1,0 +1,14 @@
+---
+import FluidPageLayout from "../layouts/FluidPageLayout.astro";
+import { getPage } from "../lib/content";
+
+const page = getPage("team");
+---
+
+<FluidPageLayout
+  slug="team"
+  title="Team"
+  description={page.meta.description || "Meet the researchers, writers, translators and designers behind the Atlas of Shenzhen."}
+  heroHeading="Team"
+  blocks={page.blocks}
+/>

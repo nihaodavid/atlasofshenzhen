@@ -1,0 +1,33 @@
+{
+  "slug": "nature",
+  "navTitle": "Nature",
+  "path": "nature",
+  "kind": "blog",
+  "source": "https://www.atlasofshenzhen.cn/nature",
+  "meta": {
+    "title": "Nature — atlasofshenzhen",
+    "description": ""
+  },
+  "cards": [
+    {
+      "title": "Bougainvillea",
+      "href": "/nature/aak0dr1zi9396l4vwc78422x87gshz-p7365",
+      "author": "Wei Wu",
+      "date": "4/18/26",
+      "excerpt": "",
+      "image": "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/1776484846350-KX7EF0G7S5ABNBVRLVJV/3239dc2e-044d-4cd9-9391-407085617e5d.png?format=original",
+      "alt": "",
+      "detailSlug": "nature--aak0dr1zi9396l4vwc78422x87gshz-p7365"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "info@atlasofshenzhen.cn"
+    },
+    {
+      "type": "paragraph",
+      "text": "Yuehai District\nShenzhen, CN"
+    }
+  ]
+}

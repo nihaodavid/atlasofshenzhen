@@ -1,0 +1,14 @@
+---
+import FluidPageLayout from "../layouts/FluidPageLayout.astro";
+import { getPage } from "../lib/content";
+
+const page = getPage("join-us");
+---
+
+<FluidPageLayout
+  slug="join-us"
+  title="Join Us"
+  description={page.meta.description || "Contribute writing, photography, translation or research to the Atlas of Shenzhen."}
+  heroHeading="Join Us"
+  blocks={page.blocks}
+/>

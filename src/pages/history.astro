@@ -1,0 +1,15 @@
+---
+import CollectionLayout from "../layouts/CollectionLayout.astro";
+import { getPage } from "../lib/content";
+
+const page = getPage("history");
+---
+
+<CollectionLayout
+  slug="history"
+  title="History"
+  description={page.meta.description || "Long-form research on the places, railways, villages and industries that shaped Shenzhen."}
+  heroHeading="History"
+  cards={page.cards ?? []}
+  blocks={page.blocks}
+/>

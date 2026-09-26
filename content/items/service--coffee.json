@@ -1,0 +1,27 @@
+{
+  "type": "article",
+  "slug": "service--coffee",
+  "path": "/service/coffee",
+  "title": "Coffee",
+  "author": "C Nie",
+  "date": "Jul 20",
+  "body": [
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "Coffee"
+    },
+    {
+      "type": "paragraph",
+      "text": "The number of coffee-related companies in Shenzhen has reached 9,651, taking the lead among Chinese cities, according to data released by Qcc.com, a company information search platform."
+    }
+  ],
+  "images": [
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/82791b46-476d-4445-878e-4ac15bb6161b/3.jpg?format=original"
+  ],
+  "meta": {
+    "title": "Coffee  — atlasofshenzhen",
+    "description": "",
+    "ogImage": "http://static1.squarespace.com/static/64c34dc6bb45bc630c43e488/687caf7f8b0b057d28febabc/687cc087205acf77e34e71db/1753006317418/3.jpg?format=1500w"
+  }
+}

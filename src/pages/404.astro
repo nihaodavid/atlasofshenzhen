@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+---
+
+<BaseLayout
+  title="Page not found"
+  description="The page you were looking for could not be found."
+  current="/404"
+>
+  <Hero heading="Page not found" compact />
+
+  <section class="section">
+    <div class="shell prose">
+      <p>
+        Sorry — we could not find that page. It may have been moved during our
+        migration from the old website.
+      </p>
+      <p>
+        Try the <a href="/">home page</a>, browse
+        <a href="/videos/">the videos</a>, or
+        <a href="/aboutthis/">read about the project</a>.
+      </p>
+      <p>
+        If you followed a link from elsewhere and expected something specific,
+        please tell us at
+        <a href="mailto:info@atlasofshenzhen.cn">info@atlasofshenzhen.cn</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,35 @@
+{
+  "type": "article",
+  "slug": "service--data-centres-shaoguan",
+  "path": "/service/data-centres-shaoguan",
+  "title": "Data Centres (Shaoguan)",
+  "author": "C Nie",
+  "date": "Jul 20",
+  "body": [
+    {
+      "type": "heading",
+      "level": 1,
+      "text": "Data Centres (Shaoguan)"
+    },
+    {
+      "type": "paragraph",
+      "text": "Shaoguan in Guangdong is in the process of being one of the data centre in China. Shaoguan is located in the northern mountainous region of Guangdong, with a relatively lower average temperature, making it the lowest in annual average temperature in the entire Guangdong province. It is less affected by typhoons, not susceptible to coastal erosion, and falls into a low disaster risk area, making it conducive to the safe and reliable operation of data centers. Additionally, Shaoguan is one of the major electricity and energy bases in Guangdong, offering the lowest industrial electricity prices in the province. In terms of network resources, Shaoguan is a crucial node for the national fiber-optic first-level network connecting Beijing to the Guangdong-Hong Kong-Macao Greater Bay Area (Guangzhou). Regarding industrial infrastructure, Shaoguan hosts the provincial-level Big Data Industrial Park known as \"South China Data Valley,\" which has attracted projects such as the Huashao Data Valley and China Unicom's Southern Intelligent Customer Service Center, establishing a strong foundation for the big data industry."
+    },
+    {
+      "type": "paragraph",
+      "text": "As part of the national strategy for the Guangdong-Hong Kong-Macao Greater Bay Area, there are plans to establish a three-tiered data center spatial layout structure, including the Shaoguan Data Center Cluster as a national backbone network hub node, making it one of the ten national data center clusters in the country. The Shaoguan Data Center Cluster will actively accommodate real-time computing needs from cities like Guangzhou and Shenzhen, encouraging the migration of warm and cold businesses to the western region. According to the plan, by 2025, the Shaoguan Data Center Cluster aims to have 500,000 standard server racks, a scale of 5 million servers, an investment exceeding 50 billion yuan, and it will strongly drive the formation of a data industry ecosystem in Shaoguan, creating a billion-dollar electronic information and big data industry cluster while exploring the \"East Data, West Computing\" Shaoguan model."
+    },
+    {
+      "type": "paragraph",
+      "text": "In response to the national call, on May 29, 2022, 30 major projects, including those from Inspur, Huawei, China Energy Construction, Tencent, Kuaishou, China Telecom, and Wanguo Data, signed contracts to establish themselves in Shaoguan, with a total investment of approximately 120 billion yuan in data center projects in Shaoguan."
+    }
+  ],
+  "images": [
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/5dff87a9-6436-425f-ad59-27db497858e6/1.jpg?format=original"
+  ],
+  "meta": {
+    "title": "Data Centres (Shaoguan) — atlasofshenzhen",
+    "description": "",
+    "ogImage": "http://static1.squarespace.com/static/64c34dc6bb45bc630c43e488/687caf7f8b0b057d28febabc/687cbed35f5c4325c688a240/1753005885642/1.jpg?format=1500w"
+  }
+}

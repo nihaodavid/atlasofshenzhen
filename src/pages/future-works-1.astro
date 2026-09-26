@@ -1,0 +1,14 @@
+---
+import FluidPageLayout from "../layouts/FluidPageLayout.astro";
+import { getPage } from "../lib/content";
+
+const page = getPage("future-works-1");
+---
+
+<FluidPageLayout
+  slug="future-works-1"
+  title="Future Works"
+  description={page.meta.description || "The maps, archives and publications we are building next for the Atlas of Shenzhen."}
+  heroHeading="Future Works"
+  blocks={page.blocks}
+/>

@@ -1,0 +1,129 @@
+{
+  "slug": "join-us",
+  "navTitle": "Join Us",
+  "path": "join-us",
+  "kind": "fluid",
+  "source": "https://www.atlasofshenzhen.cn/join-us",
+  "meta": {
+    "title": "Join Us | Explore Opportunities — Join Us Today — atlasofshenzhen",
+    "description": "Discover opportunities with Atlas of Shenzhen. Join our content creator internship and share stories about Shenzhen"
+  },
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Welcome"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Join Us"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Content Creator Internship"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Duties"
+    },
+    {
+      "type": "paragraph",
+      "text": "Candidates will be responsible for researching and writing articles about the stories in Shenzhen. Topics can be found from the project page. Candidates will work with an editor and a designer collaboratively to ensure the best quality work is produced."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Skills you will gain"
+    },
+    {
+      "type": "paragraph",
+      "text": "Research and writing: Candidates will gain valuable experience writing high quality, relatively casual content. Candidates will experience working with an editor."
+    },
+    {
+      "type": "paragraph",
+      "text": "Interpersonal skills and teamwork: Candidates will need to sustain effective working relationships with colleagues and may need to work across language and cultural barriers."
+    },
+    {
+      "type": "paragraph",
+      "text": "Organization and time-management: candidates will need to meet deadlines and priorities certain aspects of their work to ensure timely completion of their assigned tasks."
+    },
+    {
+      "type": "paragraph",
+      "text": "Communication: Candidates will have the opportunity to develop strong oral and written communication skills."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Skills & Experience"
+    },
+    {
+      "type": "paragraph",
+      "text": "Candidates should understand how to use public resources to access information in Shenzhen from difference source and reference."
+    },
+    {
+      "type": "paragraph",
+      "text": "Candidates should be able to identify stories of interest in the city. Candidates will have the ability to be creative, and contribute to the design of tours for these locations."
+    },
+    {
+      "type": "paragraph",
+      "text": "Candidates should be passionate about Shenzhen and spread of its stories in different language."
+    },
+    {
+      "type": "paragraph",
+      "text": "Candidates should be curious and keen to learn."
+    },
+    {
+      "type": "paragraph",
+      "text": "Candidates are welcome from different specialisations."
+    },
+    {
+      "type": "paragraph",
+      "text": "Additional language skills are preferred."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "More info"
+    },
+    {
+      "type": "paragraph",
+      "text": "Remuneration"
+    },
+    {
+      "type": "paragraph",
+      "text": "The cost of transportation and entrance costs for tours or museum visits incurred during candidates work will be reimbursed"
+    },
+    {
+      "type": "paragraph",
+      "text": "Successful candidates will be able to receive a certificate and reference letters"
+    },
+    {
+      "type": "paragraph",
+      "text": "Applications"
+    },
+    {
+      "type": "paragraph",
+      "text": "Applications, enquiries and CVs may be sent to:"
+    },
+    {
+      "type": "paragraph",
+      "text": "info@atlasofshenzhen.cn"
+    },
+    {
+      "type": "heading",
+      "level": 4,
+      "text": "Download Consent Form"
+    },
+    {
+      "type": "paragraph",
+      "text": "We are providing an agreement with freelance content creators who are willing to share their visual and writing works with us. Please click the headline to download the consent form. Please be aware the consent form is currently only in Chinese."
+    },
+    {
+      "type": "paragraph",
+      "text": "Yuehai District\nShenzhen, CN"
+    }
+  ],
+  "heroImage": null
+}

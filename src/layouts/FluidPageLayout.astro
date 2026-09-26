@@ -1,0 +1,31 @@
+---
+/**
+ * FluidPageLayout — shared layout for pages whose original Squarespace
+ * content was plain rich text (aboutthis, team, faq, join-us, future-works).
+ */
+import BaseLayout from "./BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import ContentBlocks from "../components/ContentBlocks.astro";
+import type { Block } from "../lib/content";
+
+interface Props {
+  slug: string;
+  title: string;
+  description?: string;
+  heroHeading?: string;
+  blocks: Block[];
+}
+
+const { slug, title, description, heroHeading, blocks } = Astro.props;
+const current = `/${slug}/`;
+---
+
+<BaseLayout title={title} description={description} current={current}>
+  <Hero heading={heroHeading ?? title} compact />
+
+  <section class="section">
+    <div class="shell">
+      <ContentBlocks blocks={blocks} />
+    </div>
+  </section>
+</BaseLayout>

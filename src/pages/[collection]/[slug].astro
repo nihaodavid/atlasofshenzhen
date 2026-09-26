@@ -1,0 +1,220 @@
+---
+/**
+ * Article detail page for every blog-style collection.
+ *
+ * Route shape: /[collection]/[slug]/
+ *   e.g. /history/kowloon-canton-railway/, /service/coffee/,
+ *        /manufacturers-1/travel-luggage/, /nature/bougainvillea/
+ *
+ * The collection slug is taken from the item's original path, so migrated
+ * URLs stay identical to the Squarespace site.
+ */
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getAllItems, type ItemDoc } from "../../lib/content";
+
+const COLLECTION_TITLES: Record<string, string> = {
+  history: "History",
+  books: "Books",
+  nature: "Nature",
+  service: "Service",
+  "manufacturers-1": "Manufacturers",
+};
+
+export function getStaticPaths() {
+  return getAllItems()
+    .filter((i) => i.type === "article")
+    .map((item) => {
+      // "/history/<slug>" -> collection "history", slug "<slug>"
+      const parts = item.path.replace(/^\//, "").split("/");
+      const collection = parts[0];
+      const postSlug = parts.slice(1).join("/") || item.slug;
+      return { params: { collection, slug: postSlug }, props: { item } };
+    });
+}
+
+interface Props {
+  item: ItemDoc;
+}
+
+const { item } = Astro.props;
+const parts = item.path.replace(/^\//, "").split("/");
+const collection = parts[0];
+const collectionTitle = COLLECTION_TITLES[collection] ?? collection;
+
+const plain = (item.body ?? []).map((b) => b.text).join(" ");
+const description =
+  item.meta.description ||
+  (plain.length > 158 ? plain.slice(0, 155).trimEnd() + "…" : plain) ||
+  `${item.title} — ${collectionTitle} at the Atlas of Shenzhen.`;
+
+// Render the body, grouping consecutive list items into a single <ul>.
+type Node = { type: string; level?: number; text: string } | { type: "list"; items: string[] };
+const nodes: Node[] = [];
+for (const b of item.body ?? []) {
+  const last = nodes[nodes.length - 1];
+  if (b.type === "listitem" && last && last.type === "list") {
+    last.items.push(b.text);
+  } else if (b.type === "listitem") {
+    nodes.push({ type: "list", items: [b.text] });
+  } else {
+    nodes.push(b);
+  }
+}
+
+const heroImage = item.meta.ogImage ?? item.images?.[0];
+---
+
+<BaseLayout
+  title={item.title}
+  description={description}
+  current={`/${collection}/`}
+  ogImage={heroImage}
+>
+  <article class="section">
+    <div class="shell article">
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href={`/${collection}/`}>{collectionTitle}</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{item.title}</span>
+      </nav>
+
+      <header class="article__header">
+        <h1>{item.title}</h1>
+        {
+          (item.date || item.author) && (
+            <p class="article__meta">
+              {[item.date, item.author && `Written by ${item.author}`]
+                .filter(Boolean)
+                .join(" · ")}
+            </p>
+          )
+        }
+      </header>
+
+      {
+        heroImage && (
+          <img
+            class="article__hero"
+            src={heroImage}
+            alt=""
+            width="1200"
+            height="675"
+            loading="eager"
+            decoding="async"
+          />
+        )
+      }
+
+      <div class="prose article__body">
+        {
+          nodes.map((n) => {
+            if (n.type === "list") {
+              return (
+                <ul>
+                  {n.items.map((i) => (
+                    <li>{i}</li>
+                  ))}
+                </ul>
+              );
+            }
+            if (n.type === "heading") {
+              const Tag = `h${Math.min(Math.max(n.level ?? 2, 2), 4)}` as const;
+              return <Tag>{n.text}</Tag>;
+            }
+            if (n.type === "quote") return <blockquote>{n.text}</blockquote>;
+            return <p>{n.text}</p>;
+          })
+        }
+      </div>
+
+      {
+        (item.images ?? []).length > 1 && (
+          <section class="article__gallery">
+            <h2>Images</h2>
+            <ul role="list">
+              {item.images!.slice(1).map((src) => (
+                <li>
+                  <img src={src} alt="" loading="lazy" decoding="async" />
+                </li>
+              ))}
+            </ul>
+          </section>
+        )
+      }
+
+      <footer class="article__footer">
+        <a class="btn btn--outline" href={`/${collection}/`}>
+          ← Back to {collectionTitle}
+        </a>
+      </footer>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .article {
+    max-width: 780px;
+  }
+
+  .crumbs {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+    color: var(--ink-muted);
+    margin-bottom: 1.75rem;
+    flex-wrap: wrap;
+  }
+
+  .crumbs a:hover {
+    color: var(--teal);
+  }
+
+  .article__header h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+  }
+
+  .article__meta {
+    margin-top: 0.85rem;
+    font-size: 0.875rem;
+    color: var(--ink-muted);
+  }
+
+  .article__hero {
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius);
+    margin-top: 2.25rem;
+  }
+
+  .article__body {
+    margin-top: 2.5rem;
+  }
+
+  .article__gallery {
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .article__gallery ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.25rem;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+  }
+
+  .article__gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius);
+  }
+
+  .article__footer {
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+</style>

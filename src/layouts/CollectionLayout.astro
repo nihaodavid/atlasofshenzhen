@@ -1,0 +1,63 @@
+---
+/**
+ * CollectionLayout — listing page for a blog-style collection
+ * (books, history, nature, service, manufacturers-1).
+ */
+import BaseLayout from "./BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import CardGrid from "../components/CardGrid.astro";
+import ContentBlocks from "../components/ContentBlocks.astro";
+import type { Block, Card } from "../lib/content";
+
+interface Props {
+  slug: string;
+  title: string;
+  description: string;
+  heroHeading: string;
+  cards: Card[];
+  blocks?: Block[];
+  emptyMessage?: string;
+}
+
+const {
+  slug,
+  title,
+  description,
+  heroHeading,
+  cards,
+  blocks = [],
+  emptyMessage = "New entries are being added — check back soon.",
+} = Astro.props;
+---
+
+<BaseLayout title={title} description={description} current={`/${slug}/`}>
+  <Hero heading={heroHeading} subcopy={description} compact />
+
+  <section class="section">
+    <div class="shell">
+      {
+        blocks.length > 0 && (
+          <ContentBlocks blocks={blocks} class="collection-intro" />
+        )
+      }
+
+      {
+        cards.length > 0 ? (
+          <CardGrid cards={cards} variant="post" detailBase={`/${slug}`} />
+        ) : (
+          <p class="collection-empty">{emptyMessage}</p>
+        )
+      }
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .collection-intro {
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+
+  .collection-empty {
+    color: var(--ink-muted);
+  }
+</style>

@@ -1,0 +1,26 @@
+{
+  "name": "atlas-of-shenzhen",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The Atlas of Shenzhen - migrated from Squarespace to Astro, deployed on Vercel",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "crawl": "python scripts/crawl.py",
+    "extract": "python scripts/extract.py",
+    "media": "python scripts/fetch_media.py"
+  },
+  "dependencies": {
+    "astro": "^5.1.1",
+    "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/rss": "^4.0.11"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.7.2"
+  }
+}

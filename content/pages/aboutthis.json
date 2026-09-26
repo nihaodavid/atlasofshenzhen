@@ -1,0 +1,56 @@
+{
+  "slug": "aboutthis",
+  "navTitle": "Vision & Mission",
+  "path": "aboutthis",
+  "kind": "fluid",
+  "source": "https://www.atlasofshenzhen.cn/aboutthis",
+  "meta": {
+    "title": "Vision & Mission | Discover Shenzhen's Growth — Explore Now — atlasofshenzhen",
+    "description": "Explore Shenzhen"
+  },
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "Welcome"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Vision"
+    },
+    {
+      "type": "paragraph",
+      "text": "The Atlas of Shenzhen is a comprehensive and innovative statement concerning the geography, history and industrial prospects of the city of Shenzhen accompanied by state-of-the-art visualizations of local data, trends, scattered information and stories."
+    },
+    {
+      "type": "paragraph",
+      "text": "The Atlas brings the legendary landscape of Shenzhen modernization to the digital age and presents it in an interactive and responsive way. It shows how place-specific clusters influence the evolution of local industrial agglomerations and how international visitors and investors would add value to the transformation of this city. Using maps, charts, graphics, photos, videos and artistic designs, this project will highlight the past, present and the future of this city and its legacies."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Mission"
+    },
+    {
+      "type": "paragraph",
+      "text": "Shenzhen is a city with ambition to become a global city. With the fact that Shenzhen is leading many aspects worldwide, including manufacture to services, it has not award a reputation globally that is equivalent to its capacity and its ambition. Shenzhen, which is far beyond a city close to Hong Kong, needs to expand its influence."
+    },
+    {
+      "type": "paragraph",
+      "text": "Shenzhen has many books and manuscripts on the history of the city. However, most of those manuscripts were published only in Chinese and sold only in Shenzhen. Many industries, for example Fintech, don’t have an accessible English website and any form of medium on Google or World Wide Web. These language and medium barriers are impeding the developing of Shenzhen into a global city."
+    },
+    {
+      "type": "paragraph",
+      "text": "Our team aims to remedy this with the Atlas Shenzhen project. We will aim to explore the history of Shenzhen and specific facets of the city’s modernization and industrialization. Atlas of Shenzhen will consider such topics as Shenzhen’s extensive musical, manufacturing, artistic, innovation and industrial heritage, as well as the great thinkers and entrepreneurs who had such a hand in shaping Shenzhen and the wider Pearl River Area."
+    },
+    {
+      "type": "paragraph",
+      "text": "info@atlasofshenzhen.cn"
+    },
+    {
+      "type": "paragraph",
+      "text": "Yuehai District\nShenzhen, CN"
+    }
+  ],
+  "heroImage": "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/4032246b-77c7-4a37-953c-c60489fbac16/logo%E7%BB%BF%E8%89%B2.jpg?format=original"
+}

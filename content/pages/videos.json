@@ -1,0 +1,520 @@
+{
+  "slug": "videos",
+  "navTitle": "Videos",
+  "path": "videos",
+  "kind": "lessons",
+  "source": "https://www.atlasofshenzhen.cn/videos",
+  "meta": {
+    "title": "Videos | Discover Shenzhen—Watch Now! — atlasofshenzhen",
+    "description": "Explore Shenzhen"
+  },
+  "cards": [
+    {
+      "title": "Yantian: Shenzhen's Gem of History, Nature & Slow Living",
+      "href": "/videos/v/7st7lljsypjaxzxj6yh6lgjbry5mf2",
+      "categories": [
+        "NATURE",
+        "HISTORY"
+      ],
+      "description": "Discover Yantian, Shenzhen’s tranquil coastal district steeped in Neolithic history, Lingnan Hakka culture, and serene beaches. Escape the city’s hustle with Liye Jiang to explore misty mountains, migratory bird havens, and a life where time slows by the sea.",
+      "youtubeId": "TDXOzLXK_pA",
+      "thumb": "https://i.ytimg.com/vi/TDXOzLXK_pA/hqdefault.jpg",
+      "alt": "Yantian: Shenzhen's Gem of History, Nature & Slow Living",
+      "detailSlug": "videos--v--7st7lljsypjaxzxj6yh6lgjbry5mf2"
+    },
+    {
+      "title": "Guangming Roast Pigeon: Shenzhen’s Crispy Culinary Treasure",
+      "href": "/videos/v/62dhnd4tk99hajx6xl2l2ll8hnpej3",
+      "categories": [
+        "HISTORY"
+      ],
+      "description": "",
+      "youtubeId": "OwUT8iDZo28",
+      "thumb": "https://i.ytimg.com/vi/OwUT8iDZo28/hqdefault.jpg",
+      "alt": "Guangming Roast Pigeon: Shenzhen’s Crispy Culinary Treasure",
+      "detailSlug": "videos--v--62dhnd4tk99hajx6xl2l2ll8hnpej3"
+    },
+    {
+      "title": "From Fishing Village to Tech Hub: Shenzhen's 40-Year Journey at Nanshan Museum",
+      "href": "/videos/v/y79z2cmr8jnny6xkkja2fdnnlwnndd",
+      "categories": [
+        "HISTORY"
+      ],
+      "description": "",
+      "youtubeId": "z6IrpRUw1lQ",
+      "thumb": "https://i.ytimg.com/vi/z6IrpRUw1lQ/hqdefault.jpg",
+      "alt": "From Fishing Village to Tech Hub: Shenzhen's 40-Year Journey at Nanshan Museum",
+      "detailSlug": "videos--v--y79z2cmr8jnny6xkkja2fdnnlwnndd"
+    },
+    {
+      "title": "Hidden Side of Shenzhen: Exploring Wanxia Urban Village",
+      "href": "/videos/v/n2gpcc7lcdk7rrp5l78fb6ha55bxkw",
+      "categories": [],
+      "description": "",
+      "youtubeId": "oxnaCD3uf0k",
+      "thumb": "https://i.ytimg.com/vi/oxnaCD3uf0k/hqdefault.jpg",
+      "alt": "Hidden Side of Shenzhen: Exploring Wanxia Urban Village",
+      "detailSlug": "videos--v--n2gpcc7lcdk7rrp5l78fb6ha55bxkw"
+    },
+    {
+      "title": "Nanao's Sea Urchin: A Culinary Treasure from Shenzhen's Coastline",
+      "href": "/videos/v/fmyfgtty38htjmytbwh52jt8wlx2jm",
+      "categories": [
+        "NATURE"
+      ],
+      "description": "",
+      "youtubeId": "6ZHUSP00Quk",
+      "thumb": "https://i.ytimg.com/vi/6ZHUSP00Quk/hqdefault.jpg",
+      "alt": "Nanao's Sea Urchin: A Culinary Treasure from Shenzhen's Coastline",
+      "detailSlug": "videos--v--fmyfgtty38htjmytbwh52jt8wlx2jm"
+    },
+    {
+      "title": "Life at Shenzhen University",
+      "href": "/videos/v/ce4t4gkj6p57krzm377jellwlt5dw5",
+      "categories": [
+        "NATURE"
+      ],
+      "description": "",
+      "youtubeId": "whcyVTCEr3Y",
+      "thumb": "https://i.ytimg.com/vi/whcyVTCEr3Y/hqdefault.jpg",
+      "alt": "Life at Shenzhen University",
+      "detailSlug": "videos--v--ce4t4gkj6p57krzm377jellwlt5dw5"
+    },
+    {
+      "title": "Sha Tau Kok — A Journey Through History, Culture & Modern Transformation",
+      "href": "/videos/v/f4h2683mfxxlf6hcwhd5wej96a3l8z",
+      "categories": [
+        "HISTORY"
+      ],
+      "description": "",
+      "youtubeId": "ZzGpiaP3RrY",
+      "thumb": "https://i.ytimg.com/vi/ZzGpiaP3RrY/hqdefault.jpg",
+      "alt": "Sha Tau Kok — A Journey Through History, Culture & Modern Transformation",
+      "detailSlug": "videos--v--f4h2683mfxxlf6hcwhd5wej96a3l8z"
+    },
+    {
+      "title": "Shuibei Gold Secrets",
+      "href": "/videos/v/y8fmnhfhnc8y2h3wndj9xc7hp284kg",
+      "categories": [
+        "MARKET"
+      ],
+      "description": "",
+      "youtubeId": "L198dJmVAMU",
+      "thumb": "https://i.ytimg.com/vi/L198dJmVAMU/hqdefault.jpg",
+      "alt": "Shuibei Gold Secrets",
+      "detailSlug": "videos--v--y8fmnhfhnc8y2h3wndj9xc7hp284kg"
+    },
+    {
+      "title": "Shenzhen's Hidden Botanical Paradise: Exploring Fairy Lake Botanic Garden",
+      "href": "/videos/v/z3xnp3hnaskl77ljgt8h8mb5zfgt6p",
+      "categories": [
+        "NATURE"
+      ],
+      "description": "",
+      "youtubeId": "fx6_-y3wplc",
+      "thumb": "https://i.ytimg.com/vi/fx6_-y3wplc/hqdefault.jpg",
+      "alt": "Shenzhen's Hidden Botanical Paradise: Exploring Fairy Lake Botanic Garden",
+      "detailSlug": "videos--v--z3xnp3hnaskl77ljgt8h8mb5zfgt6p"
+    },
+    {
+      "title": "Exploring Shenzhen’s Dafen Oil Painting Village",
+      "href": "/videos/v/n6lw9g2s5r65fl5y5gr7y5tx4ncx3y",
+      "categories": [],
+      "description": "",
+      "youtubeId": "ST4dFSD2L_4",
+      "thumb": "https://i.ytimg.com/vi/ST4dFSD2L_4/hqdefault.jpg",
+      "alt": "Exploring Shenzhen’s Dafen Oil Painting Village",
+      "detailSlug": "videos--v--n6lw9g2s5r65fl5y5gr7y5tx4ncx3y"
+    },
+    {
+      "title": "Shenzhen's Historic Dongmen Old Street: A Cultural and Commercial Hub",
+      "href": "/videos/v/gjlcwx2ealksmrysetgr28bkybxpg7",
+      "categories": [
+        "HISTORY",
+        "MARKET"
+      ],
+      "description": "",
+      "youtubeId": "bnsvEXlmRMk",
+      "thumb": "https://i.ytimg.com/vi/bnsvEXlmRMk/hqdefault.jpg",
+      "alt": "Shenzhen's Historic Dongmen Old Street: A Cultural and Commercial Hub",
+      "detailSlug": "videos--v--gjlcwx2ealksmrysetgr28bkybxpg7"
+    },
+    {
+      "title": "Slow Life at Luohu’s Industrial Station & Qingshuihe Village",
+      "href": "/videos/v/9ddscyaahe6jdckpsggyakyl86rfr6",
+      "categories": [
+        "HISTORY"
+      ],
+      "description": "",
+      "youtubeId": "sztNbv7sLHs",
+      "thumb": "https://i.ytimg.com/vi/sztNbv7sLHs/hqdefault.jpg",
+      "alt": "Slow Life at Luohu’s Industrial Station & Qingshuihe Village",
+      "detailSlug": "videos--v--9ddscyaahe6jdckpsggyakyl86rfr6"
+    },
+    {
+      "title": "Conquering Shenzhen's Highest Peak: Wutong Mountain Hiking Guide",
+      "href": "/videos/v/mdc6w8xknrd2a4f9cdwjgga9sxbz9y",
+      "categories": [
+        "NATURE"
+      ],
+      "description": "",
+      "youtubeId": "NkJlt3zoc6c",
+      "thumb": "https://i.ytimg.com/vi/NkJlt3zoc6c/hqdefault.jpg",
+      "alt": "Conquering Shenzhen's Highest Peak: Wutong Mountain Hiking Guide",
+      "detailSlug": "videos--v--mdc6w8xknrd2a4f9cdwjgga9sxbz9y"
+    },
+    {
+      "title": "Discovering Nanshan Museum",
+      "href": "/videos/v/rgj9d358lglbfsgnybxdeg7f9gw87l",
+      "categories": [
+        "HISTORY"
+      ],
+      "description": "",
+      "youtubeId": "GK-jo_Nlr-k",
+      "thumb": "https://i.ytimg.com/vi/GK-jo_Nlr-k/hqdefault.jpg",
+      "alt": "Discovering Nanshan Museum",
+      "detailSlug": "videos--v--rgj9d358lglbfsgnybxdeg7f9gw87l"
+    },
+    {
+      "title": "The Gankeng Hakka Town in Shenzhen",
+      "href": "/videos/v/2g8h6nm4nyp2ll89l9gdh5n5gwdsg4",
+      "categories": [
+        "HISTORY"
+      ],
+      "description": "",
+      "youtubeId": "z1YVaTWx0qM",
+      "thumb": "https://i.ytimg.com/vi/z1YVaTWx0qM/hqdefault.jpg",
+      "alt": "The Gankeng Hakka Town in Shenzhen",
+      "detailSlug": "videos--v--2g8h6nm4nyp2ll89l9gdh5n5gwdsg4"
+    },
+    {
+      "title": "Sea World Culture and Art Center",
+      "href": "/videos/v/6pczdbesbp6e53fsxbdj5wg624z637",
+      "categories": [],
+      "description": "",
+      "youtubeId": "dBa70oEIizU",
+      "thumb": "https://i.ytimg.com/vi/dBa70oEIizU/hqdefault.jpg",
+      "alt": "Sea World Culture and Art Center",
+      "detailSlug": "videos--v--6pczdbesbp6e53fsxbdj5wg624z637"
+    },
+    {
+      "title": "Nantou City: Uncovering Shenzhen’s 1,700-Year-Old Secret in the Heart of Modern China",
+      "href": "/videos/v/p7fxmpwhxg268bfe52f9r2bbxbrrsy",
+      "categories": [
+        "HISTORY"
+      ],
+      "description": "",
+      "youtubeId": "Ara4fd-9WMI",
+      "thumb": "https://i.ytimg.com/vi/Ara4fd-9WMI/hqdefault.jpg",
+      "alt": "Nantou City: Uncovering Shenzhen’s 1,700-Year-Old Secret in the Heart of Modern China",
+      "detailSlug": "videos--v--p7fxmpwhxg268bfe52f9r2bbxbrrsy"
+    },
+    {
+      "title": "Exploring Shenzhen's Fairy Lake Botanical Garden",
+      "href": "/videos/v/662xrrny7t9yd2ba4tc8ys2awhys6p",
+      "categories": [
+        "NATURE",
+        "HISTORY"
+      ],
+      "description": "",
+      "youtubeId": "WbZ_1U_SAmU",
+      "thumb": "https://i.ytimg.com/vi/WbZ_1U_SAmU/hqdefault.jpg",
+      "alt": "Exploring Shenzhen's Fairy Lake Botanical Garden",
+      "detailSlug": "videos--v--662xrrny7t9yd2ba4tc8ys2awhys6p"
+    },
+    {
+      "title": "Shenzhen’s Culinary Fusion: The Rise of Coconut Chicken Hot Pot",
+      "href": "/videos/v/fbrrkzxptp3hjxw38cchf3t3a6d9jf",
+      "categories": [
+        "HISTORY"
+      ],
+      "description": "",
+      "youtubeId": "2S4mLAsyROo",
+      "thumb": "https://i.ytimg.com/vi/2S4mLAsyROo/hqdefault.jpg",
+      "alt": "Shenzhen’s Culinary Fusion: The Rise of Coconut Chicken Hot Pot",
+      "detailSlug": "videos--v--fbrrkzxptp3hjxw38cchf3t3a6d9jf"
+    },
+    {
+      "title": "Yantian Night Market",
+      "href": "/videos/v/53a4fj3w4ksx5g55wxca8gcddr8y25",
+      "categories": [
+        "MARKET"
+      ],
+      "description": "",
+      "youtubeId": "1M8LXmVimi8",
+      "thumb": "https://i.ytimg.com/vi/1M8LXmVimi8/hqdefault.jpg",
+      "alt": "Yantian Night Market",
+      "detailSlug": "videos--v--53a4fj3w4ksx5g55wxca8gcddr8y25"
+    },
+    {
+      "title": "Unearthing Shenzhen's Ancient Roots: A Journey Through Fenghuang Village",
+      "href": "/videos/v/nfncpa69zn88r94xsnf8fy3d7p7sbj",
+      "categories": [
+        "HISTORY"
+      ],
+      "description": "",
+      "youtubeId": "5SnaKXGNlQQ",
+      "thumb": "https://i.ytimg.com/vi/5SnaKXGNlQQ/hqdefault.jpg",
+      "alt": "Unearthing Shenzhen's Ancient Roots: A Journey Through Fenghuang Village",
+      "detailSlug": "videos--v--nfncpa69zn88r94xsnf8fy3d7p7sbj"
+    },
+    {
+      "title": "Chaoshan Beef Hot Pot",
+      "href": "/videos/v/7padknls6kty4n3m5zynn6skbpglcx",
+      "categories": [],
+      "description": "",
+      "youtubeId": "WyV-VeucHLw",
+      "thumb": "https://i.ytimg.com/vi/WyV-VeucHLw/hqdefault.jpg",
+      "alt": "Chaoshan Beef Hot Pot",
+      "detailSlug": "videos--v--7padknls6kty4n3m5zynn6skbpglcx"
+    },
+    {
+      "title": "Huaqiangbei: Shenzhen's Tech Wonderland",
+      "href": "/videos/v/4kae5snp79pjx3ls2lhbx6ebtxwcwn",
+      "categories": [
+        "MARKET"
+      ],
+      "description": "",
+      "youtubeId": "e4fJh6UdkXQ",
+      "thumb": "https://i.ytimg.com/vi/e4fJh6UdkXQ/hqdefault.jpg",
+      "alt": "Huaqiangbei: Shenzhen's Tech Wonderland",
+      "detailSlug": "videos--v--4kae5snp79pjx3ls2lhbx6ebtxwcwn"
+    },
+    {
+      "title": "Shenzhen University's Libraries: 40 Years of Innovation & Legacy",
+      "href": "/videos/v/4lccsdjm7n4z7srm25h8m2zk7628p7",
+      "categories": [
+        "HISTORY"
+      ],
+      "description": "",
+      "youtubeId": "g5TX16vFPAU",
+      "thumb": "https://i.ytimg.com/vi/g5TX16vFPAU/hqdefault.jpg",
+      "alt": "Shenzhen University's Libraries: 40 Years of Innovation & Legacy",
+      "detailSlug": "videos--v--4lccsdjm7n4z7srm25h8m2zk7628p7"
+    },
+    {
+      "title": "Crane Lake New Residence",
+      "href": "/videos/v/afg5y3p7a4xxxfmkkd42c24xxprmy7",
+      "categories": [
+        "HISTORY"
+      ],
+      "description": "",
+      "youtubeId": "a3y4iK7a0lg",
+      "thumb": "https://i.ytimg.com/vi/a3y4iK7a0lg/hqdefault.jpg",
+      "alt": "Crane Lake New Residence",
+      "detailSlug": "videos--v--afg5y3p7a4xxxfmkkd42c24xxprmy7"
+    },
+    {
+      "title": "Shenzhen's Sweet Secret: Exploring the Nanshan Lychee",
+      "href": "/videos/v/bl9z45e8e6byake9jealtzbt4dhnwn",
+      "categories": [
+        "NATURE",
+        "HISTORY"
+      ],
+      "description": "",
+      "youtubeId": "P46nM_pnYeY",
+      "thumb": "https://i.ytimg.com/vi/P46nM_pnYeY/hqdefault.jpg",
+      "alt": "Shenzhen's Sweet Secret: Exploring the Nanshan Lychee",
+      "detailSlug": "videos--v--bl9z45e8e6byake9jealtzbt4dhnwn"
+    },
+    {
+      "title": "Shenzhen International Botanical Garden",
+      "href": "/videos/v/lsc28gye4fl4dtrkmrh56ygtgry8ln",
+      "categories": [
+        "NATURE",
+        "HISTORY"
+      ],
+      "description": "",
+      "youtubeId": "Vs1AgiTD4Zg",
+      "thumb": "https://i.ytimg.com/vi/Vs1AgiTD4Zg/hqdefault.jpg",
+      "alt": "Shenzhen International Botanical Garden",
+      "detailSlug": "videos--v--lsc28gye4fl4dtrkmrh56ygtgry8ln"
+    },
+    {
+      "title": "Mr. Chen Yunchang: A \"Street Piano\" Performer",
+      "href": "/videos/v/b2t398hk5zchl6mekhdb44jea3nblc",
+      "categories": [],
+      "description": "",
+      "youtubeId": "8i7GUCSf76g",
+      "thumb": "https://i.ytimg.com/vi/8i7GUCSf76g/hqdefault.jpg",
+      "alt": "Mr. Chen Yunchang: A \"Street Piano\" Performer",
+      "detailSlug": "videos--v--b2t398hk5zchl6mekhdb44jea3nblc"
+    },
+    {
+      "title": "Hongfa Temple in Shenzhen",
+      "href": "/videos/v/5j4wz4z4hp3rp6a47yre9zrg7phrzh",
+      "categories": [
+        "HISTORY"
+      ],
+      "description": "",
+      "youtubeId": "6_E78xgLS2M",
+      "thumb": "https://i.ytimg.com/vi/6_E78xgLS2M/hqdefault.jpg",
+      "alt": "Hongfa Temple in Shenzhen",
+      "detailSlug": "videos--v--5j4wz4z4hp3rp6a47yre9zrg7phrzh"
+    },
+    {
+      "title": "Divine Journey: Exploring Fairy Lake Botanical Garden & Hongfa Temple",
+      "href": "/videos/v/2pxxg3psr38tds5c3frkbmsnyrgc32",
+      "categories": [
+        "NATURE",
+        "HISTORY"
+      ],
+      "description": "",
+      "youtubeId": "sqVFr0BQpWI",
+      "thumb": "https://i.ytimg.com/vi/sqVFr0BQpWI/hqdefault.jpg",
+      "alt": "Divine Journey: Exploring Fairy Lake Botanical Garden & Hongfa Temple",
+      "detailSlug": "videos--v--2pxxg3psr38tds5c3frkbmsnyrgc32"
+    },
+    {
+      "title": "The greening of Shenzhen University",
+      "href": "/videos/v/ae2mzhsnywr5ncz5jpzbaaypdc5pdc",
+      "categories": [
+        "NATURE"
+      ],
+      "description": "",
+      "youtubeId": "q1e-XeefzAM",
+      "thumb": "https://i.ytimg.com/vi/q1e-XeefzAM/hqdefault.jpg",
+      "alt": "The greening of Shenzhen University",
+      "detailSlug": "videos--v--ae2mzhsnywr5ncz5jpzbaaypdc5pdc"
+    },
+    {
+      "title": "Dutch Flowers Market",
+      "href": "/videos/v/g8mkh7maa22d3fckjx5ypklfprsbrs",
+      "categories": [
+        "MARKET"
+      ],
+      "description": "Why was the flower market named after the Dutch? Xiaozhou Yang visited the biggest flower market in Shenzhen and told us this story.",
+      "youtubeId": "HXq5rg8SRWQ",
+      "thumb": "https://i.ytimg.com/vi/HXq5rg8SRWQ/hqdefault.jpg",
+      "alt": "002 杨小舟（荷兰花卉小镇）",
+      "detailSlug": "videos--v--g8mkh7maa22d3fckjx5ypklfprsbrs"
+    },
+    {
+      "title": "Tsutaya Bookstore in Shenzhen",
+      "href": "/videos/v/l3zetg7p88gp7yf57le5nw26lge523",
+      "categories": [
+        "MARKET"
+      ],
+      "description": "Shangxuan loves books and is obsessed with his college life by exploring every bookstore in Shenzhen. He was fascinated by the largest Tsutaya Bookstore in southern China. This video remarks on his thoughts about books and the philosophy of life.",
+      "youtubeId": "LPbsyHwvQek",
+      "thumb": "https://i.ytimg.com/vi/LPbsyHwvQek/hqdefault.jpg",
+      "alt": "010 李尚轩（茑屋书店）",
+      "detailSlug": "videos--v--l3zetg7p88gp7yf57le5nw26lge523"
+    },
+    {
+      "title": "Fairy Tale Lake Park for a weekend (Xianhu Botanic Garden)",
+      "href": "/videos/v/2m7pwgp298welzaxdp3gcljkp2zmpj",
+      "categories": [
+        "NATURE",
+        "HISTORY"
+      ],
+      "description": "Qinru pays a visit with her besties in Luohu. They discovered a secret garden and the largest botanic garden in this region.",
+      "youtubeId": "QW0su1TIbKg",
+      "thumb": "https://i.ytimg.com/vi/QW0su1TIbKg/hqdefault.jpg",
+      "alt": "003 罗沁儒（仙湖植物园）",
+      "detailSlug": "videos--v--2m7pwgp298welzaxdp3gcljkp2zmpj"
+    },
+    {
+      "title": "Phnoenix Old Town in Shenzhen",
+      "href": "/videos/v/3c8eb7nwxb6kazjwp9e5z79tjcrb58",
+      "categories": [
+        "HISTORY"
+      ],
+      "description": "Where is the beginning of the history in Shenzhen? Chenxi Yuan tries to dig out the answer and finds this old town from the Song Dynasty. It reveals an undercovered history of Wen Tianxiang, a patriotic general against Jurchen invaders, and his offspring in Shenzhen.",
+      "youtubeId": "dNJL41soZGE",
+      "thumb": "https://i.ytimg.com/vi/dNJL41soZGE/hqdefault.jpg",
+      "alt": "004 袁陈希（凤凰古城）",
+      "detailSlug": "videos--v--3c8eb7nwxb6kazjwp9e5z79tjcrb58"
+    },
+    {
+      "title": "Ancestrial Hall of Hakka Clan in Longgang (Hehu New Residence)",
+      "href": "/videos/v/975krf4kg3339wja2b5fbemxgwhfwg",
+      "categories": [
+        "HISTORY"
+      ],
+      "description": "The Hehu New Residence Hall is the largest Hakka ancestral hall in China which is located in Longgang district in Shenzhen. Wenjun Zhong paid a visit to this mysterious heritage site and trying to find the trace of the early generation in Shenzhen in the 18th century.",
+      "youtubeId": "VNyiKhy_CeA",
+      "thumb": "https://i.ytimg.com/vi/VNyiKhy_CeA/hqdefault.jpg",
+      "alt": "007 钟文珺（鹤湖新居）",
+      "detailSlug": "videos--v--975krf4kg3339wja2b5fbemxgwhfwg"
+    },
+    {
+      "title": "A day at Sea World Culture and Arts Center in Shenzhen",
+      "href": "/videos/v/g9264zk8cn6ckyfkhay3z9e89cxtkt",
+      "categories": [
+        "NATURE",
+        "MARKET"
+      ],
+      "description": "Jiamin arrives in Shenzhen from a little town in Yunnan. Her first experience with the sea started with the SWCAC in Shekou. This video records her excitement from this unknown journey.",
+      "youtubeId": "TC-GYydJ53Q",
+      "thumb": "https://i.ytimg.com/vi/TC-GYydJ53Q/hqdefault.jpg",
+      "alt": "011 李嘉敏（海上艺术世界）",
+      "detailSlug": "videos--v--g9264zk8cn6ckyfkhay3z9e89cxtkt"
+    },
+    {
+      "title": "My visit to the Hongfa Temple",
+      "href": "/videos/v/9wgd7k7nbddggyjbhe7ctxzs7jxltx",
+      "categories": [
+        "NATURE",
+        "HISTORY"
+      ],
+      "description": "Hongfa Temple is the first Buddhist temple in Shenzhen and the newest temple in China. By paying a visit to the Hongfa Temple, Yanling Wu remembers a story of her childhood with her family on family and faith.",
+      "youtubeId": "1hMzNxYwmBo",
+      "thumb": "https://i.ytimg.com/vi/1hMzNxYwmBo/hqdefault.jpg",
+      "alt": "012 吴炎玲（弘法寺）",
+      "detailSlug": "videos--v--9wgd7k7nbddggyjbhe7ctxzs7jxltx"
+    },
+    {
+      "title": "Bird Watching in Shenzhen",
+      "href": "/videos/v/3eaw37peens4tjcapmrkj5hzsgafy5",
+      "categories": [
+        "NATURE"
+      ],
+      "description": "Shenzhen is a great place for bird-watching. Apart from 421 types of birds that have been identified, there is a growing population in Shenzhen who voluntarily watch and record the behaviours of local bird species. Jiahong Sui, the Head of the Bird-watching association of Shenzhen University, has brought up her stories of bird-watching in Shenzhen.",
+      "youtubeId": "ANcQaHNywHs",
+      "thumb": "https://i.ytimg.com/vi/ANcQaHNywHs/hqdefault.jpg",
+      "alt": "027 隋佳宏（观鸟）",
+      "detailSlug": "videos--v--3eaw37peens4tjcapmrkj5hzsgafy5"
+    },
+    {
+      "title": "How to buy jewellery in Shuibei, Shenzhen",
+      "href": "/videos/v/pbf8rnhcdhajbcyxxxn8zh49pkjgal",
+      "categories": [
+        "MARKET"
+      ],
+      "description": "Where is the largest jewellery market in Asia? Xiaoqing Yan tries to find a crafted gift and surprisingly finds Shuibei as the destination. Let us explore the evolution of Shuibei with her video.",
+      "youtubeId": "VTvn7XLKFlA",
+      "thumb": "https://i.ytimg.com/vi/VTvn7XLKFlA/hqdefault.jpg",
+      "alt": "颜晓晴（水贝）",
+      "detailSlug": "videos--v--pbf8rnhcdhajbcyxxxn8zh49pkjgal"
+    }
+  ],
+  "categories": [
+    {
+      "label": "All",
+      "href": "/videos"
+    },
+    {
+      "label": "NATURE",
+      "href": "/videos/nature"
+    },
+    {
+      "label": "MARKET",
+      "href": "/videos/market"
+    },
+    {
+      "label": "HISTORY",
+      "href": "/videos/history"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "paragraph",
+      "text": "info@atlasofshenzhen.cn"
+    },
+    {
+      "type": "paragraph",
+      "text": "Yuehai District\nShenzhen, CN"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+---
+import FluidPageLayout from "../layouts/FluidPageLayout.astro";
+import { getPage } from "../lib/content";
+
+const page = getPage("aboutthis");
+---
+
+<FluidPageLayout
+  slug="aboutthis"
+  title="Vision & Mission"
+  description={page.meta.description || "The Atlas of Shenzhen is a comprehensive and innovative statement concerning the geography, history and industrial prospects of the city of Shenzhen."}
+  heroHeading="Vision & Mission"
+  blocks={page.blocks}
+/>

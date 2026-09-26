@@ -1,0 +1,15 @@
+---
+import CollectionLayout from "../layouts/CollectionLayout.astro";
+import { getPage } from "../lib/content";
+
+const page = getPage("nature");
+---
+
+<CollectionLayout
+  slug="nature"
+  title="Nature"
+  description={page.meta.description || "Shenzhen’s coastline, parks, birds and plants — field notes from the city’s wilder edges."}
+  heroHeading="Nature"
+  cards={page.cards ?? []}
+  blocks={page.blocks}
+/>

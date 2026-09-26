@@ -1,0 +1,74 @@
+{
+  "index": {
+    "kind": "fluid",
+    "blocks": 3,
+    "cards": 0,
+    "details": 0
+  },
+  "videos": {
+    "kind": "lessons",
+    "blocks": 2,
+    "cards": 40,
+    "details": 40
+  },
+  "aboutthis": {
+    "kind": "fluid",
+    "blocks": 10,
+    "cards": 0,
+    "details": 0
+  },
+  "team": {
+    "kind": "fluid",
+    "blocks": 11,
+    "cards": 0,
+    "details": 0
+  },
+  "faq": {
+    "kind": "fluid",
+    "blocks": 13,
+    "cards": 0,
+    "details": 0
+  },
+  "join-us": {
+    "kind": "fluid",
+    "blocks": 27,
+    "cards": 0,
+    "details": 0
+  },
+  "future-works-1": {
+    "kind": "fluid",
+    "blocks": 13,
+    "cards": 0,
+    "details": 0
+  },
+  "history": {
+    "kind": "blog",
+    "blocks": 2,
+    "cards": 1,
+    "details": 1
+  },
+  "books": {
+    "kind": "blog",
+    "blocks": 14,
+    "cards": 1,
+    "details": 1
+  },
+  "manufacturers-1": {
+    "kind": "blog",
+    "blocks": 2,
+    "cards": 10,
+    "details": 10
+  },
+  "service": {
+    "kind": "blog",
+    "blocks": 2,
+    "cards": 5,
+    "details": 5
+  },
+  "nature": {
+    "kind": "blog",
+    "blocks": 2,
+    "cards": 1,
+    "details": 1
+  }
+}
