@@ -194,6 +194,18 @@ run happily for at least two weeks.
 
 ## Troubleshooting
 
+**Vercel CLI rejects the token (`token is not valid`) but the REST API accepts it**
+Vercel's newer `vck_`-prefixed tokens can be *restricted* (the user profile
+shows `"limited": true`). Such a token reads fine over REST but cannot create
+projects (`403 forbidden`) or attach domains, and CLI 60.x fails its
+`whoami` probe on them. Create the token again from
+<https://vercel.com/account/tokens> with **Full Access**, or import the project
+through the dashboard instead.
+
+**Vercel build fails with a JSON parse error on `vercel.json`**
+`vercel.json` is parsed as strict JSON — no `//` comments, no trailing commas.
+Validate with `python -c "import json;json.load(open('vercel.json'))"`.
+
 **Build fails on Vercel but works locally**
 Almost always a Node version mismatch. Set Node to `22.x` in
 **Settings → General → Node.js Version**, then redeploy.
