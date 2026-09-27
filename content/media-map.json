@@ -1,0 +1,319 @@
+{
+  "generatedBy": "scripts/fetch_media.py",
+  "note": "remote URL -> local path; run with --revert to undo",
+  "images": {
+    "http://static1.squarespace.com/static/64c34dc6bb45bc630c43e488/677403448e31cc50c28c178e/677403448e31cc50c28c178f/1753000506122/640.jpg?format=1500w": {
+      "local": "/images/books/bookcapitalarticle1231-01.webp",
+      "sha1": "345690afcd3e"
+    },
+    "http://static1.squarespace.com/static/64c34dc6bb45bc630c43e488/686d3f9739c6b33ec3b0a6a7/686d40e00965526441f3acee/1776480773956/%E5%9B%BE%E7%89%879.png?format=1500w": {
+      "local": "/images/history/aak0dr1zi9396l4vwc78422x87gshz-01.webp",
+      "sha1": "caa38e177c0e"
+    },
+    "http://static1.squarespace.com/static/64c34dc6bb45bc630c43e488/687cac25703b9f4c755ea454/687cac25703b9f4c755ea455/1753004288766/4.jpeg?format=1500w": {
+      "local": "/images/manufacturers-1/blog-post-title-four-r5aeg-01.webp",
+      "sha1": "ed97b2f2a5ad"
+    },
+    "http://static1.squarespace.com/static/64c34dc6bb45bc630c43e488/687cac25703b9f4c755ea454/687cac25703b9f4c755ea457/1753003659573/%E5%9B%BE%E7%89%871.jpg?format=1500w": {
+      "local": "/images/manufacturers-1/blog-post-title-one-4x227-01.webp",
+      "sha1": "bad05a65fa59"
+    },
+    "http://static1.squarespace.com/static/64c34dc6bb45bc630c43e488/687cac25703b9f4c755ea454/687cac25703b9f4c755ea459/1753004035162/3.jpg?format=1500w": {
+      "local": "/images/manufacturers-1/blog-post-title-three-9899k-01.webp",
+      "sha1": "a38f4709da8e"
+    },
+    "http://static1.squarespace.com/static/64c34dc6bb45bc630c43e488/687cac25703b9f4c755ea454/687cac25703b9f4c755ea45b/1753003870653/2.jpg?format=1500w": {
+      "local": "/images/manufacturers-1/blog-post-title-two-6ccew-01.webp",
+      "sha1": "28b00885a8b2"
+    },
+    "http://static1.squarespace.com/static/64c34dc6bb45bc630c43e488/687cac25703b9f4c755ea454/687cb90edec2337387ec4180/1753004457235/5.jpg?format=1500w": {
+      "local": "/images/manufacturers-1/vaccines-amp-pharmacies-pingshan-01.webp",
+      "sha1": "ddb5b2213dda"
+    },
+    "http://static1.squarespace.com/static/64c34dc6bb45bc630c43e488/687cac25703b9f4c755ea454/687cb9b0a332cb78bc99e9f6/1753004664376/6.jpg?format=1500w": {
+      "local": "/images/manufacturers-1/ceramic-tiles-foshan-01.webp",
+      "sha1": "74d27dafd4bf"
+    },
+    "http://static1.squarespace.com/static/64c34dc6bb45bc630c43e488/687cac25703b9f4c755ea454/687cba7d6f13734be8bb634b/1753004760155/7.jpg?format=1500w": {
+      "local": "/images/manufacturers-1/mobile-phones-dongguan-quote-sou-01.webp",
+      "sha1": "1579fec1031d"
+    },
+    "http://static1.squarespace.com/static/64c34dc6bb45bc630c43e488/687cac25703b9f4c755ea454/687cbb57916be12834547c26/1753005062139/8-1.jpg?format=1500w": {
+      "local": "/images/manufacturers-1/furniture-amp-lightings-zhongsha-01.webp",
+      "sha1": "be4a14a90c77"
+    },
+    "http://static1.squarespace.com/static/64c34dc6bb45bc630c43e488/687cac25703b9f4c755ea454/687cbc43b0212808b793e0ef/1753005207710/9.jpg?format=1500w": {
+      "local": "/images/manufacturers-1/jewellery-luohu-shenzhen-01.webp",
+      "sha1": "d47e9078eccb"
+    },
+    "http://static1.squarespace.com/static/64c34dc6bb45bc630c43e488/687cac25703b9f4c755ea454/687cbc9b4aaf4153eec22b4c/1753005280185/10.png?format=1500w": {
+      "local": "/images/manufacturers-1/travel-luggage-01.webp",
+      "sha1": "8d85b55787b6"
+    },
+    "http://static1.squarespace.com/static/64c34dc6bb45bc630c43e488/687caf7f8b0b057d28febabc/687cbed35f5c4325c688a240/1753005885642/1.jpg?format=1500w": {
+      "local": "/images/service/data-centres-shaoguan-01.webp",
+      "sha1": "b06d5fc3ebb3"
+    },
+    "http://static1.squarespace.com/static/64c34dc6bb45bc630c43e488/687caf7f8b0b057d28febabc/687cbf72150ebe2f3c5d966c/1753006047172/2.jpg?format=1500w": {
+      "local": "/images/service/offshore-and-onshore-warehouses-hong-kon-01.webp",
+      "sha1": "1ca6d79a0230"
+    },
+    "http://static1.squarespace.com/static/64c34dc6bb45bc630c43e488/687caf7f8b0b057d28febabc/687cc087205acf77e34e71db/1753006317418/3.jpg?format=1500w": {
+      "local": "/images/service/coffee-01.webp",
+      "sha1": "0dcfc026af17"
+    },
+    "http://static1.squarespace.com/static/64c34dc6bb45bc630c43e488/69e2edec1b5b13718c0b752c/69e2f205f28c72220993e939/1776484952734/3239dc2e-044d-4cd9-9391-407085617e5d.png?format=1500w": {
+      "local": "/images/nature/aak0dr1zi9396l4vwc78422x87gshz-p7365-01.webp",
+      "sha1": "1c797bc28b29"
+    },
+    "http://static1.squarespace.com/static/64c34dc6bb45bc630c43e488/t/64c91a9770c4a035d87b88ec/1739502088894/shenzhenlogo.jpg?format=1500w": {
+      "local": "/images/pages/index-01.webp",
+      "sha1": "17e18fec6068"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/01fb5e68-2eaa-4433-a6da-98ec05b9b717/1000074880.png?format=original": {
+      "local": "/images/nature/aak0dr1zi9396l4vwc78422x87gshz-p7365-02.webp",
+      "sha1": "e70475614e89"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/078df49e-dc29-4c42-a742-88f3bb874627/1000074879.png?format=original": {
+      "local": "/images/nature/aak0dr1zi9396l4vwc78422x87gshz-p7365-03.webp",
+      "sha1": "00f1ed9a432c"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/1752063062983-VW8RFIC80USXL793E51A/%E5%9B%BE%E7%89%879.png?format=original": {
+      "local": "/images/pages/history-01.webp",
+      "sha1": "c5028e00a4f1"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/1753003642516-PN46WU8WDH9YHKLJEP8J/%E5%9B%BE%E7%89%871.jpg?format=original": {
+      "local": "/images/pages/manufacturers-1-01.webp",
+      "sha1": "3361501b2236"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/1753003858138-I2C8X8VA92DLXOXESPRO/2.jpg?format=original": {
+      "local": "/images/pages/manufacturers-1-02.webp",
+      "sha1": "42fbf24a0644"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/1753004023774-KWZIXPQLNTUXUIQAG0ED/3.jpg?format=original": {
+      "local": "/images/pages/manufacturers-1-03.webp",
+      "sha1": "0c3e1791fb01"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/1753004280839-3X5NQ1FDID70IYPAEOI7/4.jpeg?format=original": {
+      "local": "/images/pages/manufacturers-1-04.webp",
+      "sha1": "d1bd8c919e42"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/1753004430159-BI4EPSLBX40IIWNX52QT/5.jpg?format=original": {
+      "local": "/images/pages/manufacturers-1-05.webp",
+      "sha1": "7a0ade1c8df2"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/1753004592136-IHRIBGK8MU68D1HYK562/6.jpg?format=original": {
+      "local": "/images/pages/manufacturers-1-06.webp",
+      "sha1": "637bb5bee50c"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/1753004742557-3IVM50JKUYJZ00P6L55V/7.jpg?format=original": {
+      "local": "/images/pages/manufacturers-1-07.webp",
+      "sha1": "8aeea9935b4d"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/1753005048565-5RBPXJPJN3IV9HZAZLFC/8-1.jpg?format=original": {
+      "local": "/images/pages/manufacturers-1-08.webp",
+      "sha1": "497ad7449fba"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/1753005197010-2XRMT60SO1SFJ2235QR1/9.jpg?format=original": {
+      "local": "/images/pages/manufacturers-1-09.webp",
+      "sha1": "520f8a1d5ca6"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/1753005274892-CD2VUT0TM6UEGFBALXFW/10.png?format=original": {
+      "local": "/images/pages/manufacturers-1-10.webp",
+      "sha1": "cda70f914519"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/1753005873743-GK70YOT4SGH8DMDHY763/1.jpg?format=original": {
+      "local": "/images/pages/service-01.webp",
+      "sha1": "077dd93a3e63"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/1753006037265-SA690YOZ02G26SGM5P3K/2.jpg?format=original": {
+      "local": "/images/pages/service-02.webp",
+      "sha1": "4b3d2a2b94dc"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/1753006259325-LMKE9FKJVKSKVP48NBH4/3.jpg?format=original": {
+      "local": "/images/pages/service-03.webp",
+      "sha1": "f174518fe1fe"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/1776484846350-KX7EF0G7S5ABNBVRLVJV/3239dc2e-044d-4cd9-9391-407085617e5d.png?format=original": {
+      "local": "/images/pages/nature-01.webp",
+      "sha1": "90162d853f43"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/180379a8-5c0a-4e7f-952f-4d22adafd44b/%E5%9B%BE%E7%89%877.png?format=original": {
+      "local": "/images/history/aak0dr1zi9396l4vwc78422x87gshz-02.webp",
+      "sha1": "166577239509"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/1a453b70-56d2-40f3-9650-b32191ef5c8f/1740453239303.jpg?format=original": {
+      "local": "/images/books/bookcapitalarticle1231-02.webp",
+      "sha1": "0b82ee711937"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/1af5c393-4270-4b00-bf19-33bed8f1e32c/1.+Daily+Visitor+Peak+at+Shenzhen+Library+North+Branch+-+visual+selection+%282%29.png?format=original": {
+      "local": "/images/books/bookcapitalarticle1231-03.webp",
+      "sha1": "646bca34377a"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/1c433eb5-312e-4836-9384-7b5485b22b50/1000074875.jpg?format=original": {
+      "local": "/images/nature/aak0dr1zi9396l4vwc78422x87gshz-p7365-04.webp",
+      "sha1": "61f90b707034"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/28b47ccf-7e1d-4484-8a13-552be11f801e/1.+Daily+Visitor+Peak+at+Shenzhen+Library+North+Branch+-+visual+selection.png?format=original": {
+      "local": "/images/books/bookcapitalarticle1231-04.webp",
+      "sha1": "2892db0f2452"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/2be91503-6316-440e-97d7-2d8189fff3af/10.png?format=original": {
+      "local": "/images/manufacturers-1/travel-luggage-02.webp",
+      "sha1": "7de5152efa72"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/30912e94-3952-41de-81b3-fb996468ce42/4.jpeg?format=original": {
+      "local": "/images/manufacturers-1/blog-post-title-four-r5aeg-02.webp",
+      "sha1": "d68ebd6fe630"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/311ae58d-4b0a-47de-80a3-c035251cc680/3.jpg?format=original": {
+      "local": "/images/manufacturers-1/blog-post-title-three-9899k-02.webp",
+      "sha1": "bbbfaa9e1e11"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/3506ae00-9b92-44e4-bdce-2fa3798ddc40/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260418114511_84_58.jpg?format=original": {
+      "local": "/images/nature/aak0dr1zi9396l4vwc78422x87gshz-p7365-05.webp",
+      "sha1": "04d7de334138"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/3de01ae8-1796-40aa-a97f-d5b7a87511a7/bookcapitalarticle02.jpg?format=original": {
+      "local": "/images/books/bookcapitalarticle1231-05.webp",
+      "sha1": "18353e0f2d55"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/4032246b-77c7-4a37-953c-c60489fbac16/logo%E7%BB%BF%E8%89%B2.jpg?format=original": {
+      "local": "/images/pages/aboutthis-01.webp",
+      "sha1": "d4dc7a370cbf"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/444795b0-b0e3-4a17-9d3c-ffa91a0b4312/%E5%9B%BE%E7%89%878.png?format=original": {
+      "local": "/images/history/aak0dr1zi9396l4vwc78422x87gshz-03.webp",
+      "sha1": "03f68bab148c"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/4523c472-9ac2-478b-849b-5cdc7c96c439/2.jpg?format=original": {
+      "local": "/images/manufacturers-1/blog-post-title-two-6ccew-02.webp",
+      "sha1": "deb1d0f947e2"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/4aeda033-ce9b-4fb6-b13d-6f4b351a330d/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230801153450.png?format=original": {
+      "local": "/images/pages/index-02.webp",
+      "sha1": "0e5fb0fb186a"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/4b3cff61-b33c-4bad-af68-019ccb02e6b6/1000074885.png?format=original": {
+      "local": "/images/nature/aak0dr1zi9396l4vwc78422x87gshz-p7365-06.webp",
+      "sha1": "c3821f64899b"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/55014b0e-cba6-45b6-bc71-b32bb993fdbd/6.jpg?format=original": {
+      "local": "/images/manufacturers-1/ceramic-tiles-foshan-02.webp",
+      "sha1": "79045b62f1cb"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/59ea561d-4046-473c-b673-8818191b5dc1/9.jpg?format=original": {
+      "local": "/images/manufacturers-1/jewellery-luohu-shenzhen-02.webp",
+      "sha1": "5c06b1c7fca3"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/5dff87a9-6436-425f-ad59-27db497858e6/1.jpg?format=original": {
+      "local": "/images/service/data-centres-shaoguan-02.webp",
+      "sha1": "bb745ceaafc7"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/65acd2c2-0019-4da3-ae2e-c2014641cfb5/%E5%9B%BE%E7%89%873.png?format=original": {
+      "local": "/images/history/aak0dr1zi9396l4vwc78422x87gshz-04.webp",
+      "sha1": "4abbe5e9970e"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/6695bf45-715a-4ecd-85b2-455467a02a65/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260418114517_87_58.jpg?format=original": {
+      "local": "/images/nature/aak0dr1zi9396l4vwc78422x87gshz-p7365-07.webp",
+      "sha1": "54701c08aafd"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/70517057-8629-484f-971f-82098825422c/%E5%9B%BE%E7%89%871.jpg?format=original": {
+      "local": "/images/manufacturers-1/blog-post-title-one-4x227-02.webp",
+      "sha1": "a5ae86a55984"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/7a660e2b-0d4f-4833-ae4c-4b9e89b9a00d/8-1.jpg?format=original": {
+      "local": "/images/manufacturers-1/furniture-amp-lightings-zhongsha-02.webp",
+      "sha1": "1c200205ca62"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/7f972707-1728-4714-aa1d-e3bc3db9109e/%E5%9B%BE%E7%89%871.png?format=original": {
+      "local": "/images/history/aak0dr1zi9396l4vwc78422x87gshz-05.webp",
+      "sha1": "e2ac743f5ccb"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/82791b46-476d-4445-878e-4ac15bb6161b/3.jpg?format=original": {
+      "local": "/images/service/coffee-02.webp",
+      "sha1": "bfb845d78a2b"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/83fc1f34-09c1-4b43-b1b3-c10913e1253c/640.jpg?format=original": {
+      "local": "/images/books/bookcapitalarticle1231-06.webp",
+      "sha1": "014d158583e1"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/8556fe36-1a36-435c-9f97-03f781d1b35f/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260418114518_88_58.jpg?format=original": {
+      "local": "/images/nature/aak0dr1zi9396l4vwc78422x87gshz-p7365-08.webp",
+      "sha1": "ac6d91eb4e73"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/90996e82-62a4-434a-94d4-c02793bcfde4/2.jpg?format=original": {
+      "local": "/images/service/offshore-and-onshore-warehouses-hong-kon-02.webp",
+      "sha1": "c17a71d76a44"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/92f71b33-d69f-400e-b0e7-b655f07f74b4/1000074877.png?format=original": {
+      "local": "/images/nature/aak0dr1zi9396l4vwc78422x87gshz-p7365-09.webp",
+      "sha1": "6b9c679a31cd"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/9577dcdb-7a88-4254-9acc-d1331923d919/8-2.jpg?format=original": {
+      "local": "/images/manufacturers-1/furniture-amp-lightings-zhongsha-03.webp",
+      "sha1": "7803dd50bf14"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/9774d402-0f0a-4729-b1cb-2e396374a751/%E5%9B%BE%E7%89%876.png?format=original": {
+      "local": "/images/history/aak0dr1zi9396l4vwc78422x87gshz-06.webp",
+      "sha1": "7ce36928b255"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/9a31c05b-141e-4c23-8d57-606af2f6b85b/7.jpg?format=original": {
+      "local": "/images/manufacturers-1/mobile-phones-dongguan-quote-sou-02.webp",
+      "sha1": "ab45d0ff54fa"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/a128589c-3318-4e2c-8dd7-1e32866cc637/Weixin+Image_20250225111746.jpg?format=original": {
+      "local": "/images/books/bookcapitalarticle1231-07.webp",
+      "sha1": "1ec13001fb9b"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/a8fa2c81-8c14-48d7-8e81-d9923119b7cc/1000074878.png?format=original": {
+      "local": "/images/nature/aak0dr1zi9396l4vwc78422x87gshz-p7365-10.webp",
+      "sha1": "60132ef99a67"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/aa876255-4149-4d01-a836-86f4fb4e5e16/Annual+borrowing+and+return+figures+for+Shenzhen+public+libraries%282023%29.jpg?format=original": {
+      "local": "/images/books/bookcapitalarticle1231-08.webp",
+      "sha1": "d1b5ee5e3582"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/ab1c5036-443e-4567-b5e2-1901a7dc4a68/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260418114514_85_58.jpg?format=original": {
+      "local": "/images/nature/aak0dr1zi9396l4vwc78422x87gshz-p7365-11.webp",
+      "sha1": "493d8f24c363"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/b2e1bd7e-614e-47f9-b4ee-ed038cdf92d0/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260418114508_83_58.jpg?format=original": {
+      "local": "/images/nature/aak0dr1zi9396l4vwc78422x87gshz-p7365-12.webp",
+      "sha1": "4d0c5765eb37"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/b54accc0-deda-4291-9a7c-fa80d2746216/1000074881.png?format=original": {
+      "local": "/images/nature/aak0dr1zi9396l4vwc78422x87gshz-p7365-13.webp",
+      "sha1": "857a69812a6d"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/bc8917e6-9852-4d92-9380-f5e552deb516/%E5%9B%BE%E7%89%874.png?format=original": {
+      "local": "/images/history/aak0dr1zi9396l4vwc78422x87gshz-07.webp",
+      "sha1": "9a10c6f75d70"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/bd0c10b4-21ab-46bd-ae8b-12ec50bad535/%E5%9B%BE%E7%89%879.png?format=original": {
+      "local": "/images/history/aak0dr1zi9396l4vwc78422x87gshz-08.webp",
+      "sha1": "fdb40f03e024"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/be932675-4102-4a14-b3fe-abb3cbff126c/1000074882.png?format=original": {
+      "local": "/images/nature/aak0dr1zi9396l4vwc78422x87gshz-p7365-14.webp",
+      "sha1": "5a54595725ba"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/bf971747-8f63-431b-9392-2ab9224769f1/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20260418114515_86_58.jpg?format=original": {
+      "local": "/images/nature/aak0dr1zi9396l4vwc78422x87gshz-p7365-15.webp",
+      "sha1": "1a616968c18c"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/c1dd432b-0648-4ce9-bc7f-066dd2a9639c/%E5%9B%BE%E7%89%875.png?format=original": {
+      "local": "/images/history/aak0dr1zi9396l4vwc78422x87gshz-09.webp",
+      "sha1": "64813789859b"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/c3ba5045-f43a-4640-9a15-fcde04d8ac0f/%E5%9B%BE%E7%89%872.png?format=original": {
+      "local": "/images/history/aak0dr1zi9396l4vwc78422x87gshz-10.webp",
+      "sha1": "f2a7fd7fcf49"
+    },
+    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/c80ce359-35a3-4938-a15a-37f8659a956d/5.jpg?format=original": {
+      "local": "/images/manufacturers-1/vaccines-amp-pharmacies-pingshan-02.webp",
+      "sha1": "c37aa83b23bb"
+    }
+  },
+  "failed": []
+}

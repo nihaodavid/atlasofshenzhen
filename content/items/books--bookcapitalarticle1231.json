@@ -89,17 +89,17 @@
     }
   ],
   "images": [
-    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/3de01ae8-1796-40aa-a97f-d5b7a87511a7/bookcapitalarticle02.jpg?format=original",
-    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/83fc1f34-09c1-4b43-b1b3-c10913e1253c/640.jpg?format=original",
-    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/1af5c393-4270-4b00-bf19-33bed8f1e32c/1.+Daily+Visitor+Peak+at+Shenzhen+Library+North+Branch+-+visual+selection+%282%29.png?format=original",
-    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/1a453b70-56d2-40f3-9650-b32191ef5c8f/1740453239303.jpg?format=original",
-    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/aa876255-4149-4d01-a836-86f4fb4e5e16/Annual+borrowing+and+return+figures+for+Shenzhen+public+libraries%282023%29.jpg?format=original",
-    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/a128589c-3318-4e2c-8dd7-1e32866cc637/Weixin+Image_20250225111746.jpg?format=original",
-    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/28b47ccf-7e1d-4484-8a13-552be11f801e/1.+Daily+Visitor+Peak+at+Shenzhen+Library+North+Branch+-+visual+selection.png?format=original"
+    "/images/books/bookcapitalarticle1231-05.webp",
+    "/images/books/bookcapitalarticle1231-06.webp",
+    "/images/books/bookcapitalarticle1231-03.webp",
+    "/images/books/bookcapitalarticle1231-02.webp",
+    "/images/books/bookcapitalarticle1231-08.webp",
+    "/images/books/bookcapitalarticle1231-07.webp",
+    "/images/books/bookcapitalarticle1231-04.webp"
   ],
   "meta": {
     "title": "Shenzhen, the City of Libraries — atlasofshenzhen",
     "description": "It all begins with an idea.",
-    "ogImage": "http://static1.squarespace.com/static/64c34dc6bb45bc630c43e488/677403448e31cc50c28c178e/677403448e31cc50c28c178f/1753000506122/640.jpg?format=1500w"
+    "ogImage": "/images/books/bookcapitalarticle1231-01.webp"
   }
 }

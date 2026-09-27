@@ -17,11 +17,11 @@
     }
   ],
   "images": [
-    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/82791b46-476d-4445-878e-4ac15bb6161b/3.jpg?format=original"
+    "/images/service/coffee-02.webp"
   ],
   "meta": {
     "title": "Coffee  — atlasofshenzhen",
     "description": "",
-    "ogImage": "http://static1.squarespace.com/static/64c34dc6bb45bc630c43e488/687caf7f8b0b057d28febabc/687cc087205acf77e34e71db/1753006317418/3.jpg?format=1500w"
+    "ogImage": "/images/service/coffee-01.webp"
   }
 }

@@ -61,7 +61,12 @@ for (const b of item.body ?? []) {
   }
 }
 
-const heroImage = item.meta.ogImage ?? item.images?.[0];
+// Lead image shown in the page body is the article's own first image. The
+// `meta.ogImage` is a separate asset intended only for social-share cards, so
+// it must not win the body slot (that would hide the real article photo).
+const bodyImages = item.images ?? [];
+const heroImage = bodyImages[0] ?? item.meta.ogImage ?? null;
+const galleryImages = bodyImages.slice(1);
 ---
 
 <BaseLayout
@@ -96,7 +101,7 @@ const heroImage = item.meta.ogImage ?? item.images?.[0];
           <img
             class="article__hero"
             src={heroImage}
-            alt=""
+            alt={item.title ? `${item.title} — lead image` : "Article lead image"}
             width="1200"
             height="675"
             loading="eager"
@@ -128,13 +133,22 @@ const heroImage = item.meta.ogImage ?? item.images?.[0];
       </div>
 
       {
-        (item.images ?? []).length > 1 && (
+        galleryImages.length > 0 && (
           <section class="article__gallery">
             <h2>Images</h2>
             <ul role="list">
-              {item.images!.slice(1).map((src) => (
+              {galleryImages.map((src, i) => (
                 <li>
-                  <img src={src} alt="" loading="lazy" decoding="async" />
+                  <img
+                    src={src}
+                    alt={
+                      item.title
+                        ? `${item.title} — image ${i + 2}`
+                        : `Article image ${i + 2}`
+                    }
+                    loading="lazy"
+                    decoding="async"
+                  />
                 </li>
               ))}
             </ul>

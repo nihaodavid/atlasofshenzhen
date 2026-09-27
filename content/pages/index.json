@@ -6,8 +6,7 @@
   "source": "https://www.atlasofshenzhen.cn/",
   "meta": {
     "title": "atlasofshenzhen",
-    "description": "Atlas of Shenzhen offers comprehensive, authentic, and up-to-date information about Shenzhen — including neighborhoods, transport, culture, business, and practical travel tips for residents and visitors. Reliable local insights and resources.",
-    "ogImage": "http://static1.squarespace.com/static/64c34dc6bb45bc630c43e488/t/64c91a9770c4a035d87b88ec/1739502088894/shenzhenlogo.jpg?format=1500w"
+    "description": "Atlas of Shenzhen offers comprehensive, authentic, and up-to-date information about Shenzhen — including neighborhoods, transport, culture, business, and practical travel tips for residents and visitors. Reliable local insights and resources."
   },
   "blocks": [
     {
@@ -23,6 +22,5 @@
       "type": "paragraph",
       "text": "Yuehai District\nShenzhen, CN"
     }
-  ],
-  "heroImage": "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/4aeda033-ce9b-4fb6-b13d-6f4b351a330d/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20230801153450.png?format=original"
+  ]
 }

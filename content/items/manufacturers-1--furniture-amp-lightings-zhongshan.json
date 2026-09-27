@@ -21,12 +21,12 @@
     }
   ],
   "images": [
-    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/7a660e2b-0d4f-4833-ae4c-4b9e89b9a00d/8-1.jpg?format=original",
-    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/9577dcdb-7a88-4254-9acc-d1331923d919/8-2.jpg?format=original"
+    "/images/manufacturers-1/furniture-amp-lightings-zhongsha-02.webp",
+    "/images/manufacturers-1/furniture-amp-lightings-zhongsha-03.webp"
   ],
   "meta": {
     "title": "Furniture & Lightings (Zhongshan) — atlasofshenzhen",
     "description": "",
-    "ogImage": "http://static1.squarespace.com/static/64c34dc6bb45bc630c43e488/687cac25703b9f4c755ea454/687cbb57916be12834547c26/1753005062139/8-1.jpg?format=1500w"
+    "ogImage": "/images/manufacturers-1/furniture-amp-lightings-zhongsha-01.webp"
   }
 }

@@ -25,11 +25,11 @@
     }
   ],
   "images": [
-    "https://images.squarespace-cdn.com/content/v1/64c34dc6bb45bc630c43e488/5dff87a9-6436-425f-ad59-27db497858e6/1.jpg?format=original"
+    "/images/service/data-centres-shaoguan-02.webp"
   ],
   "meta": {
     "title": "Data Centres (Shaoguan) — atlasofshenzhen",
     "description": "",
-    "ogImage": "http://static1.squarespace.com/static/64c34dc6bb45bc630c43e488/687caf7f8b0b057d28febabc/687cbed35f5c4325c688a240/1753005885642/1.jpg?format=1500w"
+    "ogImage": "/images/service/data-centres-shaoguan-01.webp"
   }
 }

@@ -62,7 +62,7 @@ function resolvedHref(card: Card): string | undefined {
               ) : (
                 <img
                   src={thumb}
-                  alt={card.alt ?? card.title}
+                  alt={card.alt ?? card.title ?? "Content image"}
                   loading="lazy"
                   decoding="async"
                   width="640"
