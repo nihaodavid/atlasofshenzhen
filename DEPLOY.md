@@ -237,18 +237,69 @@ Give it up to 24 h after DNS resolves. If it stalls, remove and re-add the
 domain in Vercel to retrigger issuance.
 
 **Images not loading**
-Expected for now — content images still point at the Squarespace CDN. See
-*Next steps* in the README. The local site assets (`/images/logo.jpg`,
-`/images/hero-flower.webp`) are served from the repo and always work.
+All media is now localized — every image is committed under
+`public/images/<collection>/` as WebP and every reference points at
+`/images/...` on our own domain. There are no Squarespace CDN URLs left.
+If an image 404s, it was pruned as unused: check `.media-backup/` and
+restore it, or re-run `scripts/fetch_media.py`.
+
+**Pushes do not trigger a deployment**
+The project must be linked to the *correct* repository **and** the Vercel
+GitHub App must be installed on that repo. Verify the link:
+
+```bash
+curl -s --proxy "$PROXY" -H "Authorization: Bearer $TOKEN" \
+  "https://api.vercel.com/v9/projects/$PROJECT_ID" \
+  | python -c "import sys,json;print(json.load(sys.stdin).get('link'))"
+```
+
+If `link.repo` is not `nihaodavid/atlasofshenzhen`, unlink and relink:
+
+```bash
+curl -s -X DELETE "https://api.vercel.com/v9/projects/$PROJECT_ID/link" -H "Authorization: Bearer $TOKEN"
+curl -s -X POST   "https://api.vercel.com/v9/projects/$PROJECT_ID/link" \
+  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+  -d '{"type":"github","repo":"nihaodavid/atlasofshenzhen","productionBranch":"main"}'
+```
+
+Relinking fails with *"you need to install the GitHub integration first"*
+until the owner installs <https://github.com/apps/vercel> and grants it access
+to the repository. Until then, deploy from local source:
+
+```bash
+npm i --no-save vercel@latest
+VERCEL_ORG_ID=$ORG_ID VERCEL_PROJECT_ID=$PROJECT_ID \
+  node_modules/.bin/vercel deploy --prod --yes --token "$TOKEN"
+```
+
+**`git push` fails with `CONNECT tunnel failed, response 502`**
+The environment may inject its own proxy (e.g. `HTTPS_PROXY=127.0.0.1:53514`)
+that is broken for git. Probe ports, then pin the working one explicitly:
+
+```bash
+unset HTTP_PROXY HTTPS_PROXY http_proxy https_proxy
+git -c http.proxy=http://127.0.0.1:7890 -c http.version=HTTP/1.1 push origin main
+```
+
+If git then reports `could not read Username ... terminal prompts disabled`,
+pass the token in the URL for that one command and disable the credential
+helper so it is not cached:
+
+```bash
+git -c http.proxy=http://127.0.0.1:7890 -c credential.helper= \
+    push "https://<TOKEN>@github.com/nihaodavid/atlasofshenzhen.git" main
+```
 
 ---
 
 ## Deployment checklist
 
-- [ ] Repo pushed, `node_modules/` and `dist/` excluded
-- [ ] Vercel project imported, Node 22.x
-- [ ] Build succeeds; `*.vercel.app` preview verified
-- [ ] Custom domain added, DNS records set, TLS issued
+- [x] Repo pushed, `node_modules/` and `dist/` excluded
+- [x] Vercel project imported, Node 22.x
+- [x] Build succeeds; production deployment verified (71 pages)
+- [x] Custom domain added, DNS records set, TLS issued
+- [x] All media localized to WebP; zero Squarespace references
+- [ ] Vercel GitHub App installed on `nihaodavid/atlasofshenzhen` (auto-deploy)
 - [ ] Old `.cn` domain 301-redirects to the new domain
 - [ ] Sitemap submitted to Google Search Console:
       `https://atlasofshenzhen.online/sitemap-index.xml`
