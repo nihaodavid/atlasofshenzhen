@@ -245,7 +245,12 @@ restore it, or re-run `scripts/fetch_media.py`.
 
 **Pushes do not trigger a deployment**
 The project must be linked to the *correct* repository **and** the Vercel
-GitHub App must be installed on that repo. Verify the link:
+GitHub App must be installed on that repo. **Both are now in place**: the
+project links to `nihaodavid/atlasofshenzhen` (repoId `1388615255`) on branch
+`main`, so a push to `main` auto-builds production (verified — a push went
+`BUILDING → READY` in ~15 s and re-aliased both custom domains).
+
+If it ever stops, first verify the link:
 
 ```bash
 curl -s --proxy "$PROXY" -H "Authorization: Bearer $TOKEN" \
@@ -299,7 +304,7 @@ git -c http.proxy=http://127.0.0.1:7890 -c credential.helper= \
 - [x] Build succeeds; production deployment verified (71 pages)
 - [x] Custom domain added, DNS records set, TLS issued
 - [x] All media localized to WebP; zero Squarespace references
-- [ ] Vercel GitHub App installed on `nihaodavid/atlasofshenzhen` (auto-deploy)
+- [x] Vercel GitHub App installed on `nihaodavid/atlasofshenzhen` (auto-deploy verified)
 - [ ] Old `.cn` domain 301-redirects to the new domain
 - [ ] Sitemap submitted to Google Search Console:
       `https://atlasofshenzhen.online/sitemap-index.xml`
