@@ -31,9 +31,22 @@ interface Props {
 
 const { cards, variant = "post", detailBase } = Astro.props;
 
+/**
+ * Build the detail-page URL from `detailBase` + `detailSlug`.
+ *
+ * `detailSlug` is the item's storage key, which carries the collection prefix
+ * (`service--coffee`). `detailBase` already names the collection (`/service`),
+ * so the prefix has to be stripped before joining — otherwise every card links
+ * to `/service/service--coffee/`, which 404s.
+ */
 function resolvedHref(card: Card): string | undefined {
   if (detailBase && card.detailSlug) {
-    return `${detailBase}/${card.detailSlug}/`;
+    const collection = detailBase.replace(/^\/+|\/+$/g, "");
+    const prefix = `${collection}--`;
+    const slug = card.detailSlug.startsWith(prefix)
+      ? card.detailSlug.slice(prefix.length)
+      : card.detailSlug;
+    return `${detailBase}/${slug}/`;
   }
   return undefined;
 }
