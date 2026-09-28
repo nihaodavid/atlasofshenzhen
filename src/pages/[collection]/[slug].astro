@@ -91,7 +91,14 @@ const inlineSources = new Set(
   nodes.filter((n): n is FigNode => n.type === "figure").map((n) => n.src),
 );
 const bodyImages = (item.images ?? []).filter((src) => !inlineSources.has(src));
-const heroImage = bodyImages[0] ?? item.meta.ogImage ?? null;
+
+// Lead image, then gallery. When every image in an article is already shown
+// inline as a figure, `bodyImages` is empty and there is no separate lead
+// image to print: the og:image in that case is a social-card rendering of the
+// very chart the first figure already displays, so falling back to it would
+// show the reader the same picture twice. Articles with a real gallery image
+// are unaffected.
+const heroImage = bodyImages[0] ?? null;
 const galleryImages = bodyImages.slice(1);
 
 // Social cards must be a raster format — Facebook, X/Slack/WeChat do not
