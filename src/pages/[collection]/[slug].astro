@@ -67,13 +67,20 @@ for (const b of item.body ?? []) {
 const bodyImages = item.images ?? [];
 const heroImage = bodyImages[0] ?? item.meta.ogImage ?? null;
 const galleryImages = bodyImages.slice(1);
+
+// Social cards must be a raster format — Facebook, X/Slack/WeChat do not
+// render SVG og:images. Fall back to the first raster image in the body, and
+// only then to the chart SVG.
+const RASTER = /\.(png|jpe?g|webp|gif|avif)$/i;
+const rasterInBody = bodyImages.find((src) => RASTER.test(src));
+const socialImage = item.meta.ogImage || rasterInBody || heroImage;
 ---
 
 <BaseLayout
   title={item.title}
   description={description}
   current={`/${collection}/`}
-  ogImage={heroImage}
+  ogImage={socialImage}
 >
   <article class="section">
     <div class="shell article">

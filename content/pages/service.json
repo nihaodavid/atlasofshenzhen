@@ -10,6 +10,16 @@
   },
   "cards": [
     {
+      "title": "Shenzhen and the AI Short-Drama Boom",
+      "href": "/service/ai-short-drama-shenzhen",
+      "author": "Wei Wu",
+      "date": "9/28/26",
+      "excerpt": "China's AI short-drama market grew 138% in a year, shipping a new title every 36 seconds — and Shenzhen ranks second nationally in going-global strength.",
+      "image": "/images/service/ai-short-drama-shenzhen-02.webp",
+      "alt": "Timeline of video-generation model releases from Midjourney V5 to Wan 3.0",
+      "detailSlug": "service--ai-short-drama-shenzhen"
+    },
+    {
       "title": "Coffee",
       "href": "/service/coffee",
       "author": "C Nie",
