@@ -358,7 +358,7 @@ def chart_bars_timeline():
     Twelve releases are laid out chronologically along a single axis; labels
     alternate above and below the line so they never overlap each other.
     """
-    title = "The cost collapse"
+    title = "How fast the production engine improved"
     sub = "Video-generation model releases that made AI drama viable"
 
     events = [
@@ -455,6 +455,268 @@ def chart_bars_timeline():
     return "".join(parts)
 
 
+# ---------------------------------------------------------------- chart 6
+def chart_monetisation():
+    """Two-track monetisation: IAA vs IAAP, with the Hongguo comparison."""
+    title = "6. Two ways to monetise"
+    sub = "IAA (ad-supported) versus IAAP (in-app purchase, membership, pay-per-unlock)"
+
+    parts = [header(title, sub), footer("Platform reporting, Jul 2026")]
+
+    col_w = 470
+    gap = 60
+    x0 = (W - (col_w * 2 + gap)) / 2
+    top = PAD_T + 60
+    box_h = 300
+
+    tracks = [
+        (
+            "IAA",
+            "Ad-supported, free to watch",
+            TEAL_D,
+            [
+                ("Hongguo Short Drama", "market leader"),
+                ("168m", "daily active users, Jul 2026"),
+                ("+107%", "year on year"),
+            ],
+        ),
+        (
+            "IAAP",
+            "Pay-per-unlock, membership",
+            TEAL_L,
+            [
+                ("Most overseas platforms", "dominant model abroad"),
+                ("Revenue share", "platform and producer split"),
+                ("Emerging", "character / IP economics next"),
+            ],
+        ),
+    ]
+
+    for i, (label, desc, color, rows) in enumerate(tracks):
+        x = x0 + i * (col_w + gap)
+        parts.append(
+            f'  <rect x="{x:.1f}" y="{top}" width="{col_w}" height="{box_h}" rx="12" '
+            f'fill="{SURFACE}" stroke="{color}" stroke-width="1.5"/>'
+        )
+        parts.append(
+            f'  <rect x="{x:.1f}" y="{top}" width="{col_w}" height="6" rx="3" fill="{color}"/>'
+        )
+        parts.append(
+            f'  <text x="{x + 34:.1f}" y="{top + 62:.1f}" font-family="{FONT}" font-size="34" '
+            f'font-weight="600" fill="{TEAL_D}">{esc(label)}</text>'
+        )
+        parts.append(
+            f'  <text x="{x + 34:.1f}" y="{top + 92:.1f}" font-family="{FONT}" font-size="17" '
+            f'fill="{MUTED}">{esc(desc)}</text>'
+        )
+        ry = top + 140
+        for big, small in rows:
+            parts.append(
+                f'  <text x="{x + 34:.1f}" y="{ry:.1f}" font-family="{FONT}" font-size="21" '
+                f'font-weight="600" fill="{INK}">{esc(big)}</text>'
+            )
+            parts.append(
+                f'  <text x="{x + 34:.1f}" y="{ry + 24:.1f}" font-family="{FONT}" font-size="16" '
+                f'fill="{MUTED}">{esc(small)}</text>'
+            )
+            ry += 62
+
+    parts.append(
+        f'  <text x="{W/2:.1f}" y="{top + box_h + 62:.1f}" text-anchor="middle" '
+        f'font-family="{FONT}" font-size="21" font-weight="600" fill="{ACCENT}">'
+        f'Hongguo\'s daily actives exceed iQiyi, Youku, Tencent Video and Mango TV combined</text>'
+    )
+    return "".join(parts)
+
+
+# ---------------------------------------------------------------- chart 7
+def chart_platforms():
+    """Four overseas platforms, each as a stacked regional bar."""
+    title = "7. Four platforms, four maps"
+    sub = "Where each Chinese-born short-drama app earns its audience (share of market)"
+
+    parts = [header(title, sub), footer("Platform market breakdown, 2026")]
+
+    platforms = [
+        ("ReelShort", [("United States", 52, TEAL_D), ("Brazil", 16, TEAL), ("Mexico", 12, TEAL_L), ("Canada / UK", 20, "#D8D8D8")]),
+        ("DramaBox", [("Indonesia", 28, TEAL_D), ("United States", 16, TEAL), ("Thailand", 10, TEAL_L), ("Brazil / Vietnam", 15, "#D8D8D8"), ("Other", 31, "#EDEDED")]),
+        ("GoodShort", [("United States", 30, TEAL_D), ("Brazil", 14, TEAL), ("Germany", 11, TEAL_L), ("France / Netherlands", 17, "#D8D8D8"), ("Other", 28, "#EDEDED")]),
+        ("DramaWave", [("Indonesia", 36, TEAL_D), ("Brazil", 17, TEAL), ("Vietnam", 8, TEAL_L), ("Philippines / Thailand", 13, "#D8D8D8"), ("Other", 26, "#EDEDED")]),
+    ]
+
+    bar_x = PAD_L + 190
+    bar_w = W - bar_x - PAD_R - 40
+    row_h = 84
+    top = PAD_T + 55
+
+    for i, (name, segs) in enumerate(platforms):
+        y = top + i * row_h
+        parts.append(
+            f'  <text x="{PAD_L}" y="{y + 30:.1f}" font-family="{FONT}" font-size="21" '
+            f'font-weight="600" fill="{INK}">{esc(name)}</text>'
+        )
+        # stacked horizontal bar
+        cx = bar_x
+        for label, pct, color in segs:
+            w = bar_w * pct / 100.0
+            parts.append(
+                f'  <rect x="{cx:.1f}" y="{y + 8:.1f}" width="{w:.1f}" height="42" rx="3" fill="{color}"/>'
+            )
+            # label inside the segment when it is wide enough
+            if pct >= 14:
+                parts.append(
+                    f'  <text x="{cx + w/2:.1f}" y="{y + 35:.1f}" text-anchor="middle" '
+                    f'font-family="{FONT}" font-size="15" font-weight="600" '
+                    f'fill="{"#FFFFFF" if color == TEAL_D else INK}">{pct}%</text>'
+                )
+            cx += w
+        # leading market annotation
+        lead_label, lead_pct = segs[0][0], segs[0][1]
+        parts.append(
+            f'  <text x="{bar_x}" y="{y + 70:.1f}" font-family="{FONT}" font-size="15" '
+            f'fill="{MUTED}">Leads with {esc(lead_label)} at {lead_pct}%</text>'
+        )
+
+    return "".join(parts)
+
+
+# ---------------------------------------------------------------- chart 8
+def chart_shenzhen():
+    """City ranking bars, with Shenzhen highlighted, plus the pull quote."""
+    title = "8. Why Shenzhen"
+    sub = "DataEye 2025 ranking of Chinese cities by micro-drama going-global strength (score)"
+
+    data = [
+        ("Beijing", 96.0),
+        ("Shenzhen", 82.3),
+        ("Hangzhou", 76.9),
+        ("Chengdu", 72.6),
+        ("Chongqing", 70.3),
+        ("Jiaxing", 69.7),
+        ("Guangzhou", 69.4),
+        ("Fuzhou", 69.0),
+    ]
+
+    parts = [header(title, sub), footer("DataEye 2025 city ranking")]
+
+    bar_x = PAD_L + 150
+    bar_max = W - bar_x - PAD_R - 130
+    top = PAD_T + 32
+    row_h = 47
+    vmax = 100.0
+
+    for i, (city, score) in enumerate(data):
+        y = top + i * row_h
+        w = bar_max * score / vmax
+        hot = city == "Shenzhen"
+        color = ACCENT if hot else TEAL_L
+        parts.append(
+            f'  <text x="{bar_x - 18}" y="{y + 26:.1f}" text-anchor="end" font-family="{FONT}" '
+            f'font-size="19" font-weight="{600 if hot else 400}" '
+            f'fill="{ACCENT if hot else INK}">{esc(city)}</text>'
+        )
+        parts.append(
+            f'  <rect x="{bar_x:.1f}" y="{y + 8:.1f}" width="{bar_max:.1f}" height="26" rx="4" fill="{SURFACE}"/>'
+        )
+        parts.append(
+            f'  <rect x="{bar_x:.1f}" y="{y + 8:.1f}" width="{w:.1f}" height="26" rx="4" fill="{color}"/>'
+        )
+        parts.append(
+            f'  <text x="{bar_x + w + 14:.1f}" y="{y + 27:.1f}" font-family="{FONT}" '
+            f'font-size="18" font-weight="{"600" if hot else "400"}" '
+            f'fill="{ACCENT if hot else MUTED}">{score}</text>'
+        )
+
+    # two-footnote block, kept clear of the shared footer at H-34
+    yfoot = top + len(data) * row_h + 22
+    parts.append(
+        f'  <text x="{PAD_L}" y="{yfoot:.1f}" font-family="{FONT}" font-size="17" fill="{INK_SOFT}">'
+        f'Beijing, Shenzhen and Hangzhou together take <tspan font-weight="600">over 70%</tspan> of '
+        f'national revenue from overseas-facing apps.</text>'
+    )
+    parts.append(
+        f'  <text x="{PAD_L}" y="{yfoot + 28:.1f}" font-family="{FONT}" font-size="17" fill="{INK_SOFT}">'
+        f'Shenzhen: 200+ related enterprises and over <tspan font-weight="600">$1.14bn</tspan> in '
+        f'overseas in-app purchase revenue.</text>'
+    )
+    return "".join(parts)
+
+
+# ---------------------------------------------------------------- chart 9
+def chart_watch():
+    """Three open questions, as numbered cards."""
+    title = "9. What to watch"
+    sub = "Three things will decide the next phase"
+
+    parts = [header(title, sub), footer("Author's assessment")]
+
+    items = [
+        ("01", "Does the hit rate improve?", "Production capacity is no longer the constraint. Selection is.", "hit-rate"),
+        ("02", "Do character and IP economics replace per-episode economics?", "That would change how platforms value content at all.", "ip"),
+        ("03", "Does Shenzhen convert policy into an export pipeline?", "Rather than remain a domestic production cluster.", "shenzhen"),
+    ]
+
+    col_w = 340
+    gap = 30
+    x0 = (W - (col_w * 3 + gap * 2)) / 2
+    top = PAD_T + 90
+
+    for i, (num, headline, body, _key) in enumerate(items):
+        x = x0 + i * (col_w + gap)
+        parts.append(
+            f'  <rect x="{x:.1f}" y="{top}" width="{col_w}" height="290" rx="12" '
+            f'fill="{SURFACE}" stroke="{TEAL}" stroke-width="1"/>'
+        )
+        parts.append(
+            f'  <text x="{x + 30:.1f}" y="{top + 66:.1f}" font-family="{FONT}" font-size="40" '
+            f'font-weight="600" fill="{TEAL}">{esc(num)}</text>'
+        )
+        parts.append(
+            f'  <line x1="{x + 30:.1f}" y1="{top + 90:.1f}" x2="{x + col_w - 30:.1f}" '
+            f'y2="{top + 90:.1f}" stroke="{GRID}" stroke-width="1.5"/>'
+        )
+        # wrap the headline manually into up to 3 lines
+        words = headline.split()
+        lines, cur = [], ""
+        for wd in words:
+            trial = (cur + " " + wd).strip()
+            if len(trial) > 30 and cur:
+                lines.append(cur)
+                cur = wd
+            else:
+                cur = trial
+        if cur:
+            lines.append(cur)
+        ly = top + 130
+        for ln in lines[:3]:
+            parts.append(
+                f'  <text x="{x + 30:.1f}" y="{ly:.1f}" font-family="{FONT}" font-size="20" '
+                f'font-weight="600" fill="{INK}">{esc(ln)}</text>'
+            )
+            ly += 28
+        # body wrap
+        bwords = body.split()
+        blines, bcur = [], ""
+        for wd in bwords:
+            trial = (bcur + " " + wd).strip()
+            if len(trial) > 36 and bcur:
+                blines.append(bcur)
+                bcur = wd
+            else:
+                bcur = trial
+        if bcur:
+            blines.append(bcur)
+        by = ly + 16
+        for ln in blines[:3]:
+            parts.append(
+                f'  <text x="{x + 30:.1f}" y="{by:.1f}" font-family="{FONT}" font-size="16" '
+                f'fill="{MUTED}">{esc(ln)}</text>'
+            )
+            by += 23
+
+    return "".join(parts)
+
+
 if __name__ == "__main__":
     print("Generating charts...")
     write("ai-short-drama-shenzhen-10-market.svg", chart_market_growth())
@@ -462,4 +724,8 @@ if __name__ == "__main__":
     write("ai-short-drama-shenzhen-12-supply.svg", chart_supply())
     write("ai-short-drama-shenzhen-13-hitrate.svg", chart_hit_rate())
     write("ai-short-drama-shenzhen-14-timeline.svg", chart_bars_timeline())
+    write("ai-short-drama-shenzhen-15-monetise.svg", chart_monetisation())
+    write("ai-short-drama-shenzhen-16-platforms.svg", chart_platforms())
+    write("ai-short-drama-shenzhen-17-shenzhen.svg", chart_shenzhen())
+    write("ai-short-drama-shenzhen-18-watch.svg", chart_watch())
     print("Done.")

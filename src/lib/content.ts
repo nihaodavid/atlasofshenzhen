@@ -12,9 +12,17 @@ const PAGES_DIR = join(CONTENT_DIR, "pages");
 const ITEMS_DIR = join(CONTENT_DIR, "items");
 
 export interface Block {
-  type: "heading" | "paragraph" | "listitem" | "quote";
+  type: "heading" | "paragraph" | "listitem" | "quote" | "figure";
   level?: number;
   text: string;
+  /** figure-only: image path, shown inline in the article body. */
+  src?: string;
+  /** figure-only: short caption rendered under the image. */
+  caption?: string;
+  /** figure-only: alt text; falls back to the caption. */
+  alt?: string;
+  /** figure-only: when true the image is rendered full-bleed inside prose. */
+  wide?: boolean;
 }
 
 export interface Card {
