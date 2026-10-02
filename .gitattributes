@@ -23,3 +23,9 @@
 
 # Keep lockfiles out of diffs — they are machine-generated
 package-lock.json  -diff linguist-generated
+
+# The content pipeline scripts are plain Python, but they are tooling, not the
+# project's language: the site itself is Astro/TypeScript. Without this,
+# GitHub's linguist reports the repo as "Python", which misrepresents the
+# project on the repo page and in search results.
+scripts/*.py  linguist-detectable=false
