@@ -2,6 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Hero from "../../components/Hero.astro";
 import { getPage } from "../../lib/content";
+import { breadcrumbs, collectionPage } from "../../lib/schema";
 
 const page = getPage("videos");
 const cards = page.cards ?? [];
@@ -27,7 +28,22 @@ const description =
     : "Short films about Shenzhen: its history, nature, markets, food and makers, told in English by local storytellers.";
 ---
 
-<BaseLayout title="Videos" description={description} current="/videos/">
+<BaseLayout
+  title="Videos"
+  description={description}
+  current="/videos/"
+  schema={[
+    collectionPage({
+      name: "Videos",
+      description,
+      path: "/videos/",
+    }),
+    breadcrumbs([
+      { name: "Home", path: "/" },
+      { name: "Videos", path: "/videos/" },
+    ]),
+  ]}
+>
   <Hero
     heading="Videos"
     subcopy="Short films about Shenzhen — its history, nature, markets, food and makers, told in English by local storytellers."

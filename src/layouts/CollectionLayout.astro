@@ -17,6 +17,7 @@ interface Props {
   cards: Card[];
   blocks?: Block[];
   emptyMessage?: string;
+  schema?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
@@ -27,10 +28,16 @@ const {
   cards,
   blocks = [],
   emptyMessage = "New entries are being added — check back soon.",
+  schema,
 } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description} current={`/${slug}/`}>
+<BaseLayout
+  title={title}
+  description={description}
+  current={`/${slug}/`}
+  schema={schema}
+>
   <Hero heading={heroHeading} subcopy={description} compact />
 
   <section class="section">

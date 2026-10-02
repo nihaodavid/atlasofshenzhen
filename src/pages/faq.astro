@@ -1,8 +1,13 @@
 ---
 import FluidPageLayout from "../layouts/FluidPageLayout.astro";
 import { getPage } from "../lib/content";
+import { breadcrumbs, faqPage, faqPairsFromBlocks } from "../lib/schema";
 
 const page = getPage("faq");
+
+// The FAQ content is already shaped as "heading = question, following
+// paragraphs = answer", so the Q&A pairs are derived rather than duplicated.
+const pairs = faqPairsFromBlocks(page.blocks);
 ---
 
 <FluidPageLayout
@@ -11,4 +16,12 @@ const page = getPage("faq");
   description={page.meta.description || "Answers to common questions about the Atlas of Shenzhen, our research process, and how to contribute."}
   heroHeading="Frequently Asked Questions"
   blocks={page.blocks}
+  schema={[
+    faqPage(pairs),
+    breadcrumbs([
+      { name: "Home", path: "/" },
+      { name: "About", path: "/aboutthis/" },
+      { name: "FAQ", path: "/faq/" },
+    ]),
+  ]}
 />

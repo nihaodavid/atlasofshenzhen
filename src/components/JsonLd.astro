@@ -1,0 +1,20 @@
+---
+/**
+ * JsonLd — emits a schema.org <script type="application/ld+json"> block.
+ *
+ * Structured data is how Google understands what a page *is*. Without it a
+ * 12-page static site with no inbound links is essentially invisible; with it
+ * the site becomes eligible for rich results (video thumbnails, breadcrumbs,
+ * FAQ accordions, organisation knowledge panels).
+ *
+ * Pass a single object or an array of objects (an @graph-style bundle).
+ */
+interface Props {
+  data: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { data } = Astro.props;
+const payload = JSON.stringify(data);
+---
+
+<script type="application/ld+json" set:html={payload} />

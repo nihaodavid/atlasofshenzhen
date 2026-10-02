@@ -7,6 +7,7 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import YouTubeLite from "../../../components/YouTubeLite.astro";
 import { getAllItems, type ItemDoc } from "../../../lib/content";
+import { breadcrumbs, videoObject } from "../../../lib/schema";
 
 export function getStaticPaths() {
   return getAllItems()
@@ -27,6 +28,9 @@ interface Props {
 const { item } = Astro.props;
 const description =
   item.description || item.meta.description || `Watch “${item.title}” on the Atlas of Shenzhen.`;
+
+// The canonical on-site path (not item.path, which mirrors the legacy CMS URL).
+const canonicalPath = `/videos/v/${item.path.replace(/^\/videos\/v\//, "")}/`;
 ---
 
 <BaseLayout
@@ -34,6 +38,23 @@ const description =
   description={description}
   current="/videos/"
   ogImage={`https://i.ytimg.com/vi/${item.youtubeId}/maxresdefault.jpg`}
+  schema={[
+    videoObject({
+      name: item.title,
+      description,
+      path: canonicalPath,
+      youtubeId: item.youtubeId ?? null,
+      uploadDate: item.date,
+      thumbnail: item.youtubeId
+        ? `https://i.ytimg.com/vi/${item.youtubeId}/maxresdefault.jpg`
+        : undefined,
+    }),
+    breadcrumbs([
+      { name: "Home", path: "/" },
+      { name: "Videos", path: "/videos/" },
+      { name: item.title, path: canonicalPath },
+    ]),
+  ]}
 >
   <article class="section">
     <div class="shell video-detail">

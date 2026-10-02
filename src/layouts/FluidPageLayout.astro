@@ -14,13 +14,19 @@ interface Props {
   description?: string;
   heroHeading?: string;
   blocks: Block[];
+  schema?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { slug, title, description, heroHeading, blocks } = Astro.props;
+const { slug, title, description, heroHeading, blocks, schema } = Astro.props;
 const current = `/${slug}/`;
 ---
 
-<BaseLayout title={title} description={description} current={current}>
+<BaseLayout
+  title={title}
+  description={description}
+  current={current}
+  schema={schema}
+>
   <Hero heading={heroHeading ?? title} compact />
 
   <section class="section">

@@ -1,6 +1,7 @@
 ---
 import CollectionLayout from "../layouts/CollectionLayout.astro";
 import { getPage } from "../lib/content";
+import { breadcrumbs, collectionPage } from "../lib/schema";
 
 const page = getPage("books");
 ---
@@ -12,4 +13,12 @@ const page = getPage("books");
   heroHeading="Books"
   cards={page.cards ?? []}
   blocks={page.blocks}
+  schema={[
+    collectionPage({ name: "Books", description: page.meta.description || "Books at the Atlas of Shenzhen.", path: "/books/" }),
+    breadcrumbs([
+      { name: "Home", path: "/" },
+      { name: "Opinions", path: "/future-works-1/" },
+      { name: "Books", path: "/books/" },
+    ]),
+  ]}
 />

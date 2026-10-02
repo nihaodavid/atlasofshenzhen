@@ -1,6 +1,7 @@
 ---
 import CollectionLayout from "../layouts/CollectionLayout.astro";
 import { getPage } from "../lib/content";
+import { breadcrumbs, collectionPage } from "../lib/schema";
 
 const page = getPage("nature");
 ---
@@ -12,4 +13,12 @@ const page = getPage("nature");
   heroHeading="Nature"
   cards={page.cards ?? []}
   blocks={page.blocks}
+  schema={[
+    collectionPage({ name: "Nature", description: page.meta.description || "Nature at the Atlas of Shenzhen.", path: "/nature/" }),
+    breadcrumbs([
+      { name: "Home", path: "/" },
+      { name: "Opinions", path: "/future-works-1/" },
+      { name: "Nature", path: "/nature/" },
+    ]),
+  ]}
 />

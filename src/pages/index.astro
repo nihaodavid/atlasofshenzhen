@@ -1,11 +1,25 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Hero from "../components/Hero.astro";
-import { getPage } from "../lib/content";
 import { SITE } from "../site.config";
+import { abs } from "../lib/schema";
 
-const page = getPage("index");
-const description = page.meta.description ?? SITE.description;
+// The migrated meta description was truncated boilerplate; the site config
+// carries the full, keyword-rich version — prefer it for the homepage.
+const description = SITE.description;
+
+const homeSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": `${SITE.url}/#webpage`,
+  url: SITE.url,
+  name: SITE.name,
+  description,
+  isPartOf: { "@id": `${SITE.url}/#website` },
+  about: { "@id": `${SITE.url}/#organization` },
+  primaryImageOfPage: abs("/images/og-default.jpg"),
+  inLanguage: SITE.locale,
+};
 ---
 
 <BaseLayout
@@ -13,6 +27,7 @@ const description = page.meta.description ?? SITE.description;
   description={description}
   current="/"
   ogImage="/images/og-default.jpg"
+  schema={homeSchema}
 >
   <Hero
     heading="Hello Shenzhen"

@@ -1,0 +1,19 @@
+# robots.txt for The Atlas of Shenzhen
+# https://atlasofshenzhen.online
+
+User-agent: *
+Allow: /
+
+# Never index the legacy Squarespace CMS endpoints (see vercel.json / _redirects).
+Disallow: /config
+Disallow: /api/
+
+# Explicitly welcome the major crawlers so nothing is throttled by a
+# catch-all rule if one is ever added here.
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://atlasofshenzhen.online/sitemap-index.xml

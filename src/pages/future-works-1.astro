@@ -1,6 +1,7 @@
 ---
 import FluidPageLayout from "../layouts/FluidPageLayout.astro";
 import { getPage } from "../lib/content";
+import { breadcrumbs } from "../lib/schema";
 
 const page = getPage("future-works-1");
 ---
@@ -11,4 +12,17 @@ const page = getPage("future-works-1");
   description={page.meta.description || "The maps, archives and publications we are building next for the Atlas of Shenzhen."}
   heroHeading="Future Works"
   blocks={page.blocks}
+  schema={[
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: "Future Works",
+      description: page.meta.description || "Future Works at the Atlas of Shenzhen.",
+      url: new URL("/future-works-1/", Astro.site).href,
+    },
+    breadcrumbs([
+      { name: "Home", path: "/" },
+      { name: "Opinions", path: "/future-works-1/" },
+    ]),
+  ]}
 />

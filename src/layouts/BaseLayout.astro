@@ -7,6 +7,8 @@
  */
 import "../styles/global.css";
 import { SITE, NAV } from "../site.config";
+import JsonLd from "../components/JsonLd.astro";
+import { siteGraph } from "../lib/schema";
 
 interface Props {
   title: string;
@@ -14,6 +16,8 @@ interface Props {
   /** Path of the current page, e.g. "/videos/" — used for nav highlighting. */
   current?: string;
   ogImage?: string;
+  /** Page-specific JSON-LD (VideoObject, Article, FAQPage…) as a raw object. */
+  schema?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
@@ -21,6 +25,7 @@ const {
   description = SITE.description,
   current = "/",
   ogImage,
+  schema,
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
@@ -74,6 +79,11 @@ function isActive(href: string, children?: { href: string }[]): boolean {
     />
 
     <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <!-- Structured data: site-wide Organization + WebSite graph on every
+         page, plus any page-specific nodes passed via `schema`. -->
+    <JsonLd data={siteGraph()} />
+    {schema && <JsonLd data={schema} />}
   </head>
 
   <body>

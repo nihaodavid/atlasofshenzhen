@@ -11,6 +11,7 @@
  */
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getAllItems, type ItemDoc } from "../../lib/content";
+import { article, breadcrumbs } from "../../lib/schema";
 
 const COLLECTION_TITLES: Record<string, string> = {
   history: "History",
@@ -67,6 +68,12 @@ for (const b of item.body ?? []) {
 const bodyImages = item.images ?? [];
 const heroImage = bodyImages[0] ?? item.meta.ogImage ?? null;
 const galleryImages = bodyImages.slice(1);
+
+// Canonical on-site path — identical to the legacy CMS permalink by design.
+const canonicalPath = `/${collection}/${parts.slice(1).join("/") || item.slug}/`;
+const heroImageUrl = heroImage
+  ? new URL(heroImage, Astro.site).href
+  : undefined;
 ---
 
 <BaseLayout
@@ -74,6 +81,20 @@ const galleryImages = bodyImages.slice(1);
   description={description}
   current={`/${collection}/`}
   ogImage={heroImage}
+  schema={[
+    article({
+      headline: item.title,
+      description,
+      path: canonicalPath,
+      image: heroImageUrl,
+      datePublished: item.date,
+    }),
+    breadcrumbs([
+      { name: "Home", path: "/" },
+      { name: collectionTitle, path: `/${collection}/` },
+      { name: item.title, path: canonicalPath },
+    ]),
+  ]}
 >
   <article class="section">
     <div class="shell article">
