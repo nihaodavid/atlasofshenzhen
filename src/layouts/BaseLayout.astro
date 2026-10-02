@@ -65,8 +65,19 @@ function isActive(href: string, children?: { href: string }[]): boolean {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
 
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/images/logo.jpg" />
+    <!-- Icons. Order matters: browsers take the first entry they understand,
+         so the .ico comes first for legacy Windows/Edge, then sized PNGs.
+         The SVG is offered last as a crisp option for browsers that support
+         it, but it must not be the only icon — Chrome's tab strip and the
+         Windows shell both fall back to a broken-image placeholder when a
+         site declares nothing but SVG. -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <!-- Fonts: Manrope is a free, metrically-similar stand-in for the
          original "gopher" Typekit face, whose licence is bound to the

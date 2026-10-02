@@ -10,9 +10,19 @@
   },
   "cards": [
     {
+      "title": "Shenzhen and the AI Short-Drama Boom",
+      "href": "/service/ai-short-drama-shenzhen",
+      "author": "Wei Wu",
+      "date": "9/28/26",
+      "excerpt": "China's AI short-drama market grew 138% in a year, shipping a new title every 36 seconds — and Shenzhen ranks second nationally in going-global strength.",
+      "image": "/images/service/ai-short-drama-shenzhen-02.webp",
+      "alt": "Timeline of video-generation model releases from Midjourney V5 to Wan 3.0",
+      "detailSlug": "service--ai-short-drama-shenzhen"
+    },
+    {
       "title": "Coffee",
       "href": "/service/coffee",
-      "author": "C Nie",
+      "author": "Wei Wu",
       "date": "7/20/25",
       "excerpt": "",
       "image": "/images/pages/service-03.webp",
@@ -22,7 +32,7 @@
     {
       "title": "Higher Education (Hong Kong & Shenzhen & Guangzhou)",
       "href": "/service/higher-education-hong-kong-amp-shenzhen-amp-guangzhou",
-      "author": "C Nie",
+      "author": "Wei Wu",
       "date": "7/20/25",
       "excerpt": "",
       "image": null,
@@ -32,7 +42,7 @@
     {
       "title": "Recycling & Sustainable Packaging (Dongguan)",
       "href": "/service/recycling-amp-sustainable-packaging-dongguan",
-      "author": "C Nie",
+      "author": "Wei Wu",
       "date": "7/20/25",
       "excerpt": "",
       "image": null,
@@ -42,7 +52,7 @@
     {
       "title": "Offshore and Onshore Warehouses (Hong Kong & Macao)-Fintech & AI Ports",
       "href": "/service/offshore-and-onshore-warehouses-hong-kong-amp-macao-fintech-amp-ai-ports",
-      "author": "C Nie",
+      "author": "Wei Wu",
       "date": "7/20/25",
       "excerpt": "",
       "image": "/images/pages/service-02.webp",
@@ -52,7 +62,7 @@
     {
       "title": "Data Centres (Shaoguan)",
       "href": "/service/data-centres-shaoguan",
-      "author": "C Nie",
+      "author": "Wei Wu",
       "date": "7/20/25",
       "excerpt": "",
       "image": "/images/pages/service-01.webp",

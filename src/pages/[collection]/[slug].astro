@@ -48,45 +48,84 @@ const description =
   (plain.length > 158 ? plain.slice(0, 155).trimEnd() + "…" : plain) ||
   `${item.title} — ${collectionTitle} at the Atlas of Shenzhen.`;
 
-// Render the body, grouping consecutive list items into a single <ul>.
-type Node = { type: string; level?: number; text: string } | { type: "list"; items: string[] };
+// Render the body, grouping consecutive list items into a single <ul> and
+// numbering inline figures ("Figure 1", "Figure 2", …) in document order.
+type FigNode = {
+  type: "figure";
+  src: string;
+  caption?: string;
+  alt?: string;
+  wide?: boolean;
+  number: number;
+};
+type Node =
+  | { type: string; level?: number; text: string }
+  | { type: "list"; items: string[] }
+  | FigNode;
+
 const nodes: Node[] = [];
+let figureCount = 0;
 for (const b of item.body ?? []) {
   const last = nodes[nodes.length - 1];
   if (b.type === "listitem" && last && last.type === "list") {
     last.items.push(b.text);
   } else if (b.type === "listitem") {
     nodes.push({ type: "list", items: [b.text] });
+  } else if (b.type === "figure" && b.src) {
+    figureCount += 1;
+    nodes.push({
+      type: "figure",
+      src: b.src,
+      caption: b.caption,
+      alt: b.alt,
+      wide: b.wide,
+      number: figureCount,
+    });
   } else {
     nodes.push(b);
   }
 }
 
-// Lead image shown in the page body is the article's own first image. The
-// `meta.ogImage` is a separate asset intended only for social-share cards, so
-// it must not win the body slot (that would hide the real article photo).
-const bodyImages = item.images ?? [];
-const heroImage = bodyImages[0] ?? item.meta.ogImage ?? null;
+// Inline figures carry their own captions, so only images that were declared
+// in `item.images` without a matching figure block belong in the end gallery.
+const inlineSources = new Set(
+  nodes.filter((n): n is FigNode => n.type === "figure").map((n) => n.src),
+);
+const bodyImages = (item.images ?? []).filter((src) => !inlineSources.has(src));
+
+// Lead image, then gallery. When every image in an article is already shown
+// inline as a figure, `bodyImages` is empty and there is no separate lead
+// image to print: the og:image in that case is a social-card rendering of the
+// very chart the first figure already displays, so falling back to it would
+// show the reader the same picture twice. Articles with a real gallery image
+// are unaffected.
+const heroImage = bodyImages[0] ?? null;
 const galleryImages = bodyImages.slice(1);
 
 // Canonical on-site path — identical to the legacy CMS permalink by design.
 const canonicalPath = `/${collection}/${parts.slice(1).join("/") || item.slug}/`;
-const heroImageUrl = heroImage
-  ? new URL(heroImage, Astro.site).href
-  : undefined;
+
+// Social cards must be a raster format — Facebook, X/Slack/WeChat do not
+// render SVG og:images. Fall back to the first raster image in the body, and
+// only then to the chart SVG.
+const RASTER = /\.(png|jpe?g|webp|gif|avif)$/i;
+const rasterInBody = bodyImages.find((src) => RASTER.test(src));
+const socialImage = item.meta.ogImage || rasterInBody || heroImage;
 ---
 
 <BaseLayout
   title={item.title}
   description={description}
   current={`/${collection}/`}
-  ogImage={heroImage}
+  ogImage={socialImage}
   schema={[
     article({
       headline: item.title,
       description,
       path: canonicalPath,
-      image: heroImageUrl,
+      // Use the same raster-safe image the social card uses: Google also
+      // rejects SVG for Article.image.
+      image: socialImage ? new URL(socialImage, Astro.site).href : undefined,
       datePublished: item.date,
     }),
     breadcrumbs([
@@ -141,6 +180,22 @@ const heroImageUrl = heroImage
                     <li>{i}</li>
                   ))}
                 </ul>
+              );
+            }
+            if (n.type === "figure") {
+              return (
+                <figure class={`fig${n.wide ? " fig--wide" : ""}`}>
+                  <img
+                    src={n.src}
+                    alt={n.alt ?? n.caption ?? `Figure ${n.number}`}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption>
+                    <span class="fig__num">Figure {n.number}</span>
+                    {n.caption && <span class="fig__text">{n.caption}</span>}
+                  </figcaption>
+                </figure>
               );
             }
             if (n.type === "heading") {
@@ -223,6 +278,57 @@ const heroImageUrl = heroImage
 
   .article__body {
     margin-top: 2.5rem;
+  }
+
+  /* ---- inline figures -------------------------------------------------- */
+  .fig {
+    margin: 2.75rem 0;
+  }
+
+  .fig img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: #fff;
+  }
+
+  .fig figcaption {
+    display: flex;
+    gap: 0.6rem;
+    align-items: baseline;
+    margin-top: 0.85rem;
+    padding-left: 0.15rem;
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--ink-muted);
+  }
+
+  .fig__num {
+    flex: none;
+    font-weight: 600;
+    color: var(--teal);
+    letter-spacing: 0.01em;
+  }
+
+  .fig__text {
+    min-width: 0;
+  }
+
+  /* Wide charts may safely break out of the 780px prose column. */
+  .fig--wide {
+    width: min(100%, 980px);
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @media (max-width: 860px) {
+    .fig--wide {
+      width: 100%;
+      margin-left: 0;
+      transform: none;
+    }
   }
 
   .article__gallery {
