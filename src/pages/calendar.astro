@@ -1,0 +1,42 @@
+---
+/**
+ * What's on in Shenzhen — English-language events calendar.
+ *
+ * Not part of the original Squarespace navigation: this is a new page, added
+ * deliberately to the "Opinions" section alongside the other city guides.
+ */
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Calendar from "../components/Calendar.astro";
+import { collectionPage, breadcrumbs } from "../lib/schema";
+import { getAllEvents, getVerifiedOn, dayKey } from "../lib/calendar";
+
+const events = getAllEvents();
+const verifiedOn = getVerifiedOn();
+// Build date — the component re-checks this against the visitor's clock.
+const today = dayKey(new Date());
+
+const description =
+  "An English-language calendar of food festivals, markets, exhibitions and pop-ups across Shenzhen — with dates, venues, prices and Chinese names, updated as new events are announced.";
+
+const path = "/calendar";
+---
+
+<BaseLayout
+  title="What's on in Shenzhen"
+  description={description}
+  current="/calendar/"
+  schema={[
+    collectionPage({
+      name: "What's on in Shenzhen",
+      description,
+      path: "/calendar/",
+    }),
+    breadcrumbs([
+      { name: "Home", path: "/" },
+      { name: "Opinions", path: "/future-works-1/" },
+      { name: "What's on", path: "/calendar/" },
+    ]),
+  ]}
+>
+  <Calendar events={events} today={today} />
+</BaseLayout>

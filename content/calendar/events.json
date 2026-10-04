@@ -1,0 +1,151 @@
+{
+  "$schema": "https://atlasofshenzhen.online/schemas/event.schema.json",
+  "generated": "2026-10-04",
+  "verified_on": "2026-10-04",
+  "source_note": "Extracted from Xiaohongshu posters. Year confirmed as 2026 by the user.",
+  "events": [
+    {
+      "id": "2026-10-01-nanbei-food-festival",
+      "slug": "nanbei-food-festival",
+      "title_en": "The 1st South & North Food Festival",
+      "title_zh": "首届别管咸甜 · 南北咸甜食集",
+      "subtitle_en": "Sweet, savoury — or both? No judgement.",
+      "start": "2026-10-01",
+      "end": "2026-10-04",
+      "daily_time": "11:00–21:00",
+      "venue_zh": "深圳之眼购物中心 西区2号中庭",
+      "venue_en": "Shenzhen Eye Shopping Centre — West Zone, Atrium 2",
+      "district": "Futian",
+      "price_type": "free",
+      "price_note": null,
+      "categories": ["food", "family", "music"],
+      "summary_en": "Four days only. Street snacks from every corner of China, sweet and savoury in one place — plus live music, stamp collecting for prizes, and lawn games including bowling and ring toss.",
+      "highlights_en": [
+        "Tastings from across the country, sweet and savoury side by side",
+        "Live music performances",
+        "Collect stamps across the venue for a prize draw",
+        "Interactive games: bowling, ring toss, shuttlecock kicking"
+      ],
+      "organiser": "Shenzhen Eye Shopping Centre",
+      "source": "Xiaohongshu",
+      "confidence": { "date": "HIGH", "venue": "MEDIUM", "price": "HIGH" },
+      "flags": ["venue name needs official English confirmation"]
+    },
+    {
+      "id": "2026-10-04-bay-wanderer-bread-festival",
+      "slug": "bay-wanderer-bread-festival",
+      "title_en": "Bay Wanderer Asia — Bread Festival",
+      "title_zh": "漫步亚洲面包节",
+      "subtitle_en": "60+ bakeries and coffee shops from across Asia",
+      "start": "2026-10-04",
+      "end": "2026-10-07",
+      "daily_time": "11:00–20:00",
+      "venue_zh": "深圳湾万象城 B区广场",
+      "venue_en": "MixC Shenzhen Bay — Zone B Plaza",
+      "district": "Nanshan",
+      "price_type": "free",
+      "price_note": null,
+      "categories": ["food", "market", "coffee"],
+      "summary_en": "A National Day feast of carbs: more than 60 popular bakeries and cafés from across Asia, celebrity baker appearances, and the Kaleidoscope Award ranking of Asia's top ten breads. Eat as you wander, and catch the sunset over the bay.",
+      "highlights_en": [
+        "60+ bakeries and coffee shops from across Asia",
+        "Celebrity bakers hosting in person",
+        "Kaleidoscope Award — Asia's Top 10 Breads list",
+        "Sunset views over Shenzhen Bay"
+      ],
+      "organiser": "MixC Shenzhen Bay",
+      "source": "Xiaohongshu",
+      "confidence": { "date": "HIGH", "venue": "HIGH", "price": "HIGH" },
+      "flags": []
+    },
+    {
+      "id": "2026-10-01-wushiliu-coffee-festival",
+      "slug": "wushiliu-coffee-festival",
+      "title_en": "Wushiliu Coffee Festival 3.0",
+      "title_zh": "坞士遛咖啡节 3.0",
+      "subtitle_en": "'Wushiliu' sounds like 'nothing to do' — so come and wander",
+      "start": "2026-10-01",
+      "end": "2026-10-05",
+      "daily_time": null,
+      "venue_zh": "光明大仟里 A区 L1 中庭",
+      "venue_en": "Guangming Uni-Mall (Da Qian Li) — Zone A, L1 Atrium",
+      "district": "Guangming",
+      "price_type": "free",
+      "price_note": null,
+      "categories": ["coffee", "market", "crafts"],
+      "summary_en": "The third edition brings 50 selected brands to Guangming for the National Day holiday — pour-over speciality coffee, inventive signature drinks, baked goods, teas, and handmade crafts. The name is a pun on 'nothing to do', so the idea is simply to come and wander.",
+      "highlights_en": [
+        "50 selected exhibitors",
+        "Speciality pour-over and creative signature drinks",
+        "Baked goods and specialist teas",
+        "Arts, crafts and handmade goods"
+      ],
+      "organiser": "Guangming Uni-Mall / ODYSSEY",
+      "source": "Xiaohongshu",
+      "confidence": { "date": "HIGH", "venue": "MEDIUM", "price": "HIGH" },
+      "flags": ["confirm mall's official English name"]
+    },
+    {
+      "id": "2026-10-01-miffy-cafe",
+      "slug": "miffy-cafe-k11-ecoast",
+      "title_en": "miffy café — First in South China",
+      "title_zh": "华南首家 miffy café 主题店",
+      "subtitle_en": "Hello, Shenzhen",
+      "start": "2026-10-01",
+      "end": "2026-11-30",
+      "daily_time": null,
+      "venue_zh": "深圳 K11 ECOAST 南馆 & 北馆 L3 连廊",
+      "venue_en": "K11 ECOAST — South & North Halls, L3 Link Bridge",
+      "district": "Nanshan",
+      "price_type": "free_entry_paid_extras",
+      "price_note": "Food, drink and merchandise are paid separately",
+      "categories": ["exhibition", "family", "food"],
+      "summary_en": "South China's first miffy café opens at K11 ECOAST and runs for two months. Limited-edition menu items and merchandise join a large miffy inflatable that has already appeared at the development's Pearl of the Sea art installation.",
+      "highlights_en": [
+        "First miffy café in South China",
+        "miffy character appearances on opening day",
+        "Exclusive menu and limited merchandise",
+        "Large miffy inflatable at the Pearl of the Sea installation"
+      ],
+      "organiser": "K11 ECOAST",
+      "source": "Xiaohongshu",
+      "confidence": { "date": "HIGH", "venue": "MEDIUM", "price": "HIGH" },
+      "flags": [],
+      "sub_events": [
+        {
+          "title_en": "miffy Meet-and-Greet",
+          "date": "2026-10-01",
+          "times": ["11:00–11:15", "14:00–14:15", "17:00–17:15"],
+          "note": "Opening day only — three short sessions"
+        }
+      ]
+    },
+    {
+      "id": "2026-10-01-beautiful-coffee",
+      "slug": "beautiful-coffee-champion-season",
+      "title_en": "Beautiful Coffee — Champion Limited Season",
+      "title_zh": "美好的咖啡 · 冠军限定季",
+      "subtitle_en": "Shenzhen stop of the City Roaming Project",
+      "start": "2026-10-01",
+      "end": "2026-10-03",
+      "daily_time": null,
+      "venue_zh": "深圳湾万象城 B区广场",
+      "venue_en": "MixC Shenzhen Bay — Zone B Plaza",
+      "district": "Nanshan",
+      "price_type": "free",
+      "price_note": null,
+      "categories": ["coffee", "market"],
+      "summary_en": "The champion season of 'Beautiful Coffee' returns after six months away. More than 23 brands from cities across China, 30+ champions and city-level top baristas, and nearly 25 international and Chinese champion baristas on site.",
+      "highlights_en": [
+        "23+ brands from different cities",
+        "30+ champions and city-level top baristas",
+        "Nearly 25 international and Chinese champions attending",
+        "Part of the City Roaming Project — Shenzhen stop"
+      ],
+      "organiser": "Beautiful Coffee / MixC Shenzhen Bay",
+      "source": "Xiaohongshu",
+      "confidence": { "date": "HIGH", "venue": "HIGH", "price": "HIGH" },
+      "flags": []
+    }
+  ]
+}

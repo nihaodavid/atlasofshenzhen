@@ -1,0 +1,1348 @@
+---
+/**
+ * Calendar — client-side list / month views over the events dataset.
+ *
+ * The markup is server-rendered so the page is useful without JavaScript
+ * (crawlers and no-JS visitors see a complete, correctly-grouped list). The
+ * inline script then re-derives statuses against the visitor's actual clock,
+ * because a static build freezes `new Date()` at build time.
+ *
+ * Every date computation uses local Date parts — never toISOString() — since
+ * the data is plain YYYY-MM-DD with no timezone. See lib/calendar.ts.
+ */
+import type { CalendarEvent } from "../lib/calendar";
+import { dayKey, toDate, getAllEvents, getVerifiedOn } from "../lib/calendar";
+
+interface Props {
+  events?: CalendarEvent[];
+  /** Build-time date, used for the initial server-rendered status. */
+  today: string;
+}
+
+const { events = getAllEvents(), today } = Astro.props;
+const verifiedOn = getVerifiedOn();
+
+const CATEGORY_LABEL: Record<string, string> = {
+  food: "Food",
+  coffee: "Coffee",
+  market: "Market",
+  family: "Family",
+  music: "Music",
+  exhibition: "Exhibition",
+  crafts: "Crafts",
+};
+
+/** Categories actually present, ordered by frequency. */
+const categoryCounts = new Map<string, number>();
+for (const e of events) {
+  for (const c of e.categories) {
+    categoryCounts.set(c, (categoryCounts.get(c) ?? 0) + 1);
+  }
+}
+const categories = [...categoryCounts.entries()]
+  .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+  .map(([key, count]) => ({ key, count, label: CATEGORY_LABEL[key] ?? key }));
+
+/** Every calendar day an event occupies. */
+function daysOf(ev: CalendarEvent): Date[] {
+  const out: Date[] = [];
+  const start = toDate(ev.start);
+  const end = toDate(ev.end);
+  for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+    out.push(new Date(d));
+  }
+  return out;
+}
+
+function statusOf(ev: CalendarEvent, now: string) {
+  const t = toDate(now);
+  const s = toDate(ev.start);
+  const e = toDate(ev.end);
+  if (e < t) return "past";
+  if (s <= t && t <= e) return "live";
+  const days = Math.round((s.getTime() - t.getTime()) / 86400000);
+  return days <= 7 ? "soon" : "future";
+}
+
+const STATUS_LABEL = {
+  live: "On now",
+  soon: "This week",
+  future: "Upcoming",
+  past: "Ended",
+} as const;
+
+const fmtDay = (d: Date) =>
+  d.toLocaleDateString("en-GB", { day: "numeric", month: "long" });
+const fmtWeekday = (d: Date) =>
+  d.toLocaleDateString("en-GB", { weekday: "long" });
+
+/** "1–4 October" / "28 September – 2 October", collapsing a shared month. */
+function fmtRange(a: Date, b: Date): string {
+  if (dayKey(a) === dayKey(b)) return fmtDay(a);
+  const sameMonth =
+    a.getMonth() === b.getMonth() && a.getFullYear() === b.getFullYear();
+  return sameMonth ? `${a.getDate()}–${fmtDay(b)}` : `${fmtDay(a)} – ${fmtDay(b)}`;
+}
+
+/* ---- server-side grouping (mirrors the client logic exactly) ---- */
+const t = toDate(today);
+const upcoming: Array<{ key: string; events: CalendarEvent[] }> = [];
+const ended: CalendarEvent[] = [];
+const bucket = new Map<string, CalendarEvent[]>();
+
+for (const e of events) {
+  const s = toDate(e.start);
+  const en = toDate(e.end);
+  if (en < t) {
+    ended.push(e);
+    continue;
+  }
+  const key = s < t ? today : dayKey(s);
+  const list = bucket.get(key);
+  if (list) list.push(e);
+  else bucket.set(key, [e]);
+}
+for (const [key, list] of [...bucket.entries()].sort((a, b) =>
+  a[0].localeCompare(b[0])
+)) {
+  upcoming.push({ key, events: list });
+}
+ended.sort((a, b) => toDate(b.start).getTime() - toDate(a.start).getTime());
+
+const liveCount = events.filter((e) => statusOf(e, today) === "live").length;
+const nowCount = events.filter((e) => statusOf(e, today) !== "past").length;
+
+/** Serialised once, shared by the script below. */
+const payload = JSON.stringify({ today, events, verifiedOn });
+---
+
+<section class="cal-hero">
+  <div class="shell">
+    <p class="cal-hero__eyebrow">What's on</p>
+    <h1 class="cal-hero__title">What's on in Shenzhen</h1>
+    <p class="cal-hero__lede">
+      An English-language calendar of food festivals, markets, exhibitions and
+      pop-ups across the city — written for people who don't read Chinese, and
+      updated as new events are announced.
+    </p>
+  </div>
+</section>
+
+<div class="shell cal-body">
+  <p class="cal-stats" data-stats>
+    <span><strong data-count-total>{events.length}</strong> events listed</span>
+    <span><strong data-count-live>{liveCount}</strong> on now</span>
+    <span>Last verified <strong>{fmtDay(toDate(verifiedOn))}</strong></span>
+  </p>
+
+  <div class="cal-sub">
+    <div class="cal-sub__copy">
+      <h2 class="cal-sub__title">Get the calendar in your inbox</h2>
+      <p class="cal-sub__note">
+        A weekly digest every Thursday — what's on this weekend, nothing else.
+      </p>
+    </div>
+    <div class="cal-sub__actions">
+      <a class="btn btn--primary" href={`mailto:info@atlasofshenzhen.cn?subject=${encodeURIComponent("Subscribe to What's on in Shenzhen")}`}>
+        Subscribe by email
+      </a>
+      <a class="cal-sub__ics" href="/calendar.ics" download>
+        or subscribe in your calendar app (.ics)
+      </a>
+    </div>
+  </div>
+
+  <div class="cal-controls">
+    <div class="cal-filters" role="group" aria-label="Filter events" data-filters>
+      <button class="cal-chip is-active" data-filter="all" type="button">
+        All <span data-filter-total>{events.length}</span>
+      </button>
+      <button class="cal-chip" data-filter="free" type="button">
+        Free <span>{events.filter((e) => e.price_type !== "paid").length}</span>
+      </button>
+      {
+        categories.map((c) => (
+          <button class="cal-chip" data-filter={c.key} type="button">
+            {c.label} <span>{c.count}</span>
+          </button>
+        ))
+      }
+    </div>
+
+    <div class="cal-viewtoggle" role="group" aria-label="Choose view">
+      <button class="is-active" data-view="list" type="button">List</button>
+      <button data-view="month" type="button">Month</button>
+    </div>
+  </div>
+
+  <!-- Server-rendered list. The script replaces this on filter / view change. -->
+  <div id="view-list" class="cal-list">
+    {
+      upcoming.map((group) => {
+        const d = toDate(group.key);
+        const isToday = group.key === today;
+        return (
+          <div class="daygroup">
+            <div class="daygroup__head">
+              <span class="daygroup__date">{isToday ? "Today" : fmtDay(d)}</span>
+              <span class="daygroup__weekday">{fmtWeekday(d)}</span>
+              <span class="daygroup__count">
+                {group.events.length} event{group.events.length > 1 ? "s" : ""}
+              </span>
+            </div>
+            {group.events.map((e) => (
+              <article
+                class="event"
+                data-id={e.id}
+                tabindex="0"
+                role="button"
+                aria-label={`Details for ${e.title_en}`}
+              >
+                <div class="event__time">
+                  <span class="event__run">
+                    {fmtRange(toDate(e.start), toDate(e.end))}
+                  </span>
+                  <span class="event__clock">
+                    {e.daily_time ?? "All day"}
+                  </span>
+                </div>
+                <div class="event__body">
+                  <div class="event__top">
+                    <span class={`status status--${statusOf(e, today)}`}>
+                      {STATUS_LABEL[statusOf(e, today)]}
+                    </span>
+                  </div>
+                  <h3 class="event__title">{e.title_en}</h3>
+                  {e.subtitle_en && (
+                    <p class="event__sub">{e.subtitle_en}</p>
+                  )}
+                  <p class="event__where">
+                    {e.venue_en}
+                    {e.district ? ` · ${e.district}` : ""}
+                  </p>
+                  <div class="event__tags">
+                    {e.price_type !== "paid" && (
+                      <span class="tag tag--free">
+                        Free
+                        {e.price_type === "free_entry_paid_extras"
+                          ? " entry"
+                          : ""}
+                      </span>
+                    )}
+                    {e.categories.map((c) => (
+                      <span class="tag">{CATEGORY_LABEL[c] ?? c}</span>
+                    ))}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        );
+      })
+    }
+
+    {
+      ended.length > 0 && (
+        <div class="daygroup daygroup--past">
+          <div class="daygroup__head">
+            <span class="daygroup__date">Recently ended</span>
+            <span class="daygroup__weekday" />
+            <span class="daygroup__count">
+              {ended.length} event{ended.length > 1 ? "s" : ""}
+            </span>
+          </div>
+          {ended.map((e) => (
+            <article
+              class="event"
+              data-id={e.id}
+              tabindex="0"
+              role="button"
+              aria-label={`Details for ${e.title_en}`}
+            >
+              <div class="event__time">
+                <span class="event__run">
+                  {fmtRange(toDate(e.start), toDate(e.end))}
+                </span>
+                <span class="event__clock">{e.daily_time ?? "All day"}</span>
+              </div>
+              <div class="event__body">
+                <div class="event__top">
+                  <span class="status status--past">Ended</span>
+                </div>
+                <h3 class="event__title">{e.title_en}</h3>
+                {e.subtitle_en && <p class="event__sub">{e.subtitle_en}</p>}
+                <p class="event__where">
+                  {e.venue_en}
+                  {e.district ? ` · ${e.district}` : ""}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+      )
+    }
+  </div>
+
+  <div id="view-month" class="cal-month" hidden></div>
+
+  <p class="cal-foot">
+    <strong>{nowCount} of {events.length}</strong> listed events are still
+    running or yet to start. Listings are extracted from Chinese-language
+    event posters and checked by hand — dates, prices and opening hours can
+    change at short notice, so always confirm with the organiser before
+    travelling.
+  </p>
+</div>
+
+<!-- Detail modal -->
+<div class="cal-modal" id="cal-modal" hidden>
+  <div class="cal-modal__scrim" data-close></div>
+  <div
+    class="cal-modal__panel"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="cal-modal-title"
+  >
+    <button class="cal-modal__close" data-close type="button" aria-label="Close">
+      ×
+    </button>
+    <div id="cal-modal-body"></div>
+  </div>
+</div>
+
+<script type="application/json" id="cal-data" set:html={payload} />
+
+<script>
+  // ------------------------------------------------------------------
+  // Calendar runtime. Re-derives every status against the visitor's real
+  // clock, because a static build freezes the build date.
+  // ------------------------------------------------------------------
+  type Ev = {
+    id: string;
+    slug: string;
+    title_en: string;
+    title_zh?: string;
+    subtitle_en?: string;
+    start: string;
+    end: string;
+    daily_time?: string | null;
+    venue_en: string;
+    venue_zh?: string;
+    district?: string;
+    price_type: string;
+    price_note?: string | null;
+    categories: string[];
+    summary_en?: string;
+    highlights_en?: string[];
+    organiser?: string;
+    source?: string;
+    flags?: string[];
+    sub_events?: { title_en: string; date: string; times?: string[]; note?: string }[];
+  };
+
+  const raw = document.getElementById("cal-data")?.textContent ?? "{}";
+  const data = JSON.parse(raw) as { today: string; events: Ev[]; verifiedOn: string };
+  const EVENTS = data.events;
+
+  // Never toISOString() — local parts only (see lib/calendar.ts).
+  const dayKey = (d: Date) =>
+    `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(
+      d.getDate()
+    ).padStart(2, "0")}`;
+
+  const toDate = (iso: string) => {
+    const [y, m, d] = iso.split("-").map(Number);
+    return new Date(y, m - 1, d);
+  };
+
+  const NOW = dayKey(new Date()); // the visitor's today, not the build date
+
+  const fmtDay = (d: Date) =>
+    d.toLocaleDateString("en-GB", { day: "numeric", month: "long" });
+
+  function fmtRange(a: Date, b: Date) {
+    if (dayKey(a) === dayKey(b)) return fmtDay(a);
+    const sameMonth =
+      a.getMonth() === b.getMonth() && a.getFullYear() === b.getFullYear();
+    return sameMonth ? `${a.getDate()}–${fmtDay(b)}` : `${fmtDay(a)} – ${fmtDay(b)}`;
+  }
+
+  const STATUS_LABEL: Record<string, string> = {
+    live: "On now",
+    soon: "This week",
+    future: "Upcoming",
+    past: "Ended",
+  };
+
+  function statusOf(ev: Ev) {
+    const t = toDate(NOW), s = toDate(ev.start), e = toDate(ev.end);
+    if (e < t) return "past";
+    if (s <= t && t <= e) return "live";
+    const days = Math.round((s.getTime() - t.getTime()) / 86400000);
+    return days <= 7 ? "soon" : "future";
+  }
+
+  function daysOf(ev: Ev) {
+    const out: Date[] = [];
+    const s = toDate(ev.start), e = toDate(ev.end);
+    for (let d = new Date(s); d <= e; d.setDate(d.getDate() + 1)) out.push(new Date(d));
+    return out;
+  }
+
+  const CATEGORY_LABEL: Record<string, string> = {
+    food: "Food", coffee: "Coffee", market: "Market", family: "Family",
+    music: "Music", exhibition: "Exhibition", crafts: "Crafts",
+  };
+
+  const esc = (s: string) =>
+    s.replace(/[&<>"']/g, (c) =>
+      ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c] as string)
+    );
+
+  let activeFilter = "all";
+
+  function visible() {
+    if (activeFilter === "all") return EVENTS;
+    if (activeFilter === "free") return EVENTS.filter((e) => e.price_type !== "paid");
+    return EVENTS.filter((e) => e.categories.includes(activeFilter));
+  }
+
+  /* ---------------- list ---------------- */
+  function eventRow(e: Ev) {
+    const st = statusOf(e);
+    const free = e.price_type !== "paid";
+    return `
+      <article class="event" data-id="${esc(e.id)}" tabindex="0" role="button"
+               aria-label="Details for ${esc(e.title_en)}">
+        <div class="event__time">
+          <span class="event__run">${fmtRange(toDate(e.start), toDate(e.end))}</span>
+          <span class="event__clock">${esc(e.daily_time ?? "All day")}</span>
+        </div>
+        <div class="event__body">
+          <div class="event__top">
+            <span class="status status--${st}">${STATUS_LABEL[st]}</span>
+          </div>
+          <h3 class="event__title">${esc(e.title_en)}</h3>
+          ${e.subtitle_en ? `<p class="event__sub">${esc(e.subtitle_en)}</p>` : ""}
+          <p class="event__where">${esc(e.venue_en)}${e.district ? ` · ${esc(e.district)}` : ""}</p>
+          <div class="event__tags">
+            ${free ? `<span class="tag tag--free">Free${e.price_type === "free_entry_paid_extras" ? " entry" : ""}</span>` : ""}
+            ${e.categories.map((c) => `<span class="tag">${CATEGORY_LABEL[c] ?? c}</span>`).join("")}
+          </div>
+        </div>
+      </article>`;
+  }
+
+  function renderList() {
+    const host = document.getElementById("view-list");
+    if (!host) return;
+    const evs = visible();
+    if (!evs.length) {
+      host.innerHTML = `<p class="cal-empty">Nothing matches that filter yet.</p>`;
+      return;
+    }
+
+    const t = toDate(NOW);
+    const groups = new Map<string, Ev[]>();
+    const done: Ev[] = [];
+
+    for (const e of evs) {
+      const s = toDate(e.start), en = toDate(e.end);
+      if (en < t) { done.push(e); continue; }
+      // Anchor runs that already started to today, so a festival in progress
+      // is not filed under a future date as if it opened then.
+      const key = s < t ? NOW : dayKey(s);
+      const list = groups.get(key);
+      if (list) list.push(e); else groups.set(key, [e]);
+    }
+
+    const block = (key: string, list: Ev[]) => {
+      const d = toDate(key);
+      const isToday = key === NOW;
+      return `
+        <div class="daygroup">
+          <div class="daygroup__head">
+            <span class="daygroup__date">${isToday ? "Today" : fmtDay(d)}</span>
+            <span class="daygroup__weekday">${d.toLocaleDateString("en-GB", { weekday: "long" })}</span>
+            <span class="daygroup__count">${list.length} event${list.length > 1 ? "s" : ""}</span>
+          </div>
+          ${list.map(eventRow).join("")}
+        </div>`;
+    };
+
+    done.sort((a, b) => toDate(b.start).getTime() - toDate(a.start).getTime());
+
+    host.innerHTML =
+      [...groups.entries()]
+        .sort((a, b) => a[0].localeCompare(b[0]))
+        .map(([k, l]) => block(k, l))
+        .join("") +
+      (done.length
+        ? `<div class="daygroup daygroup--past">
+             <div class="daygroup__head">
+               <span class="daygroup__date">Recently ended</span>
+               <span class="daygroup__weekday"></span>
+               <span class="daygroup__count">${done.length} event${done.length > 1 ? "s" : ""}</span>
+             </div>
+             ${done.map(eventRow).join("")}
+           </div>`
+        : "");
+  }
+
+  /* ---------------- month ---------------- */
+  function renderMonth() {
+    const host = document.getElementById("view-month");
+    if (!host) return;
+    const evs = visible();
+    const t = toDate(NOW);
+    const months = [
+      new Date(t.getFullYear(), t.getMonth(), 1),
+      new Date(t.getFullYear(), t.getMonth() + 1, 1),
+    ];
+
+    host.innerHTML = months
+      .map((m) => {
+        const y = m.getFullYear(), mo = m.getMonth();
+        const first = new Date(y, mo, 1);
+        const pad = (first.getDay() + 6) % 7; // Monday-first
+        const daysInMonth = new Date(y, mo + 1, 0).getDate();
+        const cells = Math.ceil((pad + daysInMonth) / 7) * 7;
+
+        let html = `<div class="month"><div class="month__head">${
+          m.toLocaleDateString("en-GB", { month: "long", year: "numeric" })
+        }</div><div class="monthgrid">`;
+        html += ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+          .map((d) => `<div class="dow">${d}</div>`)
+          .join("");
+
+        for (let i = 0; i < cells; i++) {
+          const dayNum = i - pad + 1;
+          const inMonth = dayNum >= 1 && dayNum <= daysInMonth;
+          const cell = new Date(y, mo, dayNum);
+          const key = inMonth ? dayKey(cell) : null;
+
+          const onDay = inMonth
+            ? evs.filter((e) => daysOf(e).some((d) => dayKey(d) === key))
+            : [];
+
+          // Rank scarce (short) events first so a two-month exhibition cannot
+          // crowd out a one-day market.
+          const rank = [...onDay].sort(
+            (a, b) =>
+              daysOf(a).length - daysOf(b).length ||
+              toDate(a.start).getTime() - toDate(b.start).getTime()
+          );
+          const shown = rank.slice(0, 3);
+          const extra = onDay.length - shown.length;
+
+          html += `<div class="day ${inMonth ? "" : "day--out"} ${
+            key === NOW ? "day--today" : ""
+          }">
+            <span class="day__num">${cell.getDate()}</span>
+            ${shown
+              .map(
+                (e) =>
+                  `<span class="day__ev${
+                    daysOf(e).length > 3 ? " day__ev--run" : ""
+                  }" data-id="${esc(e.id)}" title="${esc(e.title_en)}">${esc(e.title_en)}</span>`
+              )
+              .join("")}
+            ${extra > 0 ? `<span class="day__more">+${extra} more</span>` : ""}
+          </div>`;
+        }
+        return html + `</div></div>`;
+      })
+      .join("");
+  }
+
+  /* ---------------- modal ---------------- */
+  const modal = document.getElementById("cal-modal")!;
+  const modalBody = document.getElementById("cal-modal-body")!;
+  let lastFocus: HTMLElement | null = null;
+
+  function openModal(id: string) {
+    const e = EVENTS.find((x) => x.id === id);
+    if (!e) return;
+    const st = statusOf(e);
+    const free = e.price_type !== "paid";
+
+    modalBody.innerHTML = `
+      <span class="status status--${st}">${STATUS_LABEL[st]}</span>
+      <h2 class="cal-modal__title" id="cal-modal-title">${esc(e.title_en)}</h2>
+      ${e.title_zh ? `<p class="cal-modal__zh">${esc(e.title_zh)}</p>` : ""}
+      ${e.subtitle_en ? `<p class="cal-modal__sub">${esc(e.subtitle_en)}</p>` : ""}
+      <dl class="cal-modal__facts">
+        <dt>When</dt>
+        <dd>${fmtRange(toDate(e.start), toDate(e.end))}${
+          e.daily_time ? `<br><span class="dim">${esc(e.daily_time)} daily</span>` : ""
+        }</dd>
+        <dt>Where</dt>
+        <dd>${esc(e.venue_en)}${e.district ? `, ${esc(e.district)}` : ""}${
+          e.venue_zh ? `<br><span class="dim">${esc(e.venue_zh)}</span>` : ""
+        }</dd>
+        <dt>Cost</dt>
+        <dd>${free ? (e.price_type === "free_entry_paid_extras" ? "Free entry" : "Free") : "Paid"}${
+          e.price_note ? `<br><span class="dim">${esc(e.price_note)}</span>` : ""
+        }</dd>
+        ${e.organiser ? `<dt>Organiser</dt><dd>${esc(e.organiser)}</dd>` : ""}
+      </dl>
+      ${e.summary_en ? `<p class="cal-modal__about">${esc(e.summary_en)}</p>` : ""}
+      ${
+        e.highlights_en?.length
+          ? `<h3 class="cal-modal__h3">Highlights</h3>
+             <ul class="cal-modal__list">${e.highlights_en
+               .map((h) => `<li>${esc(h)}</li>`)
+               .join("")}</ul>`
+          : ""
+      }
+      ${
+        e.sub_events?.length
+          ? `<h3 class="cal-modal__h3">Also on</h3>
+             <ul class="cal-modal__list">${e.sub_events
+               .map(
+                 (s) =>
+                   `<li><strong>${esc(s.title_en)}</strong> — ${fmtDay(
+                     toDate(s.date)
+                   )}${s.times ? `, ${esc(s.times.join(" / "))}` : ""}${
+                     s.note ? `<br><span class="dim">${esc(s.note)}</span>` : ""
+                   }</li>`
+               )
+               .join("")}</ul>`
+          : ""
+      }
+      <p class="cal-modal__source">
+        Source: ${esc(e.source ?? "—")} · Listing verified ${fmtDay(
+      toDate(data.verifiedOn)
+    )} · Always confirm with the organiser before travelling.
+      </p>`;
+
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";
+    lastFocus = document.activeElement as HTMLElement;
+    modal.querySelector<HTMLButtonElement>(".cal-modal__close")?.focus();
+  }
+
+  function closeModal() {
+    modal.hidden = true;
+    document.body.style.overflow = "";
+    lastFocus?.focus();
+  }
+
+  /* ---------------- wiring ---------------- */
+  document.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
+
+    if (target.closest("[data-close]")) return closeModal();
+
+    const evt = target.closest<HTMLElement>(".event, .day__ev");
+    if (evt?.dataset.id) return openModal(evt.dataset.id);
+
+    const chip = target.closest<HTMLButtonElement>("[data-filter]");
+    if (chip) {
+      activeFilter = chip.dataset.filter!;
+      document
+        .querySelectorAll("[data-filter]")
+        .forEach((b) => b.classList.toggle("is-active", b === chip));
+      renderList();
+      if (!document.getElementById("view-month")!.hidden) renderMonth();
+      return;
+    }
+
+    const view = target.closest<HTMLButtonElement>("[data-view]");
+    if (view) {
+      const which = view.dataset.view!;
+      document
+        .querySelectorAll("[data-view]")
+        .forEach((b) => b.classList.toggle("is-active", b === view));
+      document.getElementById("view-list")!.hidden = which !== "list";
+      document.getElementById("view-month")!.hidden = which !== "month";
+      if (which === "month") renderMonth();
+    }
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal.hidden) closeModal();
+    // Enter/Space on a focused event row opens it (the row is role=button).
+    if ((e.key === "Enter" || e.key === " ") && !modal.hidden === false) {
+      const el = document.activeElement as HTMLElement | null;
+      if (el?.classList.contains("event") && el.dataset.id) {
+        e.preventDefault();
+        openModal(el.dataset.id);
+      }
+    }
+  });
+
+  // Correct the server-rendered statuses against the visitor's real date.
+  // If the build date and today agree, nothing visible changes.
+  if (NOW !== data.today) {
+    renderList();
+    document.querySelectorAll<HTMLElement>("[data-count-live]").forEach((el) => {
+      el.textContent = String(
+        EVENTS.filter((e) => statusOf(e) === "live").length
+      );
+    });
+  }
+</script>
+
+<style>
+  /* ---------------- hero ---------------- */
+  .cal-hero {
+    padding-block: clamp(2.5rem, 5vw, 4rem) clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .cal-hero__eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+  }
+
+  .cal-hero__title {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+  }
+
+  .cal-hero__lede {
+    max-width: 62ch;
+    margin-top: 1rem;
+    color: var(--ink-soft);
+    font-size: 1.0625rem;
+  }
+
+  .cal-body {
+    padding-bottom: clamp(3rem, 6vw, 5rem);
+  }
+
+  .cal-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    font-size: 0.8125rem;
+    color: var(--ink-muted);
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .cal-stats strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* ---------------- subscribe ---------------- */
+  .cal-sub {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.25rem;
+    margin-top: 1.75rem;
+    padding: 1.4rem 1.6rem;
+    background: var(--teal-tint);
+    border-radius: var(--radius);
+  }
+
+  .cal-sub__title {
+    font-size: 1.0625rem;
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+
+  .cal-sub__note {
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+  }
+
+  .cal-sub__actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+
+  .cal-sub__ics {
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .cal-sub__ics:hover {
+    color: var(--teal-dark);
+  }
+
+  /* ---------------- controls ---------------- */
+  .cal-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-block: 2rem 1.5rem;
+  }
+
+  .cal-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .cal-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.85rem;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    background: var(--white);
+    font-size: 0.8125rem;
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: background-color 0.2s var(--ease), border-color 0.2s var(--ease),
+      color 0.2s var(--ease);
+  }
+
+  .cal-chip span {
+    font-size: 0.68rem;
+    color: var(--ink-muted);
+  }
+
+  .cal-chip:hover {
+    border-color: var(--teal);
+    color: var(--teal-dark);
+  }
+
+  .cal-chip.is-active {
+    background: var(--teal);
+    border-color: var(--teal);
+    color: var(--white);
+  }
+
+  .cal-chip.is-active span {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .cal-viewtoggle {
+    display: inline-flex;
+    border: 1px solid var(--ink);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .cal-viewtoggle button {
+    padding: 0.4rem 1rem;
+    border: 0;
+    background: var(--white);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  .cal-viewtoggle button.is-active {
+    background: var(--ink);
+    color: var(--white);
+  }
+
+  /* ---------------- list ---------------- */
+  .daygroup {
+    margin-bottom: 2.75rem;
+  }
+
+  .daygroup__head {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding-bottom: 0.7rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .daygroup__date {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+  }
+
+  .daygroup__weekday {
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .daygroup__count {
+    margin-left: auto;
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+  }
+
+  .daygroup--past {
+    margin-top: 1.5rem;
+    opacity: 0.62;
+  }
+
+  .daygroup--past .daygroup__head {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .daygroup--past .daygroup__date {
+    font-size: 0.95rem;
+    color: var(--ink-muted);
+  }
+
+  .daygroup--past:hover {
+    opacity: 0.9;
+  }
+
+  .event {
+    display: grid;
+    grid-template-columns: 108px 1fr;
+    gap: 1.25rem;
+    padding: 1.35rem 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: background-color 0.18s var(--ease);
+  }
+
+  .event:hover {
+    background: #fafafa;
+  }
+
+  .event:last-child {
+    border-bottom: 0;
+  }
+
+  .event__time {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--ink-muted);
+    padding-top: 0.2rem;
+  }
+
+  .event__run {
+    color: var(--ink-soft);
+  }
+
+  .event__clock {
+    font-weight: 500;
+  }
+
+  .event__body {
+    min-width: 0;
+  }
+
+  .event__top {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.4rem;
+  }
+
+  .event__title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.3;
+    margin: 0 0 0.3rem;
+  }
+
+  .event__sub {
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+    font-style: italic;
+    margin: 0 0 0.6rem;
+  }
+
+  .event__where {
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+    margin: 0 0 0.55rem;
+  }
+
+  .event__tags {
+    display: flex;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    background: var(--surface);
+    color: var(--ink-muted);
+  }
+
+  .tag--free {
+    background: #e8f5ec;
+    color: #23703f;
+  }
+
+  .status {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 0.18rem 0.5rem;
+    border-radius: 3px;
+  }
+
+  .status--live {
+    background: #e8f5ec;
+    color: #23703f;
+  }
+
+  .status--soon {
+    background: #fff4e0;
+    color: #8a5a00;
+  }
+
+  .status--future {
+    background: var(--surface);
+    color: var(--ink-muted);
+  }
+
+  .status--past {
+    background: var(--surface);
+    color: var(--ink-muted);
+  }
+
+  .cal-empty {
+    padding: 3rem 0;
+    color: var(--ink-muted);
+    font-style: italic;
+  }
+
+  /* ---------------- month ----------------
+     The month grid is built with innerHTML at runtime, so its elements never
+     receive Astro's scoped `data-astro-cid-*` attribute and scoped selectors
+     would not match them. Everything from `.month` down is therefore marked
+     :global() — safe here because these class names are unique to this
+     component. */
+  .cal-month {
+    margin-top: 0.5rem;
+  }
+
+  :global(.month + .month) {
+    margin-top: 2.5rem;
+  }
+
+  :global(.month__head) {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.9rem;
+  }
+
+  :global(.monthgrid) {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  :global(.dow) {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+
+  :global(.day) {
+    min-height: 104px;
+    padding: 0.45rem;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  :global(.day:nth-child(7n)) {
+    border-right: 0;
+  }
+
+  :global(.day--out) {
+    background: #fbfbfb;
+  }
+
+  :global(.day--out .day__num) {
+    color: #c4c4c4;
+  }
+
+  :global(.day--today) {
+    background: var(--teal-tint);
+  }
+
+  :global(.day--today .day__num) {
+    background: var(--teal);
+    color: var(--white);
+    border-radius: 50%;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  :global(.day__num) {
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--ink-soft);
+  }
+
+  :global(.day__ev) {
+    font-size: 0.68rem;
+    line-height: 1.35;
+    padding: 0.22rem 0.38rem;
+    border-radius: 4px;
+    background: var(--teal-tint);
+    border-left: 2.5px solid var(--teal);
+    color: var(--teal-dark);
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  :global(.day__ev:hover) {
+    background: #e2f0f2;
+  }
+
+  /* Long runs read as background texture, not headline news. */
+  :global(.day__ev--run) {
+    background: transparent;
+    border-left-color: var(--border);
+    border-left-style: dashed;
+    color: var(--ink-muted);
+    font-weight: 500;
+  }
+
+  :global(.day__more) {
+    font-size: 0.63rem;
+    color: var(--ink-muted);
+    font-weight: 600;
+    padding-left: 0.38rem;
+    cursor: pointer;
+  }
+
+  :global(.day__more:hover) {
+    color: var(--ink);
+    text-decoration: underline;
+  }
+
+  /* ---------------- modal ---------------- */
+  .cal-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+  }
+
+  .cal-modal[hidden] {
+    display: none;
+  }
+
+  .cal-modal__scrim {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  .cal-modal__panel {
+    position: relative;
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    max-width: 620px;
+    width: 100%;
+    max-height: 86vh;
+    overflow-y: auto;
+    padding: 2rem 2.25rem 2.25rem;
+  }
+
+  .cal-modal__close {
+    position: absolute;
+    top: 0.9rem;
+    right: 1.1rem;
+    border: 0;
+    background: none;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--ink-muted);
+    cursor: pointer;
+  }
+
+  .cal-modal__close:hover {
+    color: var(--ink);
+  }
+
+  :global(.cal-modal__title) {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0.6rem 0 0.3rem;
+  }
+
+  :global(.cal-modal__zh) {
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  :global(.cal-modal__sub) {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--ink-muted);
+    margin-bottom: 1.25rem;
+  }
+
+  :global(.cal-modal__facts) {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: 0.6rem 1rem;
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+  }
+
+  :global(.cal-modal__facts dt) {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    padding-top: 0.15rem;
+  }
+
+  :global(.cal-modal__facts dd) {
+    margin: 0;
+    color: var(--ink-soft);
+  }
+
+  :global(.cal-modal__about) {
+    margin-top: 1.25rem;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+  }
+
+  :global(.cal-modal__h3) {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin: 1.5rem 0 0.6rem;
+  }
+
+  :global(.cal-modal__list) {
+    padding-left: 1.1rem;
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+  }
+
+  :global(.cal-modal__list li + li) {
+    margin-top: 0.4rem;
+  }
+
+  :global(.cal-modal__source) {
+    margin-top: 1.75rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+  }
+
+  :global(.dim) {
+    color: var(--ink-muted);
+  }
+
+  .cal-foot {
+    max-width: 62ch;
+    margin-top: 2.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.8125rem;
+    color: var(--ink-muted);
+  }
+
+  @media (max-width: 640px) {
+    .event {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+
+    .event__time {
+      flex-direction: row;
+      gap: 0.75rem;
+      padding-top: 0;
+    }
+
+    .cal-controls {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .cal-sub {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .cal-sub__actions {
+      align-items: flex-start;
+    }
+
+    :global(.monthgrid) {
+      font-size: 0.7rem;
+    }
+
+    :global(.day) {
+      min-height: 70px;
+      padding: 0.35rem;
+    }
+
+    /* Shrink chips to dots rather than illegible truncated text. */
+    :global(.day__ev) {
+      font-size: 0;
+      padding: 0.28rem;
+      border-left-width: 2px;
+    }
+
+    :global(.day__ev::after) {
+      content: "•";
+      font-size: 0.85rem;
+    }
+
+    .cal-modal__panel {
+      padding: 1.5rem 1.25rem 1.75rem;
+    }
+
+    :global(.cal-modal__facts) {
+      grid-template-columns: 1fr;
+      gap: 0.2rem;
+    }
+
+    :global(.cal-modal__facts dt) {
+      margin-top: 0.6rem;
+    }
+  }
+</style>

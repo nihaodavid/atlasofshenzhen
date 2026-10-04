@@ -27,6 +27,10 @@ export type NavItem = {
 
 export const NAV: NavItem[] = [
   { label: "Home", href: "/" },
+  // New: an English-language events calendar. Kept at the top level because it
+  // is the site's most frequently-updated page and the main reason for repeat
+  // visits — burying it under a dropdown would waste that.
+  { label: "What's on", href: "/calendar/" },
   { label: "Videos", href: "/videos/" },
   {
     label: "About",
