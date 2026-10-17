@@ -9,6 +9,7 @@ import "../styles/global.css";
 import { SITE, NAV } from "../site.config";
 import JsonLd from "../components/JsonLd.astro";
 import { siteGraph } from "../lib/schema";
+import Analytics from "@vercel/analytics/astro";
 
 interface Props {
   title: string;
@@ -287,6 +288,12 @@ function isActive(href: string, children?: { href: string }[]): boolean {
         document.body.classList.toggle("nav-open", !open);
       });
     </script>
+
+    {/* Vercel Web Analytics — cookieless, privacy-friendly.
+        Sends page views to Vercel once the project's Web Analytics
+        product is enabled in the dashboard. No-op in `astro dev`
+        unless the `dev` prop is set. */}
+    <Analytics />
   </body>
 </html>
 
